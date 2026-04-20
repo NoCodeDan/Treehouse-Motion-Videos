@@ -1,0 +1,305 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="vcBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="vcChatGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e84393"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
+    </linearGradient>
+    <linearGradient id="vcSparkle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e84393"/>
+      <stop offset="50%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#4a4290"/>
+    </linearGradient>
+    <filter id="vcGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="sparkleGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="vcCodeClip">
+      <rect x="430" y="60" width="350" height="380" rx="8"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#vcBg)"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#666" opacity="0">
+    Vibe Coding — Prompt to Code
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.2s" fill="freeze"/>
+  </text>
+
+  <!-- ============ LEFT: Chat Panel ============ -->
+  <rect x="20" y="60" width="350" height="380" rx="10" fill="#2a2a3a" stroke="#444" stroke-width="1"/>
+
+  <!-- Chat header -->
+  <rect x="20" y="60" width="350" height="36" rx="10" fill="#333"/>
+  <rect x="20" y="86" width="350" height="10" fill="#333"/>
+  <circle cx="46" cy="78" r="12" fill="url(#vcChatGrad)"/>
+  <text x="46" y="82" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#fff" font-weight="bold">AI</text>
+  <text x="66" y="75" font-family="-apple-system, SF Pro, Helvetica, sans-serif" font-size="11" fill="#e0e0e0" font-weight="600">Vibe Coder</text>
+  <text x="66" y="88" font-family="-apple-system, sans-serif" font-size="9" fill="#e84393">Ready</text>
+
+  <!-- User prompt message -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.6s" fill="freeze"/>
+    <rect x="70" y="110" width="280" height="55" rx="12" fill="#e84393" opacity="0.9"/>
+    <text font-family="-apple-system, SF Pro, Helvetica, sans-serif" font-size="11" fill="#fff">
+      <tspan x="85" y="130">Build a todo app with React.</tspan>
+      <tspan x="85" y="148">Add dark mode and local storage.</tspan>
+    </text>
+  </g>
+
+  <!-- AI thinking dots -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="opacity" values="1;0" dur="0.2s" begin="2.8s" fill="freeze"/>
+    <rect x="40" y="180" width="60" height="30" rx="12" fill="#333" stroke="#444" stroke-width="0.5"/>
+    <circle cx="55" cy="195" r="3" fill="#888">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="70" cy="195" r="3" fill="#888">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="85" cy="195" r="3" fill="#888">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- AI response -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="3.0s" fill="freeze"/>
+    <rect x="40" y="180" width="300" height="90" rx="12" fill="#333" stroke="#444" stroke-width="0.5"/>
+    <text font-family="-apple-system, SF Pro, Helvetica, sans-serif" font-size="11" fill="#e0e0e0">
+      <tspan x="55" y="200">I'll create a React todo app with:</tspan>
+      <tspan x="55" y="218" fill="#e84393">&#x2022;</tspan>
+      <tspan fill="#ccc"> Dark mode toggle</tspan>
+      <tspan x="55" y="236" fill="#e84393">&#x2022;</tspan>
+      <tspan fill="#ccc"> localStorage persistence</tspan>
+      <tspan x="55" y="254" fill="#e84393">&#x2022;</tspan>
+      <tspan fill="#ccc"> Add, complete, delete actions</tspan>
+    </text>
+  </g>
+
+  <!-- AI status message -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.8s" fill="freeze"/>
+    <rect x="40" y="285" width="200" height="30" rx="12" fill="#333" stroke="#444" stroke-width="0.5"/>
+    <text x="55" y="305" font-family="-apple-system, sans-serif" font-size="10" fill="#e84393">Generating code...</text>
+  </g>
+
+  <!-- Chat input -->
+  <rect x="35" y="400" width="320" height="28" rx="14" fill="#333" stroke="#444" stroke-width="0.5"/>
+  <text x="55" y="418" font-family="-apple-system, sans-serif" font-size="10" fill="#666">Describe what to build...</text>
+
+  <!-- ============ CENTER: Sparkle connector ============ -->
+  <!-- Sparkle burst between panels -->
+  <g transform="translate(400, 250)" opacity="0" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="0;1;0.6" dur="0.5s" begin="3.5s" fill="freeze"/>
+
+    <!-- Main sparkle -->
+    <polygon points="0,-15 3,-3 15,0 3,3 0,15 -3,3 -15,0 -3,-3" fill="url(#vcSparkle)">
+      <animateTransform attributeName="transform" type="rotate" values="0;180" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+    </polygon>
+
+    <!-- Small sparkles -->
+    <circle cx="-10" cy="-18" r="2" fill="#e84393" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="3.6s" fill="freeze"/>
+    </circle>
+    <circle cx="12" cy="-12" r="1.5" fill="#6c5ce7" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="3.7s" fill="freeze"/>
+    </circle>
+    <circle cx="15" cy="10" r="2" fill="#4a4190" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="3.8s" fill="freeze"/>
+    </circle>
+    <circle cx="-8" cy="15" r="1.5" fill="#e84393" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="3.9s" fill="freeze"/>
+    </circle>
+  </g>
+
+  <!-- ============ RIGHT: Code Editor ============ -->
+  <rect x="430" y="60" width="350" height="380" rx="10" fill="#1e1e2e" stroke="#444" stroke-width="1"/>
+
+  <!-- Editor header -->
+  <rect x="430" y="60" width="350" height="30" rx="10" fill="#2a2a3a"/>
+  <rect x="430" y="80" width="350" height="10" fill="#2a2a3a"/>
+  <!-- Tab -->
+  <rect x="440" y="65" width="80" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="480" y="79" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#e0e0e0">App.jsx</text>
+  <!-- Dot on tab -->
+  <circle cx="510" cy="75" r="2.5" fill="#e84393"/>
+
+  <g clip-path="url(#vcCodeClip)">
+    <!-- Code lines revealing progressively -->
+
+    <!-- Line 1 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="4.0s" fill="freeze"/>
+      <text x="445" y="110" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#d44c66">import</tspan>
+        <tspan fill="#e0e0e0"> { useState } </tspan>
+        <tspan fill="#d44c66">from</tspan>
+        <tspan fill="#69c773"> 'react'</tspan>
+        <tspan fill="#e0e0e0">;</tspan>
+      </text>
+    </g>
+
+    <!-- Line 2 (blank) + Line 3 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="4.3s" fill="freeze"/>
+      <text x="445" y="138" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#d44c66">export default function</tspan>
+        <tspan fill="#69c773"> App</tspan>
+        <tspan fill="#e0e0e0">() {</tspan>
+      </text>
+    </g>
+
+    <!-- Line 4 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="4.6s" fill="freeze"/>
+      <text x="455" y="156" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#d44c66">const</tspan>
+        <tspan fill="#e0e0e0"> [todos, setTodos] = </tspan>
+        <tspan fill="#69c773">useState</tspan>
+        <tspan fill="#e0e0e0">([]);</tspan>
+      </text>
+    </g>
+
+    <!-- Line 5 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="4.9s" fill="freeze"/>
+      <text x="455" y="174" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#d44c66">const</tspan>
+        <tspan fill="#e0e0e0"> [dark, setDark] = </tspan>
+        <tspan fill="#69c773">useState</tspan>
+        <tspan fill="#e0e0e0">(</tspan>
+        <tspan fill="#d44c66">false</tspan>
+        <tspan fill="#e0e0e0">);</tspan>
+      </text>
+    </g>
+
+    <!-- Line 6 (blank) + Line 7 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="5.2s" fill="freeze"/>
+      <text x="455" y="202" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#d44c66">const</tspan>
+        <tspan fill="#69c773"> addTodo</tspan>
+        <tspan fill="#e0e0e0"> = (</tspan>
+        <tspan fill="#e17055">text</tspan>
+        <tspan fill="#e0e0e0">) =&gt; {</tspan>
+      </text>
+    </g>
+
+    <!-- Line 8 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="5.5s" fill="freeze"/>
+      <text x="465" y="220" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#d44c66">const</tspan>
+        <tspan fill="#e0e0e0"> newTodo = {</tspan>
+      </text>
+    </g>
+
+    <!-- Line 9 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="5.8s" fill="freeze"/>
+      <text x="475" y="238" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190">id</tspan>
+        <tspan fill="#e0e0e0">: Date.</tspan>
+        <tspan fill="#69c773">now</tspan>
+        <tspan fill="#e0e0e0">(),</tspan>
+      </text>
+    </g>
+
+    <!-- Line 10 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="6.1s" fill="freeze"/>
+      <text x="475" y="256" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190">text</tspan>
+        <tspan fill="#e0e0e0">,</tspan>
+      </text>
+    </g>
+
+    <!-- Line 11 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="6.4s" fill="freeze"/>
+      <text x="475" y="274" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190">done</tspan>
+        <tspan fill="#e0e0e0">: </tspan>
+        <tspan fill="#d44c66">false</tspan>
+      </text>
+    </g>
+
+    <!-- Line 12 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="6.7s" fill="freeze"/>
+      <text x="465" y="292" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#e0e0e0">};</text>
+    </g>
+
+    <!-- Line 13 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="7.0s" fill="freeze"/>
+      <text x="465" y="310" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#69c773">setTodos</tspan>
+        <tspan fill="#e0e0e0">([...todos, newTodo]);</tspan>
+      </text>
+    </g>
+
+    <!-- Line 14 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="7.3s" fill="freeze"/>
+      <text x="465" y="328" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#69c773">localStorage</tspan>
+        <tspan fill="#e0e0e0">.</tspan>
+        <tspan fill="#69c773">setItem</tspan>
+        <tspan fill="#e0e0e0">(</tspan>
+      </text>
+    </g>
+
+    <!-- Line 15 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="7.6s" fill="freeze"/>
+      <text x="475" y="346" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#69c773">'todos'</tspan>
+        <tspan fill="#e0e0e0">, JSON.</tspan>
+        <tspan fill="#69c773">stringify</tspan>
+        <tspan fill="#e0e0e0">([...todos, newTodo]));</tspan>
+      </text>
+    </g>
+
+    <!-- Lines 16-17 closing -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="7.9s" fill="freeze"/>
+      <text x="455" y="364" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#e0e0e0">};</text>
+    </g>
+
+    <!-- Blinking cursor at end -->
+    <rect x="465" y="370" width="2" height="12" fill="#e84393" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.1s" begin="8.0s" fill="freeze"/>
+      <animate attributeName="opacity" values="1;0;1" dur="1s" begin="8.1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Bottom status -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="8.2s" fill="freeze"/>
+    <rect x="200" y="460" width="400" height="28" rx="8" fill="#2a2a3a" stroke="#e84393" stroke-width="1"/>
+    <text x="400" y="479" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10">
+      <tspan fill="#e84393">&#x2728;</tspan>
+      <tspan fill="#e0e0e0"> Generated 3 files</tspan>
+      <tspan fill="#888"> · App.jsx, TodoItem.jsx, styles.css</tspan>
+    </text>
+  </g>
+</svg>

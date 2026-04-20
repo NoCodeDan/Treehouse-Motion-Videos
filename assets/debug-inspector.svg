@@ -1,0 +1,327 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450" width="700" height="450">
+  <defs>
+    <linearGradient id="diBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="diTitleBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3c3c3c"/>
+      <stop offset="100%" stop-color="#333333"/>
+    </linearGradient>
+    <clipPath id="diClip">
+      <rect x="10" y="10" width="680" height="430" rx="10"/>
+    </clipPath>
+    <filter id="diGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#diClip)">
+    <!-- Window frame -->
+    <rect x="10" y="10" width="680" height="430" rx="10" fill="url(#diBg)" stroke="#444" stroke-width="1"/>
+
+    <!-- Title bar -->
+    <rect x="10" y="10" width="680" height="36" fill="url(#diTitleBar)"/>
+    <line x1="10" y1="46" x2="690" y2="46" stroke="#222" stroke-width="1"/>
+    <circle cx="32" cy="28" r="6.5" fill="#ff5f57"/>
+    <circle cx="52" cy="28" r="6.5" fill="#febc2e"/>
+    <circle cx="72" cy="28" r="6.5" fill="#28c840"/>
+    <text x="350" y="32" text-anchor="middle" fill="#999" font-family="SF Mono, Menlo, monospace" font-size="11">Debug Inspector — app.js</text>
+
+    <!-- Debug toolbar -->
+    <rect x="10" y="46" width="680" height="26" fill="#2a2a2e"/>
+    <line x1="10" y1="72" x2="690" y2="72" stroke="#222" stroke-width="1"/>
+    <!-- Debug controls -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="0.3s" fill="freeze"/>
+      <!-- Continue -->
+      <polygon points="24,55 36,60 24,65" fill="#28c840" opacity="0.8"/>
+      <!-- Step Over -->
+      <path d="M52,63 L62,56 M62,56 L62,63" fill="none" stroke="#3498db" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Step Into -->
+      <path d="M80,56 L80,65 M76,61 L80,65 L84,61" fill="none" stroke="#3498db" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Step Out -->
+      <path d="M100,65 L100,56 M96,60 L100,56 L104,60" fill="none" stroke="#3498db" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Restart -->
+      <circle cx="124" cy="60" r="5" fill="none" stroke="#69c773" stroke-width="1.2"/>
+      <path d="M124,55 L127,58" stroke="#69c773" stroke-width="1.2"/>
+    </g>
+
+    <!-- Divider between code and variables panel -->
+    <line x1="420" y1="72" x2="420" y2="440" stroke="#333" stroke-width="1"/>
+
+    <!-- ============ LEFT: Code Editor ============ -->
+    <rect x="10" y="72" width="410" height="368" fill="#1a1a1a"/>
+
+    <!-- Line numbers and code -->
+    <!-- Line 1 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="0.5s" fill="freeze"/>
+      <text x="40" y="94" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">1</text>
+      <text x="50" y="94" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#d44c66">function</tspan>
+        <tspan fill="#69c773"> calculateTotal</tspan>
+        <tspan fill="#e0e0e0">(items) {</tspan>
+      </text>
+    </g>
+
+    <!-- Line 2 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="0.65s" fill="freeze"/>
+      <text x="40" y="112" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">2</text>
+      <text x="50" y="112" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">  </tspan>
+        <tspan fill="#d44c66">let</tspan>
+        <tspan fill="#e0e0e0"> total = </tspan>
+        <tspan fill="#febc2e">0</tspan>
+        <tspan fill="#e0e0e0">;</tspan>
+      </text>
+    </g>
+
+    <!-- Line 3 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="0.8s" fill="freeze"/>
+      <text x="40" y="130" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">3</text>
+      <text x="50" y="130" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">  </tspan>
+        <tspan fill="#d44c66">let</tspan>
+        <tspan fill="#e0e0e0"> count = </tspan>
+        <tspan fill="#febc2e">0</tspan>
+        <tspan fill="#e0e0e0">;</tspan>
+      </text>
+    </g>
+
+    <!-- Line 4 (empty) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="0.95s" fill="freeze"/>
+      <text x="40" y="148" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">4</text>
+    </g>
+
+    <!-- Line 5: for loop -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="1.1s" fill="freeze"/>
+      <text x="40" y="166" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">5</text>
+      <text x="50" y="166" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">  </tspan>
+        <tspan fill="#d44c66">for</tspan>
+        <tspan fill="#e0e0e0"> (</tspan>
+        <tspan fill="#d44c66">const</tspan>
+        <tspan fill="#e0e0e0"> item </tspan>
+        <tspan fill="#d44c66">of</tspan>
+        <tspan fill="#e0e0e0"> items) {</tspan>
+      </text>
+    </g>
+
+    <!-- Line 6: breakpoint + highlighted line -->
+    <!-- Breakpoint circle (appears on load, pulses) -->
+    <circle cx="22" cy="180" r="5" fill="#d44c66" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.5s" fill="freeze"/>
+      <animate attributeName="r" values="5;6;5" dur="1.5s" begin="2.0s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Execution highlight (yellow line background) -->
+    <rect x="44" y="174" width="376" height="16" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;0.08" dur="0.2s" begin="2.0s" fill="freeze"/>
+    </rect>
+    <!-- Arrow indicator -->
+    <polygon points="15,180 11,176 11,184" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.0s" fill="freeze"/>
+    </polygon>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="1.25s" fill="freeze"/>
+      <text x="40" y="184" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">6</text>
+      <text x="50" y="184" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">    total += item.</tspan>
+        <tspan fill="#4a4290">price</tspan>
+        <tspan fill="#e0e0e0">;</tspan>
+      </text>
+    </g>
+
+    <!-- Line 7 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="1.4s" fill="freeze"/>
+      <text x="40" y="202" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">7</text>
+      <text x="50" y="202" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">    count++;</tspan>
+      </text>
+    </g>
+
+    <!-- Line 8 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="1.55s" fill="freeze"/>
+      <text x="40" y="220" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">8</text>
+      <text x="50" y="220" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">  }</tspan>
+      </text>
+    </g>
+
+    <!-- Line 9 (empty) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="1.7s" fill="freeze"/>
+      <text x="40" y="238" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">9</text>
+    </g>
+
+    <!-- Line 10: return -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="1.85s" fill="freeze"/>
+      <text x="40" y="256" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">10</text>
+      <text x="50" y="256" font-family="SF Mono, Menlo, monospace" font-size="11">
+        <tspan fill="#e0e0e0">  </tspan>
+        <tspan fill="#d44c66">return</tspan>
+        <tspan fill="#e0e0e0"> { total, count };</tspan>
+      </text>
+    </g>
+
+    <!-- Line 11: closing brace -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="2.0s" fill="freeze"/>
+      <text x="40" y="274" text-anchor="end" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#555">11</text>
+      <text x="50" y="274" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#e0e0e0">}</text>
+    </g>
+
+    <!-- Step Over: execution moves to line 7 -->
+    <!-- New highlight moves down after "step over" at 3.5s -->
+    <rect x="44" y="174" width="376" height="16" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;0.08" dur="0.15s" begin="3.5s" fill="freeze"/>
+      <animate attributeName="y" values="174;192" dur="0.15s" begin="3.5s" fill="freeze"/>
+    </rect>
+    <polygon points="15,180 11,176 11,184" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.15s" begin="3.5s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,18" dur="0.15s" begin="3.5s" fill="freeze"/>
+    </polygon>
+
+    <!-- Step label -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="1s" begin="3.2s" fill="freeze"/>
+      <rect x="140" y="50" width="100" height="18" rx="4" fill="#3498db"/>
+      <text x="190" y="63" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#fff">Step Over (F10)</text>
+    </g>
+
+    <!-- ============ RIGHT: Variables Panel ============ -->
+    <rect x="420" y="72" width="270" height="368" fill="#1e1e2e"/>
+
+    <!-- Variables header -->
+    <rect x="420" y="72" width="270" height="24" fill="#252535"/>
+    <text x="435" y="88" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#888">VARIABLES</text>
+
+    <!-- Scope: Local -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.2s" fill="freeze"/>
+      <text x="435" y="114" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#888">&#x25BE; Local</text>
+    </g>
+
+    <!-- Variable: items -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.4s" fill="freeze"/>
+      <text x="450" y="134" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4290">items</tspan>
+        <tspan fill="#666">: </tspan>
+        <tspan fill="#888">Array(3)</tspan>
+      </text>
+    </g>
+
+    <!-- Variable: total (updates on step) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.6s" fill="freeze"/>
+      <text x="450" y="154" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190">total</tspan>
+        <tspan fill="#666">: </tspan>
+        <tspan fill="#febc2e">9.99</tspan>
+      </text>
+      <!-- Value update flash -->
+      <rect x="490" y="143" width="35" height="14" rx="2" fill="#febc2e" opacity="0">
+        <animate attributeName="opacity" values="0;0.2;0" dur="0.5s" begin="2.6s" fill="freeze"/>
+      </rect>
+    </g>
+    <!-- Updated total after step -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.8s" fill="freeze"/>
+      <rect x="490" y="143" width="55" height="14" rx="2" fill="#1e1e2e"/>
+      <text x="450" y="154" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190" dx="43"> </tspan>
+        <tspan fill="#28c840">29.98</tspan>
+      </text>
+      <rect x="490" y="143" width="45" height="14" rx="2" fill="#28c840" opacity="0">
+        <animate attributeName="opacity" values="0;0.3;0" dur="0.6s" begin="3.8s" fill="freeze"/>
+      </rect>
+    </g>
+
+    <!-- Variable: count -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.8s" fill="freeze"/>
+      <text x="450" y="174" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190">count</tspan>
+        <tspan fill="#666">: </tspan>
+        <tspan fill="#febc2e">1</tspan>
+      </text>
+    </g>
+    <!-- Updated count after step -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.8s" fill="freeze"/>
+      <rect x="498" y="163" width="20" height="14" rx="2" fill="#1e1e2e"/>
+      <text x="498" y="174" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#28c840">2</tspan>
+      </text>
+      <rect x="498" y="163" width="15" height="14" rx="2" fill="#28c840" opacity="0">
+        <animate attributeName="opacity" values="0;0.3;0" dur="0.6s" begin="3.8s" fill="freeze"/>
+      </rect>
+    </g>
+
+    <!-- Variable: item (current) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.0s" fill="freeze"/>
+      <text x="450" y="194" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#4a4190">item</tspan>
+        <tspan fill="#666">: </tspan>
+        <tspan fill="#888">{name: "Widget", price: </tspan>
+        <tspan fill="#febc2e">19.99</tspan>
+        <tspan fill="#888">}</tspan>
+      </text>
+    </g>
+
+    <!-- Watch expressions header -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.2s" fill="freeze"/>
+      <rect x="420" y="215" width="270" height="24" fill="#252535"/>
+      <text x="435" y="231" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#888">WATCH</text>
+    </g>
+
+    <!-- Watch expression -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.4s" fill="freeze"/>
+      <text x="450" y="254" font-family="SF Mono, Menlo, monospace" font-size="10">
+        <tspan fill="#e0e0e0">total / count</tspan>
+        <tspan fill="#666"> = </tspan>
+        <tspan fill="#69c773">9.99</tspan>
+      </text>
+    </g>
+
+    <!-- Call stack header -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.6s" fill="freeze"/>
+      <rect x="420" y="275" width="270" height="24" fill="#252535"/>
+      <text x="435" y="291" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#888">CALL STACK</text>
+    </g>
+
+    <!-- Call stack entries -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.8s" fill="freeze"/>
+      <rect x="430" y="303" width="250" height="16" fill="#4a4290" opacity="0.15" rx="2"/>
+      <text x="440" y="315" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#4a4190">calculateTotal</text>
+      <text x="560" y="315" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#555">app.js:6</text>
+    </g>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="4.0s" fill="freeze"/>
+      <text x="440" y="335" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#888">main</text>
+      <text x="560" y="335" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#555">app.js:15</text>
+    </g>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.2s" begin="4.2s" fill="freeze"/>
+      <text x="440" y="355" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#888">(anonymous)</text>
+      <text x="560" y="355" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#555">app.js:22</text>
+    </g>
+  </g>
+</svg>

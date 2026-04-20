@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="500" height="350">
+  <defs>
+    <linearGradient id="machineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3a4a"/>
+      <stop offset="100%" stop-color="#2a2a3a"/>
+    </linearGradient>
+    <filter id="machineGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="350" fill="#1a1a1a"/>
+
+  <!-- Input label -->
+  <text x="250" y="28" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#555" opacity="0">
+    Function Machine
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.2s" fill="freeze"/>
+  </text>
+
+  <!-- Input hopper (top) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.4s" fill="freeze"/>
+    <polygon points="200,45 300,45 280,75 220,75" fill="#2a2a3a" stroke="#555" stroke-width="1"/>
+    <text x="250" y="65" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#666">INPUT</text>
+  </g>
+
+  <!-- Input value "hello" dropping in -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" begin="0.9s" fill="freeze" keyTimes="0;0.1;0.7;1"/>
+    <rect x="215" y="10" width="70" height="24" rx="4" fill="#3759a1">
+      <animate attributeName="y" values="10;52" dur="0.5s" begin="0.9s" fill="freeze"/>
+    </rect>
+    <text x="250" y="27" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="13" fill="#fff">
+      "hello"
+      <animate attributeName="y" values="27;69" dur="0.5s" begin="0.9s" fill="freeze"/>
+    </text>
+  </g>
+
+  <!-- Machine body -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.3s" fill="freeze"/>
+
+    <!-- Main box -->
+    <rect x="140" y="80" width="220" height="140" rx="10" fill="url(#machineGrad)" stroke="#555" stroke-width="1.5"/>
+
+    <!-- Function label -->
+    <rect x="160" y="95" width="180" height="30" rx="6" fill="#1a1a1a" stroke="#804197" stroke-width="1"/>
+    <text x="250" y="115" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="14" fill="#804197" filter="url(#machineGlow)">
+      toUpperCase()
+    </text>
+
+    <!-- Gear 1 -->
+    <g transform="translate(190, 165)">
+      <circle cx="0" cy="0" r="16" fill="none" stroke="#555" stroke-width="2"/>
+      <circle cx="0" cy="0" r="5" fill="#555"/>
+      <!-- Gear teeth -->
+      <rect x="-2" y="-18" width="4" height="6" rx="1" fill="#555"/>
+      <rect x="-2" y="12" width="4" height="6" rx="1" fill="#555"/>
+      <rect x="-18" y="-2" width="6" height="4" rx="1" fill="#555"/>
+      <rect x="12" y="-2" width="6" height="4" rx="1" fill="#555"/>
+      <animateTransform attributeName="transform" type="rotate" values="0;0;360" dur="2.5s" begin="1.5s" fill="freeze" keyTimes="0;0.01;1" additive="sum"/>
+    </g>
+
+    <!-- Gear 2 -->
+    <g transform="translate(310, 165)">
+      <circle cx="0" cy="0" r="16" fill="none" stroke="#555" stroke-width="2"/>
+      <circle cx="0" cy="0" r="5" fill="#555"/>
+      <rect x="-2" y="-18" width="4" height="6" rx="1" fill="#555"/>
+      <rect x="-2" y="12" width="4" height="6" rx="1" fill="#555"/>
+      <rect x="-18" y="-2" width="6" height="4" rx="1" fill="#555"/>
+      <rect x="12" y="-2" width="6" height="4" rx="1" fill="#555"/>
+      <animateTransform attributeName="transform" type="rotate" values="0;0;-360" dur="2.5s" begin="1.5s" fill="freeze" keyTimes="0;0.01;1" additive="sum"/>
+    </g>
+
+    <!-- Processing indicator dots -->
+    <circle cx="230" cy="195" r="3" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.5s" begin="1.8s" fill="freeze"/>
+    </circle>
+    <circle cx="250" cy="195" r="3" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.5s" begin="2.0s" fill="freeze"/>
+    </circle>
+    <circle cx="270" cy="195" r="3" fill="#febc2e" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="0.5s" begin="2.2s" fill="freeze"/>
+    </circle>
+
+    <!-- Machine status light -->
+    <circle cx="345" cy="95" r="5" fill="#555">
+      <animate attributeName="fill" values="#555;#febc2e;#28c840" dur="2s" begin="1.5s" fill="freeze"/>
+    </circle>
+  </g>
+
+  <!-- Output chute (bottom) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.4s" fill="freeze"/>
+    <polygon points="220,220 280,220 300,250 200,250" fill="#2a2a3a" stroke="#555" stroke-width="1"/>
+    <text x="250" y="240" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#666">OUTPUT</text>
+  </g>
+
+  <!-- Output value "HELLO" sliding out -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.2s" fill="freeze"/>
+    <rect x="210" y="255" width="80" height="28" rx="6" fill="#28c840" filter="url(#machineGlow)">
+      <animate attributeName="y" values="230;270" dur="0.4s" begin="3.2s" fill="freeze"/>
+    </rect>
+    <text x="250" y="289" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="15" fill="#fff" font-weight="bold">
+      "HELLO"
+      <animate attributeName="y" values="250;289" dur="0.4s" begin="3.2s" fill="freeze"/>
+    </text>
+  </g>
+
+  <!-- Arrow showing transformation -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.8s" fill="freeze"/>
+
+    <!-- Left side: input recap -->
+    <text x="70" y="160" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#3759a1">"hello"</text>
+    <line x1="70" y1="168" x2="70" y2="190" stroke="#555" stroke-width="1"/>
+    <polygon points="65,188 75,188 70,196" fill="#555"/>
+
+    <!-- Right side: output recap -->
+    <text x="430" y="160" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#28c840">"HELLO"</text>
+    <line x1="430" y1="140" x2="430" y2="155" stroke="#555" stroke-width="1"/>
+    <polygon points="425,142 435,142 430,134" fill="#555"/>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="250" y="330" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="12" fill="#804197" opacity="0">
+    Functions transform data
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="4.2s" fill="freeze"/>
+  </text>
+</svg>

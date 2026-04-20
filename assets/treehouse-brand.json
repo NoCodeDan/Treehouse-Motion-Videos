@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "name": "Treehouse",
+    "logoGreen": "#69c773",
+    "textColor": "#47535b",
+    "white": "#ffffff",
+    "navBarBg": "#2b3a42",
+    "searchBarGreen": "#5fcf80",
+    "linkGreen": "#69c773"
+  },
+  "topics": [
+    { "name": "AI", "color": "#4a4190", "icon": "https://topic-images.teamtreehouse.com/topics/ai-brain-logo.png" },
+    { "name": "Vibe Coding", "color": "#e84393", "icon": "https://topic-images.teamtreehouse.com/topics/VibeCoding2.png" },
+    { "name": "JavaScript", "color": "#3759a1", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_javascript.png" },
+    { "name": "Python", "color": "#238296", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_python.png" },
+    { "name": "No-Code", "color": "#6c5ce7", "icon": "https://topic-images.teamtreehouse.com/topics/no-code.png" },
+    { "name": "React", "color": "#3498db", "icon": "https://topic-images.teamtreehouse.com/topics/icon4-react.png" },
+    { "name": "Coding for Kids", "color": "#00b894", "icon": "https://topic-images.teamtreehouse.com/topics/Treehouse_Kids.png" },
+    { "name": "Design", "color": "#4a4190", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_design2.png" },
+    { "name": "HTML", "color": "#3759a1", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_html.png" },
+    { "name": "CSS", "color": "#3759a1", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_css.png" },
+    { "name": "Game Development", "color": "#e17055", "icon": "https://topic-images.teamtreehouse.com/topics/Game-Dev-Icon.png" },
+    { "name": "Data Analysis", "color": "#00b894", "icon": "https://topic-images.teamtreehouse.com/topics/DA-icon.png" },
+    { "name": "Development Tools", "color": "#636e72", "icon": "https://topic-images.teamtreehouse.com/topics/Developmental-Tools-Icon.png" },
+    { "name": "Databases", "color": "#6c5ce7", "icon": "https://topic-images.teamtreehouse.com/topics/databases-icon.png" },
+    { "name": "Security", "color": "#00b894", "icon": "https://topic-images.teamtreehouse.com/topics/Security-icon-final.png" },
+    { "name": "Digital Literacy", "color": "#fdcb6e", "icon": "https://topic-images.teamtreehouse.com/topics/dig-lit-icon.png" },
+    { "name": "Swift", "color": "#e17055", "icon": "https://topic-images.teamtreehouse.com/topics/image.png" },
+    { "name": "Java", "color": "#238296", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_java.png" },
+    { "name": "Machine Learning", "color": "#4a4190", "icon": "https://topic-images.teamtreehouse.com/topics/maching-learn-icon1.png" },
+    { "name": "APIs", "color": "#3759a1", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_apis.png" },
+    { "name": "Professional Growth", "color": "#e84393", "icon": "https://topic-images.teamtreehouse.com/topics/business-icon.png" },
+    { "name": "Computer Science", "color": "#733a87", "icon": "https://topic-images.teamtreehouse.com/topics/CS-icon.png" },
+    { "name": "Ruby", "color": "#d63031", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_ruby.png" },
+    { "name": "Quality Assurance", "color": "#00b894", "icon": "https://topic-images.teamtreehouse.com/topics/QA-Icon-Final.png" },
+    { "name": "PHP", "color": "#6c5ce7", "icon": "https://topic-images.teamtreehouse.com/topics/topics-icons_php.png" },
+    { "name": "Go Language", "color": "#238296", "icon": "https://topic-images.teamtreehouse.com/topics/go-lang-icon.png" },
+    { "name": "Learning Resources", "color": "#4290c2", "icon": "https://topic-images.teamtreehouse.com/topics/learning-resources-icon.png" },
+    { "name": "College Credit", "color": "#d63031", "icon": "https://topic-images.teamtreehouse.com/topics/College-Credit_Icon-Final.png" }
+  ],
+  "badges": {
+    "beginner": { "color": "#636e72", "textColor": "#636e72", "style": "outline" },
+    "intermediate": { "color": "#636e72", "textColor": "#ffffff", "style": "filled" },
+    "advanced": { "color": "#2d3436", "textColor": "#ffffff", "style": "filled" }
+  },
+  "fonts": {
+    "heading": "Quicksand, sans-serif",
+    "body": "Roboto, sans-serif"
+  }
+}

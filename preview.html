@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Assets Preview - Treehouse Motion Videos</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(126deg, #4a4290 0%, #804197 50%, #d44c66 100%);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .asset-card {
+      background: #1a1a2e;
+      border-radius: 16px;
+      border: 1px solid #2a2a4a;
+      margin-bottom: 48px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .asset-card:hover {
+      border-color: #804197;
+    }
+
+    .asset-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 28px;
+      border-bottom: 1px solid #2a2a4a;
+    }
+
+    .asset-card-header h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .asset-card-header .badge {
+      background: linear-gradient(135deg, #4a4290, #804197);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .asset-card-body {
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+      background: #12121e;
+    }
+
+    .asset-card-body svg,
+    .asset-card-body img,
+    .asset-card-body object {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .asset-card-footer {
+      padding: 16px 28px;
+      border-top: 1px solid #2a2a4a;
+      display: flex;
+      gap: 24px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .asset-card-footer span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .asset-card-footer .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #28c840;
+      display: inline-block;
+    }
+
+    .reload-hint {
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+      margin-top: 16px;
+      padding-bottom: 40px;
+    }
+
+    .reload-hint kbd {
+      background: #2a2a4a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      border: 1px solid #3a3a5a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Treehouse Motion Video Assets</h1>
+    <p>Animated SVG icons for Remotion video production</p>
+  </header>
+
+  <div class="container">
+    <!-- Terminal -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Terminal</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/terminal.svg" width="600" height="400">
+          Terminal SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/terminal.svg</span>
+        <span>600 x 400</span>
+        <span>Typing animation + output cascade</span>
+      </div>
+    </div>
+
+    <!-- Laptop -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Laptop / Computer</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/laptop.svg" width="600" height="450">
+          Laptop SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/laptop.svg</span>
+        <span>600 x 450</span>
+        <span>Code editor with syntax highlighting reveal</span>
+      </div>
+    </div>
+
+    <!-- Website Builder -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>AI Website Builder</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/website-builder.svg" width="900" height="560">
+          Website Builder SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/website-builder.svg</span>
+        <span>900 x 560</span>
+        <span>Chat prompts + live website preview building</span>
+      </div>
+    </div>
+    <!-- Loop Visualizer -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Loop Visualizer</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/loop-visualizer.svg" width="500" height="350">
+          Loop Visualizer SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/loop-visualizer.svg</span>
+        <span>500 x 350</span>
+        <span>Array iteration with pointer + counter</span>
+      </div>
+    </div>
+
+    <!-- Security Shield -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Security Shield</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/security-shield.svg" width="400" height="400">
+          Security Shield SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/security-shield.svg</span>
+        <span>400 x 400</span>
+        <span>Shield with orbiting icons + protection rings</span>
+      </div>
+    </div>
+
+    <!-- Treehouse Badge -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Treehouse Badge</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/treehouse-badge.svg" width="400" height="400">
+          Treehouse Badge SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/treehouse-badge.svg</span>
+        <span>400 x 400</span>
+        <span>Achievement badge with confetti burst</span>
+      </div>
+    </div>
+
+    <!-- Function Machine -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Function Machine</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/function-machine.svg" width="500" height="350">
+          Function Machine SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/function-machine.svg</span>
+        <span>500 x 350</span>
+        <span>Input drops in, gears process, output slides out</span>
+      </div>
+    </div>
+
+    <!-- Git Workflow -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Git Workflow</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/git-workflow.svg" width="600" height="400">
+          Git Workflow SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/git-workflow.svg</span>
+        <span>600 x 400</span>
+        <span>Branch, commit, and merge visualization</span>
+      </div>
+    </div>
+
+    <!-- Python REPL -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Python REPL</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/python-repl.svg" width="600" height="400">
+          Python REPL SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/python-repl.svg</span>
+        <span>600 x 400</span>
+        <span>Python typing animation with list comprehensions</span>
+      </div>
+    </div>
+
+    <!-- API Connect -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>API Connect</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/api-connect.svg" width="700" height="350">
+          API Connect SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/api-connect.svg</span>
+        <span>700 x 350</span>
+        <span>Client → API → Database request/response flow</span>
+      </div>
+    </div>
+
+    <!-- Neural Network -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Neural Network</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/neural-network.svg" width="600" height="400">
+          Neural Network SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/neural-network.svg</span>
+        <span>600 x 400</span>
+        <span>3-layer network with forward propagation pulse</span>
+      </div>
+    </div>
+
+    <!-- Responsive Design -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Responsive Design</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/responsive-design.svg" width="700" height="400">
+          Responsive Design SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/responsive-design.svg</span>
+        <span>700 x 400</span>
+        <span>Desktop, tablet, phone with reflowed layout</span>
+      </div>
+    </div>
+
+    <!-- Database Schema -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Database Schema</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/database-schema.svg" width="650" height="400">
+          Database Schema SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/database-schema.svg</span>
+        <span>650 x 400</span>
+        <span>3 tables with relationship lines + FK highlights</span>
+      </div>
+    </div>
+
+    <!-- Mobile App Preview -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Mobile App Preview</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/mobile-app-preview.svg" width="400" height="700">
+          Mobile App Preview SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/mobile-app-preview.svg</span>
+        <span>400 x 700</span>
+        <span>iPhone with Treehouse app — courses + progress</span>
+      </div>
+    </div>
+
+    <!-- Debug Inspector -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Debug Inspector</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/debug-inspector.svg" width="700" height="450">
+          Debug Inspector SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/debug-inspector.svg</span>
+        <span>700 x 450</span>
+        <span>Code editor + variables panel with step-through</span>
+      </div>
+    </div>
+
+    <!-- Deploy Pipeline -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Deploy Pipeline</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/deploy-pipeline.svg" width="800" height="350">
+          Deploy Pipeline SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/deploy-pipeline.svg</span>
+        <span>800 x 350</span>
+        <span>5-stage CI/CD: Build → Test → Lint → Stage → Deploy</span>
+      </div>
+    </div>
+
+    <!-- Vibe Coding -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Vibe Coding</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/vibe-coding.svg" width="800" height="500">
+          Vibe Coding SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/vibe-coding.svg</span>
+        <span>800 x 500</span>
+        <span>Chat prompt → sparkle → code generation</span>
+      </div>
+    </div>
+
+    <!-- Progress Dashboard -->
+    <div class="asset-card">
+      <div class="asset-card-header">
+        <h2>Progress Dashboard</h2>
+        <span class="badge">Animated</span>
+      </div>
+      <div class="asset-card-body">
+        <object type="image/svg+xml" data="assets/progress-dashboard.svg" width="800" height="500">
+          Progress Dashboard SVG
+        </object>
+      </div>
+      <div class="asset-card-footer">
+        <span><span class="dot"></span> assets/progress-dashboard.svg</span>
+        <span>800 x 500</span>
+        <span>Progress ring, streak, topic bars, badges</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="reload-hint">
+    Refresh the page (<kbd>Cmd+R</kbd>) to replay all animations
+  </p>
+</body>
+</html>

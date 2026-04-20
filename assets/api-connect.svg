@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" width="700" height="350">
+  <defs>
+    <linearGradient id="apiBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <filter id="apiGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="nodeGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="350" fill="url(#apiBg)"/>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#666" opacity="0">
+    API Request/Response Flow
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.2s" fill="freeze"/>
+  </text>
+
+  <!-- Node 1: Client App -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.5s" fill="freeze"/>
+    <rect x="50" y="110" width="140" height="100" rx="10" fill="#2a2a3a" stroke="#3759a1" stroke-width="2" filter="url(#nodeGlow)"/>
+    <rect x="80" y="125" width="80" height="20" rx="4" fill="#3759a1" opacity="0.3"/>
+    <text x="120" y="139" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#3759a1">CLIENT</text>
+    <!-- Mini browser icon -->
+    <rect x="85" y="155" width="70" height="40" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="0.5"/>
+    <rect x="85" y="155" width="70" height="10" rx="3" fill="#333"/>
+    <circle cx="92" cy="160" r="2" fill="#ff5f57"/>
+    <circle cx="99" cy="160" r="2" fill="#febc2e"/>
+    <circle cx="106" cy="160" r="2" fill="#28c840"/>
+    <rect x="90" y="170" width="30" height="3" rx="1" fill="#555"/>
+    <rect x="90" y="177" width="50" height="3" rx="1" fill="#444"/>
+    <rect x="90" y="184" width="40" height="3" rx="1" fill="#444"/>
+  </g>
+
+  <!-- Node 2: REST API -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.0s" fill="freeze"/>
+    <rect x="280" y="110" width="140" height="100" rx="10" fill="#2a2a3a" stroke="#4a4190" stroke-width="2" filter="url(#nodeGlow)"/>
+    <rect x="310" y="125" width="80" height="20" rx="4" fill="#4a4190" opacity="0.3"/>
+    <text x="350" y="139" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#4a4190">REST API</text>
+    <!-- Gear icon -->
+    <circle cx="350" cy="175" r="15" fill="none" stroke="#4a4190" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="350" cy="175" r="6" fill="#4a4190" opacity="0.4"/>
+    <rect x="348" y="157" width="4" height="6" rx="1" fill="#4a4190" opacity="0.6"/>
+    <rect x="348" y="187" width="4" height="6" rx="1" fill="#4a4190" opacity="0.6"/>
+    <rect x="332" y="173" width="6" height="4" rx="1" fill="#4a4190" opacity="0.6"/>
+    <rect x="362" y="173" width="6" height="4" rx="1" fill="#4a4190" opacity="0.6"/>
+  </g>
+
+  <!-- Node 3: Database -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.5s" fill="freeze"/>
+    <rect x="510" y="110" width="140" height="100" rx="10" fill="#2a2a3a" stroke="#6c5ce7" stroke-width="2" filter="url(#nodeGlow)"/>
+    <rect x="540" y="125" width="80" height="20" rx="4" fill="#6c5ce7" opacity="0.3"/>
+    <text x="580" y="139" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#6c5ce7">DATABASE</text>
+    <!-- DB cylinder icon -->
+    <ellipse cx="580" cy="165" rx="18" ry="6" fill="none" stroke="#6c5ce7" stroke-width="1.2" opacity="0.6"/>
+    <line x1="562" y1="165" x2="562" y2="190" stroke="#6c5ce7" stroke-width="1.2" opacity="0.6"/>
+    <line x1="598" y1="165" x2="598" y2="190" stroke="#6c5ce7" stroke-width="1.2" opacity="0.6"/>
+    <ellipse cx="580" cy="190" rx="18" ry="6" fill="none" stroke="#6c5ce7" stroke-width="1.2" opacity="0.6"/>
+    <rect x="566" y="175" width="28" height="2" rx="1" fill="#6c5ce7" opacity="0.3"/>
+    <rect x="566" y="180" width="28" height="2" rx="1" fill="#6c5ce7" opacity="0.3"/>
+  </g>
+
+  <!-- Connection line: Client -> API -->
+  <line x1="190" y1="160" x2="280" y2="160" stroke="#444" stroke-width="1.5" stroke-dasharray="90" stroke-dashoffset="90">
+    <animate attributeName="stroke-dashoffset" values="90;0" dur="0.4s" begin="2.0s" fill="freeze"/>
+  </line>
+
+  <!-- Connection line: API -> Database -->
+  <line x1="420" y1="160" x2="510" y2="160" stroke="#444" stroke-width="1.5" stroke-dasharray="90" stroke-dashoffset="90">
+    <animate attributeName="stroke-dashoffset" values="90;0" dur="0.4s" begin="2.2s" fill="freeze"/>
+  </line>
+
+  <!-- Request packet (green, left to right) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="2.8s" fill="freeze" keyTimes="0;0.1;0.8;1"/>
+    <rect x="190" y="148" width="50" height="18" rx="4" fill="#28c840">
+      <animate attributeName="x" values="190;340" dur="0.6s" begin="2.8s" fill="freeze"/>
+    </rect>
+    <text x="215" y="161" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff">
+      GET
+      <animate attributeName="x" values="215;365" dur="0.6s" begin="2.8s" fill="freeze"/>
+    </text>
+  </g>
+
+  <!-- Request label -->
+  <text x="235" y="142" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#28c840" opacity="0">
+    /api/users
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.8s" fill="freeze"/>
+    <animate attributeName="opacity" values="1;0" dur="0.2s" begin="4.0s" fill="freeze"/>
+  </text>
+
+  <!-- DB query packet (API -> DB) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.0s" begin="3.5s" fill="freeze" keyTimes="0;0.1;0.7;1"/>
+    <rect x="420" y="148" width="50" height="18" rx="4" fill="#6c5ce7">
+      <animate attributeName="x" values="420;490" dur="0.4s" begin="3.5s" fill="freeze"/>
+    </rect>
+    <text x="445" y="161" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff">
+      SQL
+      <animate attributeName="x" values="445;515" dur="0.4s" begin="3.5s" fill="freeze"/>
+    </text>
+  </g>
+
+  <!-- DB response packet (DB -> API) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.0s" begin="4.2s" fill="freeze" keyTimes="0;0.1;0.7;1"/>
+    <rect x="490" y="168" width="50" height="18" rx="4" fill="#3498db">
+      <animate attributeName="x" values="490;420" dur="0.4s" begin="4.2s" fill="freeze"/>
+    </rect>
+    <text x="515" y="181" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff">
+      rows
+      <animate attributeName="x" values="515;445" dur="0.4s" begin="4.2s" fill="freeze"/>
+    </text>
+  </g>
+
+  <!-- Response packet (blue, right to left) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="5.0s" fill="freeze" keyTimes="0;0.1;0.8;1"/>
+    <rect x="340" y="168" width="50" height="18" rx="4" fill="#3498db">
+      <animate attributeName="x" values="340;190" dur="0.6s" begin="5.0s" fill="freeze"/>
+    </rect>
+    <text x="365" y="181" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff">
+      JSON
+      <animate attributeName="x" values="365;215" dur="0.6s" begin="5.0s" fill="freeze"/>
+    </text>
+  </g>
+
+  <!-- Response label -->
+  <text x="235" y="195" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#3498db" opacity="0">
+    200 OK
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="5.6s" fill="freeze"/>
+  </text>
+
+  <!-- Status indicator -->
+  <g opacity="0" transform="translate(200,260)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="6.0s" fill="freeze"/>
+    <rect width="300" height="50" rx="8" fill="#2a2a3a" stroke="#28c840" stroke-width="1"/>
+    <text x="150" y="22" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#28c840">&#x2714; 200 OK</text>
+    <text x="150" y="38" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#888">{ "users": [...], "count": 42 }</text>
+  </g>
+</svg>

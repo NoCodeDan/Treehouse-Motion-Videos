@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treehouse Components</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f4f5f7;
+      color: #47535b;
+    }
+
+    /* ====== NAV BAR ====== */
+    .th-nav {
+      background: #2b3a42;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .th-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .th-nav-logo svg { width: 28px; height: 28px; }
+    .th-nav-links { display: flex; gap: 20px; }
+    .th-nav-links a {
+      color: #b0bec5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 16px 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .th-nav-links a:hover { color: #fff; }
+    .th-nav-links a.active {
+      color: #fff;
+      border-bottom-color: #69c773;
+    }
+
+    /* ====== SEARCH BAR ====== */
+    .th-search-bar {
+      background: #5fcf80;
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin: 24px auto;
+      max-width: 1100px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .th-search-input {
+      flex: 1;
+      min-width: 260px;
+      padding: 10px 16px 10px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2369c773' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E") 12px center no-repeat;
+      outline: none;
+    }
+    .th-search-dropdown {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      background: transparent;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* ====== PAGE CONTAINER ====== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ====== SECTION HEADERS ====== */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 40px;
+      margin-bottom: 6px;
+    }
+    .section-header h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #2d3436;
+    }
+    .section-header a {
+      color: #69c773;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .section-header a:hover { text-decoration: underline; }
+    .section-desc {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    /* ====== TOPIC CAPSULES ====== */
+    .topics-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .topic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 6px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .topic-pill:hover {
+      border-color: #69c773;
+      box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
+      transform: translateY(-1px);
+    }
+    .topic-pill img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .topic-pill span {
+      font-size: 13px;
+      font-weight: 500;
+      color: #47535b;
+      white-space: nowrap;
+    }
+
+    /* ====== COURSE CARDS ====== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .course-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e8e8e8;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .course-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .course-card-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .course-card-body { padding: 16px; }
+    .course-card-body h3 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2d3436;
+      margin-bottom: 6px;
+    }
+    .course-card-body p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .course-card-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* ====== BADGES / TAGS ====== */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .tag-outline {
+      background: transparent;
+      border: 1.5px solid #b0bec5;
+      color: #636e72;
+    }
+    .tag-duration {
+      background: transparent;
+      color: #888;
+      font-weight: 400;
+      padding-left: 4px;
+    }
+
+    /* ====== COLLEGE CREDIT SECTION ====== */
+    .college-section {
+      background: #1b4653;
+      border-radius: 16px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .college-section .section-header h2 { color: #fff; }
+    .college-section .section-header a { color: #69c773; }
+    .college-section .section-desc { color: rgba(255,255,255,0.6); }
+    .college-section .course-card {
+      border: none;
+      background: rgba(255,255,255,0.08);
+    }
+    .college-section .course-card-body h3 { color: #fff; }
+    .college-section .course-card-body p { color: rgba(255,255,255,0.6); }
+
+    /* ====== COMPONENT LABEL ====== */
+    .component-label {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #69c773;
+      background: #eafbec;
+      padding: 4px 12px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 12px;
+      margin-top: 48px;
+    }
+
+    /* ====== FOOTER ====== */
+    .th-footer {
+      background: #2b3a42;
+      margin-top: 60px;
+      padding: 40px 24px 24px;
+      color: #b0bec5;
+    }
+    .th-footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 32px;
+    }
+    .th-footer h4 {
+      color: #fff;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .th-footer a {
+      display: block;
+      color: #b0bec5;
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .th-footer a:hover { color: #fff; }
+    .th-footer-bottom {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== COMPONENT: Navigation Bar ====== -->
+  <span class="component-label" style="margin: 24px 24px 0; display: inline-block;">Component: Nav Bar</span>
+  <nav class="th-nav">
+    <div class="th-nav-logo">
+      <svg viewBox="0 0 64 64" fill="#69c773"><path d="M58.758 14.128l-4.593-2.396c-2.197-1.198-5.59.8-7.788 4.193l-3.794 6.4c-1.398 2.796-1.198 5.79.6 8.387l.2.2c1.797 2.596 4.193 4.793 4.793 5.59.4.4.8 1.198.998 1.797.6 2.396-.6 4.593-2.995 5.192-2.197.6-4.593-.8-5.392-2.995-.2-.6-.2-1.198-.2-1.797.2-.998-.2-2.596-1.598-3.794-1.398-1.598-4.193 1.398-4.992 4.193v.2L32.8 44.88c0 .2.2.4.2.4 1.198 2.396.4 5.192-1.997 6.4s-5.392.4-6.6-1.997-.4-5.192 1.997-6.4c.2 0 .2-.2.4-.2s.6-1.398 1.198-2.796l.8-2.596c0-.2 0-.4.2-.4l2.396-8.387-2.396 4.992c-.4-.998-.8-.998-1.997-.2-.6.4-1.797 1.398-2.197 1.797-.998.8-1.797 2.197-2.197 2.995-.2.6-.6.998-.998 1.398-1.797 1.598-4.593 1.198-5.99-.6s-.998-4.193.8-5.59c.6-.4 1.198-.8 1.797-.8.998-.2 4.793-2.596 6.99-3.994.4-.2.8-.6.998-.8L32 23.913l-5.192 2.796H25.6c-1.598.2-3.594.4-3.994.998-.2.2-.4.6-.8.8-1.598.8-3.994.4-5.392-1.198-1.198-1.797-.8-3.994.8-5.192.998-.6 1.797-.8 2.596-.8 1.398 0 4.992.8 7.988.2l.8-.2c2.995-.6 6.6-2.995 7.988-5.79l3.195-5.392c1.797-2.995 1.598-6.2-.2-7.388L35.195.75c-1.797-.998-4.593-.998-6.4 0L5.242 13.73c-1.797.998-3.195 3.594-3.195 5.59v25.56c0 1.997 1.398 4.193 3.195 5.192l23.763 13.18c1.797.998 4.593.998 6.4 0l23.363-13.38c1.797-.998 3.195-3.195 3.195-5.192V19.32c0-1.997-1.398-4.193-3.195-5.192z"/></svg>
+    </div>
+    <div class="th-nav-links">
+      <a href="#">Home</a>
+      <a href="#" class="active">Library</a>
+      <a href="#">Community</a>
+      <a href="#">Resources</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- ====== COMPONENT: Search Bar ====== -->
+    <span class="component-label">Component: Search Bar</span>
+    <div class="th-search-bar">
+      <input type="text" class="th-search-input" placeholder="Search Courses, Conferences and Teachers...">
+      <select class="th-search-dropdown"><option>Most Relevant</option></select>
+      <select class="th-search-dropdown"><option>All Types</option></select>
+      <select class="th-search-dropdown"><option>All Topics</option></select>
+    </div>
+
+    <!-- ====== COMPONENT: Topic Capsules ====== -->
+    <span class="component-label">Component: Topic Capsules (28 Topics)</span>
+    <div class="section-header">
+      <h2>Topics</h2>
+    </div>
+    <p class="section-desc">Browse content by the topics that interest you most.</p>
+
+    <div class="topics-grid" id="topics-grid"></div>
+
+    <!-- ====== COMPONENT: Course Cards ====== -->
+    <span class="component-label">Component: Course Cards</span>
+    <div class="section-header">
+      <h2>Courses</h2>
+      <a href="#">View all 336</a>
+    </div>
+    <p class="section-desc">Browse courses across an array of topics and disciplines.</p>
+
+    <div class="cards-grid">
+      <!-- Card 1: JavaScript -->
+      <div class="course-card">
+        <img class="course-card-thumb" src="https://videos.teamtreehouse.com/stills/JS-Basics-S1V1_2019-stills-1.jpg?token=6b804386_7caf4285a260ac8e3c5e4e05388a6ea33447cc74" alt="JavaScript Basics">
+        <div class="course-card-body">
+          <h3>JavaScript Basics</h3>
+          <p>JavaScript is a programming language that drives the web: from front-end user interface design to server-side development.</p>
+          <div class="course-card-tags">
+            <span class="tag" style="background: #3759a1;">JavaScript</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">234 min</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: HTML -->
+      <div class="course-card">
+        <img class="course-card-thumb" src="https://videos.teamtreehouse.com/stills/Introduction-to-HTML-and-CSS-2024-Refresh-S1V1-stills-1.jpg?token=6b804386_11e9dba7e0ee5075018abb370540c39b8d34541e" alt="HTML Basics">
+        <div class="course-card-body">
+          <h3>HTML Basics</h3>
+          <p>Learn HTML (HyperText Markup Language), the language common to every website. HTML is the foundation of all web pages.</p>
+          <div class="course-card-tags">
+            <span class="tag" style="background: #3759a1;">HTML</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">183 min</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Python -->
+      <div class="course-card">
+        <img class="course-card-thumb" src="https://videos.teamtreehouse.com/stills/PythonBasics-S1V1_v2-stills-1.jpg?token=6b804386_44a7638fd41fb77df95e0b47d9b20fce59d45004" alt="Python Basics">
+        <div class="course-card-body">
+          <h3>Python Basics</h3>
+          <p>Learn the building blocks of the wonderful general purpose programming language Python.</p>
+          <div class="course-card-tags">
+            <span class="tag" style="background: #238296;">Python</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">234 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== COMPONENT: Workshop Cards ====== -->
+    <span class="component-label">Component: Workshop Cards</span>
+    <div class="section-header">
+      <h2>Workshops</h2>
+      <a href="#">View all 247</a>
+    </div>
+    <p class="section-desc">Technology-focused presentations of tips, tricks, and tutorials.</p>
+
+    <div class="cards-grid">
+      <div class="course-card">
+        <div class="course-card-thumb" style="background: #3498db; display: flex; align-items: center; justify-content: center; font-size: 48px; color: rgba(255,255,255,0.3);">JS</div>
+        <div class="course-card-body">
+          <h3>JavaScript Search</h3>
+          <p>Letting users search through data in your application or website is a great UX feature.</p>
+          <div class="course-card-tags">
+            <span class="tag" style="background: #3759a1;">JavaScript</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">9 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-thumb" style="background: #636e72; display: flex; align-items: center; justify-content: center; font-size: 48px; color: rgba(255,255,255,0.3);">CSS</div>
+        <div class="course-card-body">
+          <h3>Shorten Text With CSS</h3>
+          <p>Ever wondered how to shorten text with an ellipsis (...)? It's quite easy to do.</p>
+          <div class="course-card-tags">
+            <span class="tag" style="background: #3759a1;">CSS</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">2 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-thumb" style="background: #e17055; display: flex; align-items: center; justify-content: center; font-size: 40px; color: rgba(255,255,255,0.3);">HTML</div>
+        <div class="course-card-body">
+          <h3>HTML-Only Accordion</h3>
+          <p>Accordions are all over the web and mobile apps. They are a great way to show or hide content.</p>
+          <div class="course-card-tags">
+            <span class="tag" style="background: #3759a1;">HTML</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">3 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== COMPONENT: College Credit Section ====== -->
+    <span class="component-label">Component: College Credit Section</span>
+    <div class="college-section">
+      <div class="section-header">
+        <h2>College Credit Tracks</h2>
+        <a href="#">Learn More</a>
+      </div>
+      <p class="section-desc">Earn accredited college credits while learning in-demand tech skills.</p>
+      <div class="cards-grid" style="margin-top: 16px;">
+        <div class="course-card">
+          <div class="course-card-thumb" style="background: linear-gradient(135deg, #1b4653, #238296); display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: Quicksand; font-weight: 700; color: #fff; font-size: 18px;">CS 160</span>
+          </div>
+          <div class="course-card-body">
+            <h3>College Credit: Introduction to HTML &amp; CSS</h3>
+            <p>Treehouse and UH have teamed up to bring you CS 160: Introduction to HTML and CSS.</p>
+            <div class="course-card-tags">
+              <span class="tag" style="background: #4290c2;">College Credit</span>
+              <span class="tag tag-duration" style="color: rgba(255,255,255,0.5);">14 hours</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-card-thumb" style="background: linear-gradient(135deg, #1b4653, #238296); display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: Quicksand; font-weight: 700; color: #fff; font-size: 18px;">CS 190</span>
+          </div>
+          <div class="course-card-body">
+            <h3>College Credit: Introduction to JavaScript</h3>
+            <p>Treehouse and UH have teamed up to bring you CS 190: Introduction to JavaScript.</p>
+            <div class="course-card-tags">
+              <span class="tag" style="background: #4290c2;">College Credit</span>
+              <span class="tag tag-duration" style="color: rgba(255,255,255,0.5);">14 hours</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-card-thumb" style="background: linear-gradient(135deg, #1b4653, #238296); display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: Quicksand; font-weight: 700; color: #fff; font-size: 18px;">CS 270</span>
+          </div>
+          <div class="course-card-body">
+            <h3>College Credit: Programming in Python</h3>
+            <p>Treehouse and UH have teamed up to bring you CS 270: Programming in Python.</p>
+            <div class="course-card-tags">
+              <span class="tag" style="background: #4290c2;">College Credit</span>
+              <span class="tag tag-duration" style="color: rgba(255,255,255,0.5);">14 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== COMPONENT: Difficulty Badges ====== -->
+    <span class="component-label">Component: Badge Variants</span>
+    <div style="display: flex; gap: 8px; align-items: center; margin: 16px 0 48px; flex-wrap: wrap;">
+      <span class="tag" style="background: #4a4190;">AI</span>
+      <span class="tag" style="background: #3759a1;">JavaScript</span>
+      <span class="tag" style="background: #3759a1;">HTML</span>
+      <span class="tag" style="background: #3759a1;">CSS</span>
+      <span class="tag" style="background: #238296;">Python</span>
+      <span class="tag" style="background: #238296;">Java</span>
+      <span class="tag" style="background: #238296;">Go Language</span>
+      <span class="tag" style="background: #733a87;">Computer Science</span>
+      <span class="tag" style="background: #6c5ce7;">Databases</span>
+      <span class="tag" style="background: #6c5ce7;">PHP</span>
+      <span class="tag" style="background: #e84393;">Vibe Coding</span>
+      <span class="tag" style="background: #e17055;">Swift</span>
+      <span class="tag" style="background: #e17055;">Game Dev</span>
+      <span class="tag" style="background: #d63031;">Ruby</span>
+      <span class="tag" style="background: #d63031;">College Credit</span>
+      <span class="tag" style="background: #00b894;">Design</span>
+      <span class="tag" style="background: #4290c2;">Learning Resources</span>
+      <span class="tag" style="background: #636e72;">Dev Tools</span>
+      <span style="margin-left: 16px; color: #aaa;">|</span>
+      <span class="tag tag-outline">Beginner</span>
+      <span class="tag" style="background: #636e72;">Intermediate</span>
+      <span class="tag" style="background: #2d3436;">Advanced</span>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="th-footer">
+    <div class="th-footer-grid">
+      <div>
+        <h4>Treehouse</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Community</a>
+        <a href="#">Stories</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+      </div>
+      <div>
+        <h4>See Full Catalogue</h4>
+        <a href="#">Front End Web Development</a>
+        <a href="#">Full Stack JavaScript</a>
+        <a href="#">Python Development</a>
+        <a href="#">Data Analysis</a>
+        <a href="#">UX Design</a>
+      </div>
+      <div>
+        <h4>Tracks</h4>
+        <a href="#">Learn to Code for Beginners</a>
+        <a href="#">Beginning Python</a>
+        <a href="#">Beginning SQL</a>
+        <a href="#">Beginning Java</a>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <a href="#">JavaScript Basics</a>
+        <a href="#">Intro to HTML & CSS</a>
+        <a href="#">Python Basics</a>
+        <a href="#">CSS Layout</a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#">Plans</a>
+        <a href="#">Affiliates</a>
+        <a href="#">Perks</a>
+        <a href="#">Free Treehouse Near Me</a>
+        <a href="#">Treehouse for Libraries</a>
+        <a href="#">Treehouse for Businesses</a>
+      </div>
+    </div>
+    <div class="th-footer-bottom">
+      <p>Terms & Conditions | Privacy</p>
+      <p style="margin-top: 4px;">&copy; 2026 Treehouse Island, Inc.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Render all 28 topic capsules dynamically
+    const topics = [
+      { name: "AI", color: "#4a4190", icon: "https://topic-images.teamtreehouse.com/topics/ai-brain-logo.png" },
+      { name: "Vibe Coding", color: "#e84393", icon: "https://topic-images.teamtreehouse.com/topics/VibeCoding2.png" },
+      { name: "JavaScript", color: "#3759a1", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_javascript.png" },
+      { name: "Python", color: "#238296", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_python.png" },
+      { name: "No-Code", color: "#6c5ce7", icon: "https://topic-images.teamtreehouse.com/topics/no-code.png" },
+      { name: "React", color: "#3498db", icon: "https://topic-images.teamtreehouse.com/topics/icon4-react.png" },
+      { name: "Coding for Kids", color: "#00b894", icon: "https://topic-images.teamtreehouse.com/topics/Treehouse_Kids.png" },
+      { name: "Design", color: "#4a4190", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_design2.png" },
+      { name: "HTML", color: "#3759a1", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_html.png" },
+      { name: "CSS", color: "#3759a1", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_css.png" },
+      { name: "Game Development", color: "#e17055", icon: "https://topic-images.teamtreehouse.com/topics/Game-Dev-Icon.png" },
+      { name: "Data Analysis", color: "#00b894", icon: "https://topic-images.teamtreehouse.com/topics/DA-icon.png" },
+      { name: "Development Tools", color: "#636e72", icon: "https://topic-images.teamtreehouse.com/topics/Developmental-Tools-Icon.png" },
+      { name: "Databases", color: "#6c5ce7", icon: "https://topic-images.teamtreehouse.com/topics/databases-icon.png" },
+      { name: "Security", color: "#00b894", icon: "https://topic-images.teamtreehouse.com/topics/Security-icon-final.png" },
+      { name: "Digital Literacy", color: "#fdcb6e", icon: "https://topic-images.teamtreehouse.com/topics/dig-lit-icon.png" },
+      { name: "Swift", color: "#e17055", icon: "https://topic-images.teamtreehouse.com/topics/image.png" },
+      { name: "Java", color: "#238296", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_java.png" },
+      { name: "Machine Learning", color: "#4a4190", icon: "https://topic-images.teamtreehouse.com/topics/maching-learn-icon1.png" },
+      { name: "APIs", color: "#3759a1", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_apis.png" },
+      { name: "Professional Growth", color: "#e84393", icon: "https://topic-images.teamtreehouse.com/topics/business-icon.png" },
+      { name: "Computer Science", color: "#733a87", icon: "https://topic-images.teamtreehouse.com/topics/CS-icon.png" },
+      { name: "Ruby", color: "#d63031", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_ruby.png" },
+      { name: "Quality Assurance", color: "#00b894", icon: "https://topic-images.teamtreehouse.com/topics/QA-Icon-Final.png" },
+      { name: "PHP", color: "#6c5ce7", icon: "https://topic-images.teamtreehouse.com/topics/topics-icons_php.png" },
+      { name: "Go Language", color: "#238296", icon: "https://topic-images.teamtreehouse.com/topics/go-lang-icon.png" },
+      { name: "Learning Resources", color: "#4290c2", icon: "https://topic-images.teamtreehouse.com/topics/learning-resources-icon.png" },
+      { name: "College Credit", color: "#d63031", icon: "https://topic-images.teamtreehouse.com/topics/College-Credit_Icon-Final.png" },
+    ];
+
+    const grid = document.getElementById('topics-grid');
+    topics.forEach(t => {
+      const pill = document.createElement('a');
+      pill.className = 'topic-pill';
+      pill.href = '#';
+      pill.innerHTML = `<img src="${t.icon}" alt="${t.name}"><span>${t.name}</span>`;
+      grid.appendChild(pill);
+    });
+  </script>
+</body>
+</html>

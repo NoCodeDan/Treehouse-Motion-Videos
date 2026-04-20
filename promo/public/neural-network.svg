@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="nnBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <filter id="nnGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="nnNodeGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#nnBg)"/>
+
+  <!-- Title -->
+  <text x="300" y="28" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#666" opacity="0">
+    Neural Network — Forward Propagation
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.2s" fill="freeze"/>
+  </text>
+
+  <!-- Layer labels -->
+  <text x="100" y="55" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#4a4190" opacity="0">
+    Input
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="0.5s" fill="freeze"/>
+  </text>
+  <text x="300" y="55" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#804197" opacity="0">
+    Hidden
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.5s" fill="freeze"/>
+  </text>
+  <text x="500" y="55" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#d44c66" opacity="0">
+    Output
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="2.5s" fill="freeze"/>
+  </text>
+
+  <!-- === Connection lines (drawn before nodes so nodes overlap them) === -->
+  <!-- Input to Hidden connections (20 lines: 4 input x 5 hidden) -->
+  <g stroke="#333" stroke-width="0.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.8s" fill="freeze"/>
+    <!-- From input node 1 (100, 100) -->
+    <line x1="100" y1="100" x2="300" y2="80"/>
+    <line x1="100" y1="100" x2="300" y2="135"/>
+    <line x1="100" y1="100" x2="300" y2="190"/>
+    <line x1="100" y1="100" x2="300" y2="245"/>
+    <line x1="100" y1="100" x2="300" y2="300"/>
+    <!-- From input node 2 (100, 170) -->
+    <line x1="100" y1="170" x2="300" y2="80"/>
+    <line x1="100" y1="170" x2="300" y2="135"/>
+    <line x1="100" y1="170" x2="300" y2="190"/>
+    <line x1="100" y1="170" x2="300" y2="245"/>
+    <line x1="100" y1="170" x2="300" y2="300"/>
+    <!-- From input node 3 (100, 240) -->
+    <line x1="100" y1="240" x2="300" y2="80"/>
+    <line x1="100" y1="240" x2="300" y2="135"/>
+    <line x1="100" y1="240" x2="300" y2="190"/>
+    <line x1="100" y1="240" x2="300" y2="245"/>
+    <line x1="100" y1="240" x2="300" y2="300"/>
+    <!-- From input node 4 (100, 310) -->
+    <line x1="100" y1="310" x2="300" y2="80"/>
+    <line x1="100" y1="310" x2="300" y2="135"/>
+    <line x1="100" y1="310" x2="300" y2="190"/>
+    <line x1="100" y1="310" x2="300" y2="245"/>
+    <line x1="100" y1="310" x2="300" y2="300"/>
+  </g>
+
+  <!-- Hidden to Output connections (10 lines: 5 hidden x 2 output) -->
+  <g stroke="#333" stroke-width="0.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.8s" fill="freeze"/>
+    <line x1="300" y1="80" x2="500" y2="150"/>
+    <line x1="300" y1="80" x2="500" y2="250"/>
+    <line x1="300" y1="135" x2="500" y2="150"/>
+    <line x1="300" y1="135" x2="500" y2="250"/>
+    <line x1="300" y1="190" x2="500" y2="150"/>
+    <line x1="300" y1="190" x2="500" y2="250"/>
+    <line x1="300" y1="245" x2="500" y2="150"/>
+    <line x1="300" y1="245" x2="500" y2="250"/>
+    <line x1="300" y1="300" x2="500" y2="150"/>
+    <line x1="300" y1="300" x2="500" y2="250"/>
+  </g>
+
+  <!-- Forward propagation pulse — input-to-hidden connections brighten -->
+  <g stroke="#4a4190" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0.6;0" dur="1.0s" begin="3.5s" fill="freeze"/>
+    <line x1="100" y1="100" x2="300" y2="80"/>
+    <line x1="100" y1="100" x2="300" y2="190"/>
+    <line x1="100" y1="170" x2="300" y2="135"/>
+    <line x1="100" y1="170" x2="300" y2="245"/>
+    <line x1="100" y1="240" x2="300" y2="190"/>
+    <line x1="100" y1="240" x2="300" y2="300"/>
+    <line x1="100" y1="310" x2="300" y2="245"/>
+    <line x1="100" y1="310" x2="300" y2="80"/>
+  </g>
+
+  <!-- Forward propagation pulse — hidden-to-output connections brighten -->
+  <g stroke="#d44c66" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;0.6;0" dur="1.0s" begin="4.2s" fill="freeze"/>
+    <line x1="300" y1="80" x2="500" y2="150"/>
+    <line x1="300" y1="135" x2="500" y2="150"/>
+    <line x1="300" y1="190" x2="500" y2="150"/>
+    <line x1="300" y1="245" x2="500" y2="250"/>
+    <line x1="300" y1="300" x2="500" y2="250"/>
+  </g>
+
+  <!-- === Nodes === -->
+  <!-- Input layer (4 nodes) -->
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.6s" fill="freeze"/>
+    <circle cx="100" cy="100" r="14" fill="#2a2a3a" stroke="#4a4190" stroke-width="2"/>
+    <text x="100" y="104" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#4a4190">x1</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.8s" fill="freeze"/>
+    <circle cx="100" cy="170" r="14" fill="#2a2a3a" stroke="#4a4190" stroke-width="2"/>
+    <text x="100" y="174" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#4a4190">x2</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.0s" fill="freeze"/>
+    <circle cx="100" cy="240" r="14" fill="#2a2a3a" stroke="#4a4190" stroke-width="2"/>
+    <text x="100" y="244" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#4a4190">x3</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.2s" fill="freeze"/>
+    <circle cx="100" cy="310" r="14" fill="#2a2a3a" stroke="#4a4190" stroke-width="2"/>
+    <text x="100" y="314" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#4a4190">x4</text>
+  </g>
+
+  <!-- Hidden layer (5 nodes) -->
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.6s" fill="freeze"/>
+    <circle cx="300" cy="80" r="14" fill="#2a2a3a" stroke="#804197" stroke-width="2"/>
+    <text x="300" y="84" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#804197">h1</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.7s" fill="freeze"/>
+    <circle cx="300" cy="135" r="14" fill="#2a2a3a" stroke="#804197" stroke-width="2"/>
+    <text x="300" y="139" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#804197">h2</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.8s" fill="freeze"/>
+    <circle cx="300" cy="190" r="14" fill="#2a2a3a" stroke="#804197" stroke-width="2"/>
+    <text x="300" y="194" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#804197">h3</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.9s" fill="freeze"/>
+    <circle cx="300" cy="245" r="14" fill="#2a2a3a" stroke="#804197" stroke-width="2"/>
+    <text x="300" y="249" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#804197">h4</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.0s" fill="freeze"/>
+    <circle cx="300" cy="300" r="14" fill="#2a2a3a" stroke="#804197" stroke-width="2"/>
+    <text x="300" y="304" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#804197">h5</text>
+  </g>
+
+  <!-- Output layer (2 nodes) -->
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.6s" fill="freeze"/>
+    <circle cx="500" cy="150" r="16" fill="#2a2a3a" stroke="#d44c66" stroke-width="2"/>
+    <text x="500" y="154" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#d44c66">y1</text>
+  </g>
+  <g opacity="0" filter="url(#nnNodeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.8s" fill="freeze"/>
+    <circle cx="500" cy="250" r="16" fill="#2a2a3a" stroke="#d44c66" stroke-width="2"/>
+    <text x="500" y="254" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#d44c66">y2</text>
+  </g>
+
+  <!-- Output glow on top node (cat: 94%) -->
+  <circle cx="500" cy="150" r="16" fill="#d44c66" opacity="0" filter="url(#nnGlow)">
+    <animate attributeName="opacity" values="0;0.6" dur="0.5s" begin="5.0s" fill="freeze"/>
+  </circle>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="5.0s" fill="freeze"/>
+    <rect x="530" y="140" width="60" height="20" rx="4" fill="#28c840"/>
+    <text x="560" y="154" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#fff">cat: 94%</text>
+  </g>
+
+  <!-- Output label on bottom node -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="5.0s" fill="freeze"/>
+    <rect x="530" y="240" width="60" height="20" rx="4" fill="#2a2a3a" stroke="#555" stroke-width="1"/>
+    <text x="560" y="254" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#888">dog: 6%</text>
+  </g>
+
+  <!-- Bottom info -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="5.5s" fill="freeze"/>
+    <rect x="150" y="350" width="300" height="30" rx="6" fill="#2a2a3a" stroke="#444" stroke-width="1"/>
+    <text x="300" y="369" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#888">
+      <tspan fill="#28c840">&#x2714;</tspan> Classification: <tspan fill="#d44c66">cat</tspan> (confidence: 94%)
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00b894"/>
+      <stop offset="100%" stop-color="#00896a"/>
+    </linearGradient>
+    <linearGradient id="shieldBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <filter id="shieldGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="ringGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#shieldBg)"/>
+
+  <!-- Protection rings (expand outward) -->
+  <circle cx="200" cy="185" r="60" fill="none" stroke="#00b894" stroke-width="1" opacity="0">
+    <animate attributeName="opacity" values="0;0.3" dur="0.4s" begin="1.2s" fill="freeze"/>
+    <animate attributeName="r" values="60;90" dur="0.6s" begin="1.2s" fill="freeze"/>
+  </circle>
+  <circle cx="200" cy="185" r="60" fill="none" stroke="#00b894" stroke-width="0.8" opacity="0">
+    <animate attributeName="opacity" values="0;0.2" dur="0.4s" begin="1.6s" fill="freeze"/>
+    <animate attributeName="r" values="60;120" dur="0.6s" begin="1.6s" fill="freeze"/>
+  </circle>
+  <circle cx="200" cy="185" r="60" fill="none" stroke="#00b894" stroke-width="0.5" opacity="0">
+    <animate attributeName="opacity" values="0;0.12" dur="0.4s" begin="2.0s" fill="freeze"/>
+    <animate attributeName="r" values="60;150" dur="0.6s" begin="2.0s" fill="freeze"/>
+  </circle>
+
+  <!-- Shield body -->
+  <g opacity="0" filter="url(#shieldGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.6s" begin="0.3s" fill="freeze"/>
+    <path d="M200,100 L260,130 L260,200 Q260,260 200,280 Q140,260 140,200 L140,130 Z" fill="url(#shieldGrad)" stroke="#28c840" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="scale" values="0.85;1.05;1" dur="0.6s" begin="0.3s" fill="freeze" additive="sum" origin="200 190"/>
+    </path>
+
+    <!-- Lock emblem on shield -->
+    <!-- Lock body -->
+    <rect x="185" y="182" width="30" height="24" rx="4" fill="#1a1a1a" opacity="0.7"/>
+    <!-- Lock shackle -->
+    <path d="M190,182 L190,172 Q190,162 200,162 Q210,162 210,172 L210,182" fill="none" stroke="#1a1a1a" stroke-width="3.5" opacity="0.7"/>
+    <!-- Keyhole -->
+    <circle cx="200" cy="192" r="3.5" fill="#00b894"/>
+    <rect x="198.5" y="192" width="3" height="7" rx="1" fill="#00b894"/>
+  </g>
+
+  <!-- Orbiting key icon -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.5s" fill="freeze"/>
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="0,200,185;360,200,185" dur="12s" begin="2.5s" repeatCount="indefinite"/>
+      <g transform="translate(200,85)">
+        <circle cx="0" cy="0" r="14" fill="#2a2a3a" stroke="#febc2e" stroke-width="1"/>
+        <!-- Key shape -->
+        <circle cx="-3" cy="-1" r="3.5" fill="none" stroke="#febc2e" stroke-width="1.5"/>
+        <line x1="0" y1="-1" x2="7" y2="-1" stroke="#febc2e" stroke-width="1.5"/>
+        <line x1="5" y1="-1" x2="5" y2="2" stroke="#febc2e" stroke-width="1.5"/>
+        <line x1="7" y1="-1" x2="7" y2="2" stroke="#febc2e" stroke-width="1.5"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Orbiting fingerprint arcs -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.9s" fill="freeze"/>
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="120,200,185;480,200,185" dur="12s" begin="2.9s" repeatCount="indefinite"/>
+      <g transform="translate(200,85)">
+        <circle cx="0" cy="0" r="14" fill="#2a2a3a" stroke="#4a4190" stroke-width="1"/>
+        <path d="M-4,3 Q-4,-4 0,-5 Q4,-4 4,0" fill="none" stroke="#4a4190" stroke-width="1.2"/>
+        <path d="M-2,4 Q-2,-2 0,-3 Q2,-2 2,1" fill="none" stroke="#4a4190" stroke-width="1.2"/>
+        <line x1="0" y1="-1" x2="0" y2="5" stroke="#4a4190" stroke-width="1.2"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Orbiting checkmark -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.3s" fill="freeze"/>
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="240,200,185;600,200,185" dur="12s" begin="3.3s" repeatCount="indefinite"/>
+      <g transform="translate(200,85)">
+        <circle cx="0" cy="0" r="14" fill="#2a2a3a" stroke="#28c840" stroke-width="1"/>
+        <path d="M-5,0 L-1,4 L6,-4" fill="none" stroke="#28c840" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Breathing glow behind shield -->
+  <ellipse cx="200" cy="190" rx="55" ry="80" fill="#00b894" opacity="0">
+    <animate attributeName="opacity" values="0;0.08;0.04;0.08" dur="3s" begin="3.5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Title -->
+  <text x="200" y="340" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="14" fill="#00b894" opacity="0" filter="url(#ringGlow)">
+    Security
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="3.5s" fill="freeze"/>
+  </text>
+  <text x="200" y="360" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#666" opacity="0">
+    Protection Active
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="3.8s" fill="freeze"/>
+  </text>
+</svg>

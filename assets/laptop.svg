@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a4290"/>
+      <stop offset="50%" stop-color="#804197"/>
+      <stop offset="100%" stop-color="#d44c66"/>
+    </linearGradient>
+    <linearGradient id="lidGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4d4d8"/>
+      <stop offset="100%" stop-color="#a8a8b0"/>
+    </linearGradient>
+    <linearGradient id="baseGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8c8cc"/>
+      <stop offset="40%" stop-color="#d6d6da"/>
+      <stop offset="100%" stop-color="#b8b8bc"/>
+    </linearGradient>
+    <linearGradient id="screenBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#181825"/>
+    </linearGradient>
+    <linearGradient id="hingeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#aaa"/>
+      <stop offset="50%" stop-color="#c0c0c0"/>
+      <stop offset="100%" stop-color="#999"/>
+    </linearGradient>
+    <filter id="laptopShadow">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="screenGlowFilter">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="screenClip">
+      <rect x="118" y="35" width="364" height="234" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <!-- Ambient glow behind laptop -->
+  <ellipse cx="300" cy="330" rx="220" ry="50" fill="url(#screenGlow)" opacity="0.07">
+    <animate attributeName="opacity" values="0.07;0.13;0.07" dur="4s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <g filter="url(#laptopShadow)">
+
+    <!-- ====== SCREEN LID ====== -->
+    <!-- Outer aluminum shell -->
+    <rect x="110" y="20" width="380" height="260" rx="10" fill="url(#lidGrad)" stroke="#999" stroke-width="0.8"/>
+
+    <!-- Black bezel -->
+    <rect x="116" y="26" width="368" height="247" rx="6" fill="#0a0a0a"/>
+
+    <!-- Screen -->
+    <rect x="118" y="35" width="364" height="234" rx="2" fill="url(#screenBg)"/>
+
+    <!-- Webcam notch area -->
+    <circle cx="300" cy="30" r="2.2" fill="#1a1a1a" stroke="#333" stroke-width="0.4"/>
+    <circle cx="300" cy="30" r="0.9" fill="#0d2a0d">
+      <animate attributeName="fill" values="#0d2a0d;#1a4a1a;#0d2a0d" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Screen content (code editor) -->
+    <g clip-path="url(#screenClip)">
+      <!-- Sidebar -->
+      <rect x="118" y="35" width="44" height="234" fill="#16161e"/>
+
+      <!-- Sidebar file icons -->
+      <rect x="127" y="50" width="24" height="3" rx="1" fill="#4a4290" opacity="0.7"/>
+      <rect x="127" y="60" width="20" height="3" rx="1" fill="#555"/>
+      <rect x="127" y="70" width="22" height="3" rx="1" fill="#555"/>
+      <rect x="127" y="80" width="18" height="3" rx="1" fill="#555"/>
+      <rect x="127" y="90" width="24" height="3" rx="1" fill="#555"/>
+      <rect x="127" y="100" width="16" height="3" rx="1" fill="#555"/>
+
+      <!-- Line numbers -->
+      <g fill="#444" font-family="SF Mono, Menlo, monospace" font-size="7">
+        <text x="170" y="55" text-anchor="end">1</text>
+        <text x="170" y="67" text-anchor="end">2</text>
+        <text x="170" y="79" text-anchor="end">3</text>
+        <text x="170" y="91" text-anchor="end">4</text>
+        <text x="170" y="103" text-anchor="end">5</text>
+        <text x="170" y="115" text-anchor="end">6</text>
+        <text x="170" y="127" text-anchor="end">7</text>
+        <text x="170" y="139" text-anchor="end">8</text>
+        <text x="170" y="151" text-anchor="end">9</text>
+        <text x="170" y="163" text-anchor="end">10</text>
+        <text x="170" y="175" text-anchor="end">11</text>
+        <text x="170" y="187" text-anchor="end">12</text>
+      </g>
+
+      <!-- Code lines with syntax highlighting -->
+      <!-- Line 1: import -->
+      <rect x="178" y="49" width="32" height="4" rx="1" fill="#d44c66" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="0.5s" fill="freeze"/>
+      </rect>
+      <rect x="214" y="49" width="48" height="4" rx="1" fill="#e0e0e0" opacity="0.7">
+        <animate attributeName="opacity" values="0;0.7" dur="0.15s" begin="0.5s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 2: import -->
+      <rect x="178" y="61" width="32" height="4" rx="1" fill="#d44c66" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="0.7s" fill="freeze"/>
+      </rect>
+      <rect x="214" y="61" width="64" height="4" rx="1" fill="#e0e0e0" opacity="0.7">
+        <animate attributeName="opacity" values="0;0.7" dur="0.15s" begin="0.7s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 4: function -->
+      <rect x="178" y="85" width="40" height="4" rx="1" fill="#804197" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="0.9s" fill="freeze"/>
+      </rect>
+      <rect x="222" y="85" width="56" height="4" rx="1" fill="#28c840" opacity="0.7">
+        <animate attributeName="opacity" values="0;0.7" dur="0.15s" begin="0.9s" fill="freeze"/>
+      </rect>
+      <rect x="282" y="85" width="12" height="4" rx="1" fill="#e0e0e0" opacity="0.5">
+        <animate attributeName="opacity" values="0;0.5" dur="0.15s" begin="0.9s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 5: return -->
+      <rect x="194" y="97" width="36" height="4" rx="1" fill="#d44c66" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="1.1s" fill="freeze"/>
+      </rect>
+      <rect x="234" y="97" width="12" height="4" rx="1" fill="#e0e0e0" opacity="0.5">
+        <animate attributeName="opacity" values="0;0.5" dur="0.15s" begin="1.1s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 6: JSX div -->
+      <rect x="202" y="109" width="20" height="4" rx="1" fill="#4a4290" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="1.3s" fill="freeze"/>
+      </rect>
+      <rect x="226" y="109" width="72" height="4" rx="1" fill="#febc2e" opacity="0.6">
+        <animate attributeName="opacity" values="0;0.6" dur="0.15s" begin="1.3s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 7: h1 -->
+      <rect x="210" y="121" width="16" height="4" rx="1" fill="#4a4290" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="1.5s" fill="freeze"/>
+      </rect>
+      <rect x="230" y="121" width="80" height="4" rx="1" fill="#e0e0e0" opacity="0.7">
+        <animate attributeName="opacity" values="0;0.7" dur="0.15s" begin="1.5s" fill="freeze"/>
+      </rect>
+      <rect x="314" y="121" width="16" height="4" rx="1" fill="#4a4290" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="1.5s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 8: p tag -->
+      <rect x="210" y="133" width="12" height="4" rx="1" fill="#4a4290" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="1.7s" fill="freeze"/>
+      </rect>
+      <rect x="226" y="133" width="120" height="4" rx="1" fill="#e0e0e0" opacity="0.5">
+        <animate attributeName="opacity" values="0;0.5" dur="0.15s" begin="1.7s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 9: closing div -->
+      <rect x="202" y="145" width="24" height="4" rx="1" fill="#4a4290" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="1.9s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 10: closing -->
+      <rect x="194" y="157" width="8" height="4" rx="1" fill="#e0e0e0" opacity="0.5">
+        <animate attributeName="opacity" values="0;0.5" dur="0.15s" begin="2.1s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 11: closing -->
+      <rect x="178" y="169" width="8" height="4" rx="1" fill="#e0e0e0" opacity="0.5">
+        <animate attributeName="opacity" values="0;0.5" dur="0.15s" begin="2.3s" fill="freeze"/>
+      </rect>
+
+      <!-- Line 12: export -->
+      <rect x="178" y="181" width="40" height="4" rx="1" fill="#d44c66" opacity="0.9">
+        <animate attributeName="opacity" values="0;0.9" dur="0.15s" begin="2.5s" fill="freeze"/>
+      </rect>
+      <rect x="222" y="181" width="56" height="4" rx="1" fill="#e0e0e0" opacity="0.7">
+        <animate attributeName="opacity" values="0;0.7" dur="0.15s" begin="2.5s" fill="freeze"/>
+      </rect>
+
+      <!-- Blinking cursor -->
+      <rect x="298" y="181" width="2" height="8" fill="#e0e0e0">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" begin="2.8s" repeatCount="indefinite"/>
+      </rect>
+
+      <!-- Active line highlight -->
+      <rect x="162" y="178" width="320" height="12" fill="#fff" opacity="0.03"/>
+    </g>
+
+    <!-- ====== HINGE ====== -->
+    <rect x="130" y="279" width="340" height="6" rx="3" fill="url(#hingeGrad)" stroke="#999" stroke-width="0.4"/>
+
+    <!-- ====== BASE / KEYBOARD DECK ====== -->
+    <!-- MacBook wedge-shaped base with slight front flare -->
+    <path d="M120,285 L480,285 L498,392 Q498,398 492,398 L108,398 Q102,398 102,392 Z" fill="url(#baseGrad)" stroke="#999" stroke-width="0.8"/>
+
+    <!-- Front lip indent (the scallop to open the laptop) -->
+    <path d="M272,398 Q300,393 328,398" fill="none" stroke="#aaa" stroke-width="0.8"/>
+
+    <!-- ====== TOUCH BAR / FUNCTION ROW ====== -->
+    <rect x="195" y="296" width="210" height="6" rx="3" fill="#222" opacity="0.5"/>
+
+    <!-- ====== KEYBOARD (centered at x=300) ====== -->
+    <!-- Row width: 236px (x=182 to x=418), 14 keys per row -->
+    <!-- key=15w, gap=2, 14*15 + 13*2 = 236 -->
+    <g opacity="0.55">
+      <g fill="#a0a0a5" stroke="#b8b8bc" stroke-width="0.4">
+
+        <!-- Row 1 (y=306): 14 keys -->
+        <rect x="182" y="306" width="15" height="10" rx="2"/>
+        <rect x="199" y="306" width="15" height="10" rx="2"/>
+        <rect x="216" y="306" width="15" height="10" rx="2"/>
+        <rect x="233" y="306" width="15" height="10" rx="2"/>
+        <rect x="250" y="306" width="15" height="10" rx="2"/>
+        <rect x="267" y="306" width="15" height="10" rx="2"/>
+        <rect x="284" y="306" width="15" height="10" rx="2"/>
+        <rect x="301" y="306" width="15" height="10" rx="2"/>
+        <rect x="318" y="306" width="15" height="10" rx="2"/>
+        <rect x="335" y="306" width="15" height="10" rx="2"/>
+        <rect x="352" y="306" width="15" height="10" rx="2"/>
+        <rect x="369" y="306" width="15" height="10" rx="2"/>
+        <rect x="386" y="306" width="15" height="10" rx="2"/>
+        <rect x="403" y="306" width="15" height="10" rx="2"/>
+
+        <!-- Row 2 (y=319): tab(21) + 12 keys(15) + backslash(11) -->
+        <rect x="182" y="319" width="21" height="10" rx="2"/>
+        <rect x="205" y="319" width="15" height="10" rx="2"/>
+        <rect x="222" y="319" width="15" height="10" rx="2"/>
+        <rect x="239" y="319" width="15" height="10" rx="2"/>
+        <rect x="256" y="319" width="15" height="10" rx="2"/>
+        <rect x="273" y="319" width="15" height="10" rx="2"/>
+        <rect x="290" y="319" width="15" height="10" rx="2"/>
+        <rect x="307" y="319" width="15" height="10" rx="2"/>
+        <rect x="324" y="319" width="15" height="10" rx="2"/>
+        <rect x="341" y="319" width="15" height="10" rx="2"/>
+        <rect x="358" y="319" width="15" height="10" rx="2"/>
+        <rect x="375" y="319" width="15" height="10" rx="2"/>
+        <rect x="392" y="319" width="15" height="10" rx="2"/>
+        <rect x="409" y="319" width="9" height="10" rx="2"/>
+
+        <!-- Row 3 (y=332): caps(25) + 11 keys(15) + return(19) -->
+        <rect x="182" y="332" width="25" height="10" rx="2"/>
+        <rect x="209" y="332" width="15" height="10" rx="2"/>
+        <rect x="226" y="332" width="15" height="10" rx="2"/>
+        <rect x="243" y="332" width="15" height="10" rx="2"/>
+        <rect x="260" y="332" width="15" height="10" rx="2"/>
+        <rect x="277" y="332" width="15" height="10" rx="2"/>
+        <rect x="294" y="332" width="15" height="10" rx="2"/>
+        <rect x="311" y="332" width="15" height="10" rx="2"/>
+        <rect x="328" y="332" width="15" height="10" rx="2"/>
+        <rect x="345" y="332" width="15" height="10" rx="2"/>
+        <rect x="362" y="332" width="15" height="10" rx="2"/>
+        <rect x="379" y="332" width="15" height="10" rx="2"/>
+        <rect x="396" y="332" width="22" height="10" rx="2"/>
+
+        <!-- Row 4 (y=345): shift(32) + 10 keys(15) + shift(26) -->
+        <rect x="182" y="345" width="32" height="10" rx="2"/>
+        <rect x="216" y="345" width="15" height="10" rx="2"/>
+        <rect x="233" y="345" width="15" height="10" rx="2"/>
+        <rect x="250" y="345" width="15" height="10" rx="2"/>
+        <rect x="267" y="345" width="15" height="10" rx="2"/>
+        <rect x="284" y="345" width="15" height="10" rx="2"/>
+        <rect x="301" y="345" width="15" height="10" rx="2"/>
+        <rect x="318" y="345" width="15" height="10" rx="2"/>
+        <rect x="335" y="345" width="15" height="10" rx="2"/>
+        <rect x="352" y="345" width="15" height="10" rx="2"/>
+        <rect x="369" y="345" width="15" height="10" rx="2"/>
+        <rect x="386" y="345" width="32" height="10" rx="2"/>
+
+        <!-- Row 5 (y=358): fn + ctrl + opt + cmd + space + cmd + opt + arrows -->
+        <rect x="182" y="358" width="18" height="10" rx="2"/>
+        <rect x="202" y="358" width="18" height="10" rx="2"/>
+        <rect x="222" y="358" width="18" height="10" rx="2"/>
+        <rect x="242" y="358" width="22" height="10" rx="2"/>
+        <rect x="266" y="358" width="68" height="10" rx="2"/>
+        <rect x="336" y="358" width="22" height="10" rx="2"/>
+        <rect x="360" y="358" width="18" height="10" rx="2"/>
+        <!-- Arrow keys -->
+        <rect x="382" y="358" width="12" height="10" rx="2"/>
+        <!-- Up/down stacked -->
+        <rect x="396" y="358" width="12" height="4" rx="1"/>
+        <rect x="396" y="364" width="12" height="4" rx="1"/>
+        <rect x="410" y="358" width="8" height="10" rx="2"/>
+      </g>
+    </g>
+
+    <!-- ====== TRACKPAD ====== -->
+    <rect x="240" y="374" width="120" height="18" rx="5" fill="#c4c4c8" stroke="#b0b0b4" stroke-width="0.5"/>
+
+  </g>
+</svg>

@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="gitBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <filter id="gitGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="mergeGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#gitBg)"/>
+
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#666" opacity="0">
+    Git Branching Workflow
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.2s" fill="freeze"/>
+  </text>
+
+  <!-- Branch labels -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.4s" fill="freeze"/>
+    <rect x="20" y="145" width="60" height="20" rx="10" fill="#636e72"/>
+    <text x="50" y="159" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#fff">main</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.8s" fill="freeze"/>
+    <rect x="20" y="255" width="100" height="20" rx="10" fill="#4a4190"/>
+    <text x="70" y="269" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#fff">feature/login</text>
+  </g>
+
+  <!-- Main branch line -->
+  <line x1="95" y1="155" x2="540" y2="155" stroke="#636e72" stroke-width="3" stroke-dasharray="445" stroke-dashoffset="445">
+    <animate attributeName="stroke-dashoffset" values="445;0" dur="1.5s" begin="0.6s" fill="freeze"/>
+  </line>
+
+  <!-- Main branch commits -->
+  <!-- Commit 1 (initial) -->
+  <circle cx="130" cy="155" r="12" fill="#636e72" stroke="#888" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="0.8s" fill="freeze"/>
+  </circle>
+  <text x="130" y="159" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    C1
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="0.8s" fill="freeze"/>
+  </text>
+  <text x="130" y="135" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#888" opacity="0">
+    init
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="0.8s" fill="freeze"/>
+  </text>
+
+  <!-- Commit 2 -->
+  <circle cx="210" cy="155" r="12" fill="#636e72" stroke="#888" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.2s" fill="freeze"/>
+  </circle>
+  <text x="210" y="159" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    C2
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.2s" fill="freeze"/>
+  </text>
+  <text x="210" y="135" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#888" opacity="0">
+    setup
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.2s" fill="freeze"/>
+  </text>
+
+  <!-- Branch-off point commit -->
+  <circle cx="290" cy="155" r="12" fill="#636e72" stroke="#888" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.6s" fill="freeze"/>
+  </circle>
+  <text x="290" y="159" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    C3
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.6s" fill="freeze"/>
+  </text>
+
+  <!-- Main continues: commit on main while branch is out -->
+  <circle cx="410" cy="155" r="12" fill="#636e72" stroke="#888" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.8s" fill="freeze"/>
+  </circle>
+  <text x="410" y="159" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    C6
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.8s" fill="freeze"/>
+  </text>
+  <text x="410" y="135" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#888" opacity="0">
+    fix
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.8s" fill="freeze"/>
+  </text>
+
+  <!-- Feature branch line (diverges from C3 down to y=265, goes right, merges back up) -->
+  <!-- Diagonal down from C3 -->
+  <line x1="290" y1="167" x2="330" y2="265" stroke="#4a4190" stroke-width="3" stroke-dasharray="110" stroke-dashoffset="110">
+    <animate attributeName="stroke-dashoffset" values="110;0" dur="0.5s" begin="2.2s" fill="freeze"/>
+  </line>
+  <!-- Horizontal feature branch -->
+  <line x1="330" y1="265" x2="460" y2="265" stroke="#4a4190" stroke-width="3" stroke-dasharray="130" stroke-dashoffset="130">
+    <animate attributeName="stroke-dashoffset" values="130;0" dur="0.5s" begin="2.8s" fill="freeze"/>
+  </line>
+  <!-- Diagonal back up to merge -->
+  <line x1="460" y1="265" x2="500" y2="155" stroke="#4a4190" stroke-width="3" stroke-dasharray="120" stroke-dashoffset="120">
+    <animate attributeName="stroke-dashoffset" values="120;0" dur="0.5s" begin="4.8s" fill="freeze"/>
+  </line>
+
+  <!-- Feature branch commits -->
+  <circle cx="350" cy="265" r="12" fill="#4a4190" stroke="#6c5ce7" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.0s" fill="freeze"/>
+  </circle>
+  <text x="350" y="269" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    C4
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.0s" fill="freeze"/>
+  </text>
+  <text x="350" y="290" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#888" opacity="0">
+    login UI
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.0s" fill="freeze"/>
+  </text>
+
+  <circle cx="430" cy="265" r="12" fill="#4a4190" stroke="#6c5ce7" stroke-width="1.5" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.4s" fill="freeze"/>
+  </circle>
+  <text x="430" y="269" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    C5
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.4s" fill="freeze"/>
+  </text>
+  <text x="430" y="290" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#888" opacity="0">
+    auth API
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="3.4s" fill="freeze"/>
+  </text>
+
+  <!-- Merge commit (green pulse) -->
+  <circle cx="500" cy="155" r="12" fill="#28c840" stroke="#69c773" stroke-width="2" opacity="0" filter="url(#mergeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="5.4s" fill="freeze"/>
+    <animate attributeName="r" values="12;16;12" dur="0.6s" begin="5.4s" fill="freeze"/>
+  </circle>
+  <text x="500" y="159" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#fff" opacity="0">
+    M
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="5.4s" fill="freeze"/>
+  </text>
+  <text x="500" y="135" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="8" fill="#28c840" opacity="0">
+    merge
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="5.4s" fill="freeze"/>
+  </text>
+
+  <!-- HEAD pointer on final commit -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="5.8s" fill="freeze"/>
+    <rect x="510" y="110" width="50" height="18" rx="4" fill="#d44c66"/>
+    <text x="535" y="123" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="9" fill="#fff">HEAD</text>
+    <line x1="535" y1="128" x2="510" y2="145" stroke="#d44c66" stroke-width="1.5"/>
+  </g>
+
+  <!-- Git command display -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="4.4s" fill="freeze"/>
+    <rect x="120" y="335" width="360" height="30" rx="6" fill="#2a2a3a" stroke="#444" stroke-width="1"/>
+    <text x="300" y="355" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11">
+      <tspan fill="#888">$ </tspan>
+      <tspan fill="#e0e0e0">git merge </tspan>
+      <tspan fill="#4a4190">feature/login</tspan>
+    </text>
+  </g>
+
+  <!-- Success message -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="5.8s" fill="freeze"/>
+    <text x="300" y="385" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#28c840">
+      &#x2714; Merge successful — no conflicts
+    </text>
+  </g>
+</svg>

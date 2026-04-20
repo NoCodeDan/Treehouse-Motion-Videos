@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="badgeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a4290"/>
+      <stop offset="100%" stop-color="#804197"/>
+    </linearGradient>
+    <filter id="badgeGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#1a1a1a"/>
+
+  <!-- Hexagonal badge -->
+  <g opacity="0" filter="url(#badgeGlow)">
+    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.3s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="scale" values="0.3;1.08;1" dur="0.6s" begin="0.3s" fill="freeze" additive="sum"/>
+
+    <!-- Hex shape -->
+    <polygon points="200,80 268,115 268,185 200,220 132,185 132,115" fill="url(#badgeGrad)" stroke="#69c773" stroke-width="2"/>
+
+    <!-- Inner hex border -->
+    <polygon points="200,92 258,121 258,179 200,208 142,179 142,121" fill="none" stroke="#69c773" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- Star -->
+    <g filter="url(#starGlow)">
+      <polygon points="200,110 208,132 232,132 213,146 220,168 200,155 180,168 187,146 168,132 192,132" fill="#febc2e" opacity="0">
+        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.0s" fill="freeze"/>
+        <animate attributeName="opacity" values="1;0.7;1" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+      </polygon>
+    </g>
+  </g>
+
+  <!-- Confetti particles -->
+  <!-- Top-left burst -->
+  <circle cx="200" cy="150" r="3" fill="#d44c66" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cx" values="200;110" dur="1.2s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cy" values="150;60" dur="1.2s" begin="1.5s" fill="freeze"/>
+  </circle>
+  <rect x="200" y="150" width="5" height="5" rx="1" fill="#69c773" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="x" values="200;130" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="y" values="150;80" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="rotate" values="0;180" dur="1.0s" begin="1.5s" fill="freeze"/>
+  </rect>
+  <circle cx="200" cy="150" r="2.5" fill="#febc2e" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="cx" values="200;90" dur="1.1s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="cy" values="150;110" dur="1.1s" begin="1.55s" fill="freeze"/>
+  </circle>
+  <!-- Top-right burst -->
+  <rect x="200" y="150" width="4" height="6" rx="1" fill="#3759a1" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="x" values="200;280" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="y" values="150;65" dur="1.1s" begin="1.5s" fill="freeze"/>
+  </rect>
+  <circle cx="200" cy="150" r="3" fill="#e84393" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.0s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="cx" values="200;300" dur="1.0s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="cy" values="150;90" dur="1.0s" begin="1.55s" fill="freeze"/>
+  </circle>
+  <circle cx="200" cy="150" r="2" fill="#69c773" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cx" values="200;270" dur="1.2s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cy" values="150;100" dur="1.2s" begin="1.5s" fill="freeze"/>
+  </circle>
+  <!-- Bottom-left -->
+  <rect x="200" y="150" width="4" height="4" rx="1" fill="#e17055" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.0s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="x" values="200;100" dur="1.0s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="y" values="150;230" dur="1.0s" begin="1.55s" fill="freeze"/>
+  </rect>
+  <circle cx="200" cy="150" r="2.5" fill="#4a4190" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cx" values="200;120" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cy" values="150;250" dur="1.1s" begin="1.5s" fill="freeze"/>
+  </circle>
+  <!-- Bottom-right -->
+  <circle cx="200" cy="150" r="3" fill="#febc2e" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cx" values="200;290" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cy" values="150;240" dur="1.0s" begin="1.5s" fill="freeze"/>
+  </circle>
+  <rect x="200" y="150" width="5" height="3" rx="1" fill="#d44c66" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="x" values="200;310" dur="1.2s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="y" values="150;210" dur="1.2s" begin="1.55s" fill="freeze"/>
+  </rect>
+  <!-- Top -->
+  <circle cx="200" cy="150" r="2" fill="#28c840" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cx" values="200;160" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cy" values="150;40" dur="1.1s" begin="1.5s" fill="freeze"/>
+  </circle>
+  <circle cx="200" cy="150" r="2.5" fill="#3498db" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.0s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="cx" values="200;240" dur="1.0s" begin="1.55s" fill="freeze"/>
+    <animate attributeName="cy" values="150;45" dur="1.0s" begin="1.55s" fill="freeze"/>
+  </circle>
+  <!-- More side particles -->
+  <rect x="200" y="150" width="3" height="5" rx="1" fill="#69c773" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="x" values="200;70" dur="1.0s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="y" values="150;155" dur="1.0s" begin="1.5s" fill="freeze"/>
+  </rect>
+  <circle cx="200" cy="150" r="2" fill="#e84393" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cx" values="200;330" dur="1.1s" begin="1.5s" fill="freeze"/>
+    <animate attributeName="cy" values="150;155" dur="1.1s" begin="1.5s" fill="freeze"/>
+  </circle>
+
+  <!-- Achievement Unlocked text -->
+  <text x="200" y="260" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="16" font-weight="bold" fill="#fff" opacity="0">
+    Achievement Unlocked!
+    <animate attributeName="opacity" values="0;1" dur="0.4s" begin="2.0s" fill="freeze"/>
+  </text>
+  <text x="200" y="285" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="11" fill="#69c773" opacity="0">
+    JavaScript Basics
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.4s" fill="freeze"/>
+  </text>
+
+  <!-- Points earned -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.8s" fill="freeze"/>
+    <rect x="155" y="305" width="90" height="28" rx="14" fill="#2a2a3a" stroke="#69c773" stroke-width="1"/>
+    <text x="200" y="324" text-anchor="middle" font-family="SF Mono, Menlo, monospace" font-size="12" fill="#febc2e">+150 pts</text>
+  </g>
+</svg>

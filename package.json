@@ -1,0 +1,12 @@
+{
+  "name": "treehouse-motion-videos",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Programmatic browser demo video recorder for Treehouse-branded motion videos",
+  "scripts": {
+    "demo": "node demos/treehouse-demo.js"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
+  }
+}
