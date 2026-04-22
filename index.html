@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treehouse Design System</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -605,6 +606,45 @@
       gap: 24px;
       flex-wrap: wrap;
     }
+
+    /* ====== FONTAWESOME PAGE ====== */
+    .ds-fa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .ds-fa-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 24px 16px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ds-fa-card:hover {
+      border-color: #69c773;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
+    }
+    .ds-fa-icon {
+      font-size: 36px;
+      color: #47535b;
+      margin-bottom: 14px;
+    }
+    .ds-fa-label {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #2d3436;
+      margin-bottom: 4px;
+    }
+    .ds-fa-class {
+      font-family: 'Roboto', monospace;
+      font-size: 11px;
+      color: #888;
+      word-break: break-all;
+    }
   </style>
 </head>
 <body>
@@ -641,6 +681,10 @@
       <div class="ds-nav-section-title">Patterns</div>
       <a href="#dark-sections">Dark Sections</a>
       <a href="#grid-layouts">Grid Layouts</a>
+    </div>
+    <div class="ds-nav-section">
+      <div class="ds-nav-section-title">Motion Graphics</div>
+      <a href="#fontawesome">FontAwesome</a>
     </div>
   </aside>
 
@@ -1513,6 +1557,27 @@
       </div>
     </section>
 
+    <hr class="ds-divider">
+
+    <!-- ==================== FONTAWESOME ==================== -->
+    <section class="ds-section" id="fontawesome">
+      <h2 class="ds-section-title">FontAwesome</h2>
+      <p class="ds-section-desc">
+        Shared FontAwesome icons used across Treehouse motion graphics. To add one, copy a card
+        below, paste the <code class="ds-token">&lt;i&gt;</code> tag from the FontAwesome site,
+        and update the name. Commit and push — everyone gets it on next pull. Click any tile to
+        copy its HTML.
+      </p>
+
+      <div class="ds-fa-grid">
+        <div class="ds-fa-card">
+          <i class="fa-solid fa-user-shield ds-fa-icon"></i>
+          <div class="ds-fa-label">user-shield</div>
+          <div class="ds-fa-class">fa-solid fa-user-shield</div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <div class="ds-copy-toast" id="copy-toast">
@@ -1537,6 +1602,24 @@
           clearTimeout(toastTimeout);
           toastTimeout = setTimeout(() => toast.classList.remove('visible'), 1500);
         });
+      });
+    });
+
+    function showToast(message) {
+      toastSwatch.style.background = '#69c773';
+      toastText.textContent = message;
+      toast.classList.add('visible');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toast.classList.remove('visible'), 1500);
+    }
+
+    document.querySelectorAll('.ds-fa-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const icon = card.querySelector('.ds-fa-icon');
+        if (!icon) return;
+        const classes = Array.from(icon.classList).filter(c => c !== 'ds-fa-icon').join(' ');
+        const html = `<i class="${classes}"></i>`;
+        navigator.clipboard.writeText(html).then(() => showToast(`Copied ${html}`));
       });
     });
   </script>
