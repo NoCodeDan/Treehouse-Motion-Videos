@@ -1,1628 +1,2709 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Treehouse Design System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treehouse Design System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f4f5f7;
-      color: #47535b;
-    }
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #f4f5f7;
+        color: #47535b;
+      }
 
-    /* ====== STICKY SIDEBAR NAV ====== */
-    .ds-sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 240px;
-      height: 100vh;
-      background: #2b3a42;
-      padding: 24px 0;
-      overflow-y: auto;
-      z-index: 100;
-    }
-    .ds-sidebar-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 20px 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 16px;
-    }
-    .ds-sidebar-logo svg { width: 28px; height: 28px; }
-    .ds-sidebar-logo span {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      color: #fff;
-    }
-    .ds-sidebar-logo small {
-      display: block;
-      font-family: 'Roboto', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      color: #b0bec5;
-      margin-top: 2px;
-    }
-    .ds-nav-section {
-      padding: 0 20px;
-      margin-bottom: 8px;
-    }
-    .ds-nav-section-title {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #69c773;
-      margin-bottom: 8px;
-    }
-    .ds-nav-section a {
-      display: block;
-      color: #b0bec5;
-      text-decoration: none;
-      font-size: 13px;
-      padding: 5px 0;
-      transition: color 0.2s;
-    }
-    .ds-nav-section a:hover { color: #fff; }
+      /* ====== STICKY SIDEBAR NAV ====== */
+      .ds-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        height: 100vh;
+        background: #2b3a42;
+        padding: 24px 0;
+        overflow-y: auto;
+        z-index: 100;
+      }
+      .ds-sidebar-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 20px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 16px;
+      }
+      .ds-sidebar-logo svg {
+        width: 28px;
+        height: 28px;
+      }
+      .ds-sidebar-logo span {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: #fff;
+      }
+      .ds-sidebar-logo small {
+        display: block;
+        font-family: "Roboto", sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        color: #b0bec5;
+        margin-top: 2px;
+      }
+      .ds-nav-section {
+        padding: 0 20px;
+        margin-bottom: 8px;
+      }
+      .ds-nav-section-title {
+        font-family: "Quicksand", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #69c773;
+        margin-bottom: 8px;
+      }
+      .ds-nav-section a {
+        display: block;
+        color: #b0bec5;
+        text-decoration: none;
+        font-size: 13px;
+        padding: 5px 0;
+        transition: color 0.2s;
+      }
+      .ds-nav-section a:hover {
+        color: #fff;
+      }
 
-    /* ====== MAIN CONTENT ====== */
-    .ds-main {
-      margin-left: 240px;
-      padding: 48px 56px 80px;
-      max-width: 1100px;
-    }
+      /* ====== MAIN CONTENT ====== */
+      .ds-main {
+        margin-left: 240px;
+        padding: 48px 56px 80px;
+        max-width: 1100px;
+      }
 
-    /* ====== PAGE HEADER ====== */
-    .ds-page-title {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: #2d3436;
-      margin-bottom: 8px;
-    }
-    .ds-page-subtitle {
-      font-size: 16px;
-      color: #888;
-      line-height: 1.6;
-      margin-bottom: 48px;
-      max-width: 640px;
-    }
+      /* ====== PAGE HEADER ====== */
+      .ds-page-title {
+        font-family: "Quicksand", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #2d3436;
+        margin-bottom: 8px;
+      }
+      .ds-page-subtitle {
+        font-size: 16px;
+        color: #888;
+        line-height: 1.6;
+        margin-bottom: 48px;
+        max-width: 640px;
+      }
 
-    /* ====== SECTION ====== */
-    .ds-section {
-      margin-bottom: 56px;
-      scroll-margin-top: 32px;
-    }
-    .ds-section-title {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: #2d3436;
-      margin-bottom: 6px;
-    }
-    .ds-section-desc {
-      font-size: 14px;
-      color: #888;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
+      /* ====== SECTION ====== */
+      .ds-section {
+        margin-bottom: 56px;
+        scroll-margin-top: 32px;
+      }
+      .ds-section-title {
+        font-family: "Quicksand", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #2d3436;
+        margin-bottom: 6px;
+      }
+      .ds-section-desc {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
 
-    /* ====== COLOR SWATCHES ====== */
-    .ds-color-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
-    }
-    .ds-color-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #e8e8e8;
-      cursor: pointer;
-      transition: all 0.2s;
-      position: relative;
-    }
-    .ds-color-card:hover {
-      border-color: #69c773;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
-    }
-    .ds-color-card:active {
-      transform: scale(0.98);
-    }
-    .ds-copy-toast {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #2b3a42;
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 10px 20px;
-      border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s, transform 0.2s;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .ds-copy-toast.visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-    .ds-copy-toast .toast-swatch {
-      width: 16px;
-      height: 16px;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-    .ds-color-swatch {
-      height: 80px;
-      display: flex;
-      align-items: flex-end;
-      padding: 8px 12px;
-    }
-    .ds-color-swatch span {
-      font-size: 11px;
-      font-weight: 500;
-      font-family: 'Roboto', monospace;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: rgba(0,0,0,0.2);
-      color: #fff;
-    }
-    .ds-color-info {
-      padding: 10px 12px;
-    }
-    .ds-color-name {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      color: #2d3436;
-    }
-    .ds-color-usage {
-      font-size: 11px;
-      color: #888;
-      margin-top: 2px;
-    }
+      /* ====== COLOR SWATCHES ====== */
+      .ds-color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+      }
+      .ds-color-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e8e8e8;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+      .ds-color-card:hover {
+        border-color: #69c773;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
+      }
+      .ds-color-card:active {
+        transform: scale(0.98);
+      }
+      .ds-copy-toast {
+        position: fixed;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: #2b3a42;
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ds-copy-toast.visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      .ds-copy-toast .toast-swatch {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        flex-shrink: 0;
+      }
+      .ds-color-swatch {
+        height: 80px;
+        display: flex;
+        align-items: flex-end;
+        padding: 8px 12px;
+      }
+      .ds-color-swatch span {
+        font-size: 11px;
+        font-weight: 500;
+        font-family: "Roboto", monospace;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+      }
+      .ds-color-info {
+        padding: 10px 12px;
+      }
+      .ds-color-name {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        color: #2d3436;
+      }
+      .ds-color-usage {
+        font-size: 11px;
+        color: #888;
+        margin-top: 2px;
+      }
 
-    /* ====== TYPOGRAPHY SAMPLES ====== */
-    .ds-type-row {
-      display: flex;
-      align-items: baseline;
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    .ds-type-meta {
-      min-width: 200px;
-      flex-shrink: 0;
-    }
-    .ds-type-label {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: #69c773;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .ds-type-spec {
-      font-size: 11px;
-      color: #888;
-      margin-top: 4px;
-      font-family: 'Roboto', monospace;
-    }
+      /* ====== TYPOGRAPHY SAMPLES ====== */
+      .ds-type-row {
+        display: flex;
+        align-items: baseline;
+        gap: 24px;
+        padding: 20px 0;
+        border-bottom: 1px solid #e8e8e8;
+      }
+      .ds-type-meta {
+        min-width: 200px;
+        flex-shrink: 0;
+      }
+      .ds-type-label {
+        font-family: "Quicksand", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: #69c773;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .ds-type-spec {
+        font-size: 11px;
+        color: #888;
+        margin-top: 4px;
+        font-family: "Roboto", monospace;
+      }
 
-    /* ====== SPACING SCALE ====== */
-    .ds-spacing-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 12px;
-    }
-    .ds-spacing-bar {
-      height: 24px;
-      background: #69c773;
-      border-radius: 4px;
-      opacity: 0.7;
-    }
-    .ds-spacing-label {
-      font-size: 12px;
-      font-family: 'Roboto', monospace;
-      color: #636e72;
-      min-width: 80px;
-      text-align: right;
-    }
-    .ds-spacing-value {
-      font-size: 12px;
-      color: #888;
-    }
+      /* ====== SPACING SCALE ====== */
+      .ds-spacing-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+      .ds-spacing-bar {
+        height: 24px;
+        background: #69c773;
+        border-radius: 4px;
+        opacity: 0.7;
+      }
+      .ds-spacing-label {
+        font-size: 12px;
+        font-family: "Roboto", monospace;
+        color: #636e72;
+        min-width: 80px;
+        text-align: right;
+      }
+      .ds-spacing-value {
+        font-size: 12px;
+        color: #888;
+      }
 
-    /* ====== BORDER RADIUS ====== */
-    .ds-radius-grid {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .ds-radius-item {
-      text-align: center;
-    }
-    .ds-radius-box {
-      width: 80px;
-      height: 80px;
-      background: #fff;
-      border: 2px solid #69c773;
-      margin-bottom: 8px;
-    }
-    .ds-radius-label {
-      font-size: 12px;
-      font-family: 'Roboto', monospace;
-      color: #636e72;
-    }
+      /* ====== BORDER RADIUS ====== */
+      .ds-radius-grid {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .ds-radius-item {
+        text-align: center;
+      }
+      .ds-radius-box {
+        width: 80px;
+        height: 80px;
+        background: #fff;
+        border: 2px solid #69c773;
+        margin-bottom: 8px;
+      }
+      .ds-radius-label {
+        font-size: 12px;
+        font-family: "Roboto", monospace;
+        color: #636e72;
+      }
 
-    /* ====== SHADOW SAMPLES ====== */
-    .ds-shadow-grid {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .ds-shadow-item {
-      text-align: center;
-    }
-    .ds-shadow-box {
-      width: 120px;
-      height: 80px;
-      background: #fff;
-      border-radius: 12px;
-      margin-bottom: 10px;
-    }
-    .ds-shadow-label {
-      font-size: 11px;
-      color: #636e72;
-      font-weight: 500;
-    }
-    .ds-shadow-spec {
-      font-size: 10px;
-      font-family: 'Roboto', monospace;
-      color: #b0bec5;
-      margin-top: 2px;
-    }
+      /* ====== SHADOW SAMPLES ====== */
+      .ds-shadow-grid {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .ds-shadow-item {
+        text-align: center;
+      }
+      .ds-shadow-box {
+        width: 120px;
+        height: 80px;
+        background: #fff;
+        border-radius: 12px;
+        margin-bottom: 10px;
+      }
+      .ds-shadow-label {
+        font-size: 11px;
+        color: #636e72;
+        font-weight: 500;
+      }
+      .ds-shadow-spec {
+        font-size: 10px;
+        font-family: "Roboto", monospace;
+        color: #b0bec5;
+        margin-top: 2px;
+      }
 
-    /* ====== COMPONENT PREVIEW BOXES ====== */
-    .ds-preview {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 16px;
-    }
-    .ds-preview-dark {
-      background: #2b3a42;
-    }
-    .ds-preview-teal {
-      background: #1b4653;
-    }
+      /* ====== COMPONENT PREVIEW BOXES ====== */
+      .ds-preview {
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 16px;
+      }
+      .ds-preview-dark {
+        background: #2b3a42;
+      }
+      .ds-preview-teal {
+        background: #1b4653;
+      }
 
-    /* ====== BADGE GRID ====== */
-    .ds-badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .ds-badge-group-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: #636e72;
-      margin-bottom: 6px;
-    }
+      /* ====== BADGE GRID ====== */
+      .ds-badge-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      .ds-badge-group-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #636e72;
+        margin-bottom: 6px;
+      }
 
-    /* ====== REUSE FROM COMPONENTS ====== */
-    .tag {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.6;
-    }
-    .tag-outline {
-      background: transparent;
-      border: 1.5px solid #b0bec5;
-      color: #636e72;
-    }
-    .tag-duration {
-      background: transparent;
-      color: #888;
-      font-weight: 400;
-      padding-left: 4px;
-    }
+      /* ====== REUSE FROM COMPONENTS ====== */
+      .tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.6;
+      }
+      .tag-outline {
+        background: transparent;
+        border: 1.5px solid #b0bec5;
+        color: #636e72;
+      }
+      .tag-duration {
+        background: transparent;
+        color: #888;
+        font-weight: 400;
+        padding-left: 4px;
+      }
 
-    .topic-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px 6px 6px;
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .topic-pill:hover {
-      border-color: #69c773;
-      box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
-      transform: translateY(-1px);
-    }
-    .topic-pill img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .topic-pill span {
-      font-size: 13px;
-      font-weight: 500;
-      color: #47535b;
-      white-space: nowrap;
-    }
+      .topic-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px 6px 6px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .topic-pill:hover {
+        border-color: #69c773;
+        box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
+        transform: translateY(-1px);
+      }
+      .topic-pill img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .topic-pill span {
+        font-size: 13px;
+        font-weight: 500;
+        color: #47535b;
+        white-space: nowrap;
+      }
 
-    /* ====== BUTTON STYLES ====== */
-    .ds-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-family: 'Roboto', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .ds-btn-primary {
-      background: #5fcf80;
-      color: #fff;
-    }
-    .ds-btn-primary:hover { background: #4ec06e; }
-    .ds-btn-secondary {
-      background: #2b3a42;
-      color: #fff;
-    }
-    .ds-btn-secondary:hover { background: #1b4653; }
-    .ds-btn-outline {
-      background: transparent;
-      border: 1.5px solid #b0bec5;
-      color: #47535b;
-    }
-    .ds-btn-outline:hover {
-      border-color: #69c773;
-      color: #2d3436;
-    }
-    .ds-btn-ghost {
-      background: transparent;
-      color: #69c773;
-      font-weight: 600;
-    }
-    .ds-btn-ghost:hover { text-decoration: underline; }
-    .ds-btn-sm {
-      padding: 6px 14px;
-      font-size: 13px;
-    }
-    .ds-btn-lg {
-      padding: 14px 28px;
-      font-size: 16px;
-    }
+      /* ====== BUTTON STYLES ====== */
+      .ds-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .ds-btn-primary {
+        background: #5fcf80;
+        color: #fff;
+      }
+      .ds-btn-primary:hover {
+        background: #4ec06e;
+      }
+      .ds-btn-secondary {
+        background: #2b3a42;
+        color: #fff;
+      }
+      .ds-btn-secondary:hover {
+        background: #1b4653;
+      }
+      .ds-btn-outline {
+        background: transparent;
+        border: 1.5px solid #b0bec5;
+        color: #47535b;
+      }
+      .ds-btn-outline:hover {
+        border-color: #69c773;
+        color: #2d3436;
+      }
+      .ds-btn-ghost {
+        background: transparent;
+        color: #69c773;
+        font-weight: 600;
+      }
+      .ds-btn-ghost:hover {
+        text-decoration: underline;
+      }
+      .ds-btn-sm {
+        padding: 6px 14px;
+        font-size: 13px;
+      }
+      .ds-btn-lg {
+        padding: 14px 28px;
+        font-size: 16px;
+      }
 
-    /* ====== CARD PREVIEW ====== */
-    .course-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #e8e8e8;
-      transition: all 0.25s;
-      cursor: pointer;
-      max-width: 320px;
-    }
-    .course-card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      transform: translateY(-2px);
-    }
-    .course-card-thumb {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-    .course-card-body { padding: 16px; }
-    .course-card-body h3 {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: #2d3436;
-      margin-bottom: 6px;
-    }
-    .course-card-body p {
-      font-size: 13px;
-      color: #888;
-      line-height: 1.5;
-      margin-bottom: 14px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .course-card-tags {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
+      /* ====== CARD PREVIEW ====== */
+      .course-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e8e8e8;
+        transition: all 0.25s;
+        cursor: pointer;
+        max-width: 320px;
+      }
+      .course-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+      .course-card-thumb {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .course-card-body {
+        padding: 16px;
+      }
+      .course-card-body h3 {
+        font-family: "Quicksand", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #2d3436;
+        margin-bottom: 6px;
+      }
+      .course-card-body p {
+        font-size: 13px;
+        color: #888;
+        line-height: 1.5;
+        margin-bottom: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .course-card-tags {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
 
-    /* ====== NAV PREVIEW ====== */
-    .th-nav {
-      background: #2b3a42;
-      padding: 0 24px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      border-radius: 12px;
-    }
-    .th-nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .th-nav-logo svg { width: 28px; height: 28px; }
-    .th-nav-links { display: flex; gap: 20px; }
-    .th-nav-links a {
-      color: #b0bec5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 16px 4px;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-    .th-nav-links a:hover { color: #fff; }
-    .th-nav-links a.active {
-      color: #fff;
-      border-bottom-color: #69c773;
-    }
+      /* ====== NAV PREVIEW ====== */
+      .th-nav {
+        background: #2b3a42;
+        padding: 0 24px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        border-radius: 12px;
+      }
+      .th-nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .th-nav-logo svg {
+        width: 28px;
+        height: 28px;
+      }
+      .th-nav-links {
+        display: flex;
+        gap: 20px;
+      }
+      .th-nav-links a {
+        color: #b0bec5;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 16px 4px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s;
+      }
+      .th-nav-links a:hover {
+        color: #fff;
+      }
+      .th-nav-links a.active {
+        color: #fff;
+        border-bottom-color: #69c773;
+      }
 
-    /* ====== SEARCH BAR PREVIEW ====== */
-    .th-search-bar {
-      background: #5fcf80;
-      border-radius: 12px;
-      padding: 18px 24px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .th-search-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 10px 16px 10px 40px;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-family: 'Roboto', sans-serif;
-      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2369c773' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E") 12px center no-repeat;
-      outline: none;
-    }
-    .th-search-dropdown {
-      padding: 8px 16px;
-      border-radius: 8px;
-      border: 1.5px solid rgba(255,255,255,0.5);
-      background: transparent;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: 'Roboto', sans-serif;
-    }
+      /* ====== SEARCH BAR PREVIEW ====== */
+      .th-search-bar {
+        background: #5fcf80;
+        border-radius: 12px;
+        padding: 18px 24px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .th-search-input {
+        flex: 1;
+        min-width: 200px;
+        padding: 10px 16px 10px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        background: #fff
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2369c773' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E")
+          12px center no-repeat;
+        outline: none;
+      }
+      .th-search-dropdown {
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: "Roboto", sans-serif;
+      }
 
-    /* ====== FOOTER PREVIEW ====== */
-    .th-footer-preview {
-      background: #2b3a42;
-      border-radius: 12px;
-      padding: 32px;
-      color: #b0bec5;
-    }
-    .th-footer-preview h4 {
-      color: #fff;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .th-footer-preview a {
-      display: block;
-      color: #b0bec5;
-      text-decoration: none;
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-    .th-footer-preview a:hover { color: #fff; }
+      /* ====== FOOTER PREVIEW ====== */
+      .th-footer-preview {
+        background: #2b3a42;
+        border-radius: 12px;
+        padding: 32px;
+        color: #b0bec5;
+      }
+      .th-footer-preview h4 {
+        color: #fff;
+        font-family: "Quicksand", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .th-footer-preview a {
+        display: block;
+        color: #b0bec5;
+        text-decoration: none;
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+      .th-footer-preview a:hover {
+        color: #fff;
+      }
 
-    /* ====== CODE BLOCK ====== */
-    .ds-code {
-      background: #2d3436;
-      color: #b0bec5;
-      border-radius: 8px;
-      padding: 16px 20px;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 12px;
-      line-height: 1.7;
-      overflow-x: auto;
-      margin-top: 12px;
-    }
-    .ds-code .hl-prop { color: #69c773; }
-    .ds-code .hl-val { color: #ffeaa7; }
-    .ds-code .hl-comment { color: #636e72; font-style: italic; }
+      /* ====== CODE BLOCK ====== */
+      .ds-code {
+        background: #2d3436;
+        color: #b0bec5;
+        border-radius: 8px;
+        padding: 16px 20px;
+        font-family: "SF Mono", "Fira Code", monospace;
+        font-size: 12px;
+        line-height: 1.7;
+        overflow-x: auto;
+        margin-top: 12px;
+      }
+      .ds-code .hl-prop {
+        color: #69c773;
+      }
+      .ds-code .hl-val {
+        color: #ffeaa7;
+      }
+      .ds-code .hl-comment {
+        color: #636e72;
+        font-style: italic;
+      }
 
-    /* ====== DIVIDER ====== */
-    .ds-divider {
-      border: none;
-      border-top: 1px solid #e8e8e8;
-      margin: 48px 0;
-    }
+      /* ====== DIVIDER ====== */
+      .ds-divider {
+        border: none;
+        border-top: 1px solid #e8e8e8;
+        margin: 48px 0;
+      }
 
-    /* ====== INLINE TOKENS ====== */
-    .ds-token {
-      display: inline-block;
-      background: #eafbec;
-      color: #2d3436;
-      font-family: 'Roboto', monospace;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
+      /* ====== INLINE TOKENS ====== */
+      .ds-token {
+        display: inline-block;
+        background: #eafbec;
+        color: #2d3436;
+        font-family: "Roboto", monospace;
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
 
-    /* ====== CARDS GRID (for component demos) ====== */
-    .ds-cards-row {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
+      /* ====== CARDS GRID (for component demos) ====== */
+      .ds-cards-row {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
 
-    /* ====== FONTAWESOME PAGE ====== */
-    .ds-fa-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
-    }
-    .ds-fa-card {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 12px;
-      padding: 24px 16px 16px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .ds-fa-card:hover {
-      border-color: #69c773;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
-    }
-    .ds-fa-icon {
-      font-size: 36px;
-      color: #47535b;
-      margin-bottom: 14px;
-    }
-    .ds-fa-label {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      color: #2d3436;
-      margin-bottom: 4px;
-    }
-    .ds-fa-class {
-      font-family: 'Roboto', monospace;
-      font-size: 11px;
-      color: #888;
-      word-break: break-all;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- SIDEBAR -->
-  <aside class="ds-sidebar">
-    <div class="ds-sidebar-logo">
-      <svg viewBox="0 0 64 64" fill="#69c773"><path d="M58.758 14.128l-4.593-2.396c-2.197-1.198-5.59.8-7.788 4.193l-3.794 6.4c-1.398 2.796-1.198 5.79.6 8.387l.2.2c1.797 2.596 4.193 4.793 4.793 5.59.4.4.8 1.198.998 1.797.6 2.396-.6 4.593-2.995 5.192-2.197.6-4.593-.8-5.392-2.995-.2-.6-.2-1.198-.2-1.797.2-.998-.2-2.596-1.598-3.794-1.398-1.598-4.193 1.398-4.992 4.193v.2L32.8 44.88c0 .2.2.4.2.4 1.198 2.396.4 5.192-1.997 6.4s-5.392.4-6.6-1.997-.4-5.192 1.997-6.4c.2 0 .2-.2.4-.2s.6-1.398 1.198-2.796l.8-2.596c0-.2 0-.4.2-.4l2.396-8.387-2.396 4.992c-.4-.998-.8-.998-1.997-.2-.6.4-1.797 1.398-2.197 1.797-.998.8-1.797 2.197-2.197 2.995-.2.6-.6.998-.998 1.398-1.797 1.598-4.593 1.198-5.99-.6s-.998-4.193.8-5.59c.6-.4 1.198-.8 1.797-.8.998-.2 4.793-2.596 6.99-3.994.4-.2.8-.6.998-.8L32 23.913l-5.192 2.796H25.6c-1.598.2-3.594.4-3.994.998-.2.2-.4.6-.8.8-1.598.8-3.994.4-5.392-1.198-1.198-1.797-.8-3.994.8-5.192.998-.6 1.797-.8 2.596-.8 1.398 0 4.992.8 7.988.2l.8-.2c2.995-.6 6.6-2.995 7.988-5.79l3.195-5.392c1.797-2.995 1.598-6.2-.2-7.388L35.195.75c-1.797-.998-4.593-.998-6.4 0L5.242 13.73c-1.797.998-3.195 3.594-3.195 5.59v25.56c0 1.997 1.398 4.193 3.195 5.192l23.763 13.18c1.797.998 4.593.998 6.4 0l23.363-13.38c1.797-.998 3.195-3.195 3.195-5.192V19.32c0-1.997-1.398-4.193-3.195-5.192z"/></svg>
-      <div>
-        <span>Treehouse</span>
-        <small>Design System</small>
-      </div>
-    </div>
-
-    <div class="ds-nav-section">
-      <div class="ds-nav-section-title">Foundations</div>
-      <a href="#colors">Colors</a>
-      <a href="#typography">Typography</a>
-      <a href="#spacing">Spacing</a>
-      <a href="#radius">Border Radius</a>
-      <a href="#shadows">Shadows</a>
-    </div>
-    <div class="ds-nav-section">
-      <div class="ds-nav-section-title">Components</div>
-      <a href="#buttons">Buttons</a>
-      <a href="#badges">Badges &amp; Tags</a>
-      <a href="#topic-pills">Topic Pills</a>
-      <a href="#cards">Course Cards</a>
-      <a href="#search-bar">Search Bar</a>
-      <a href="#nav-bar">Navigation Bar</a>
-      <a href="#footer">Footer</a>
-    </div>
-    <div class="ds-nav-section">
-      <div class="ds-nav-section-title">Patterns</div>
-      <a href="#dark-sections">Dark Sections</a>
-      <a href="#grid-layouts">Grid Layouts</a>
-    </div>
-    <div class="ds-nav-section">
-      <div class="ds-nav-section-title">Motion Graphics</div>
-      <a href="#fontawesome">FontAwesome</a>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main class="ds-main">
-    <h1 class="ds-page-title">Treehouse Design System</h1>
-    <p class="ds-page-subtitle">
-      A living reference of the colors, typography, spacing, and components
-      used across Treehouse motion videos and web properties.
-    </p>
-
-    <!-- ==================== COLORS ==================== -->
-    <section class="ds-section" id="colors">
-      <h2 class="ds-section-title">Colors</h2>
-      <p class="ds-section-desc">The Treehouse palette is organized into brand, UI, topic, and neutral categories.</p>
-
-      <p class="ds-badge-group-label">Brand</p>
-      <div class="ds-color-grid" style="margin-bottom: 24px;">
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #69c773;"><span>#69c773</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Green (Primary)</div>
-            <div class="ds-color-usage">Active states, links, accents</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #5fcf80;"><span>#5fcf80</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Green Light</div>
-            <div class="ds-color-usage">Search bar, primary buttons</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #eafbec;"><span>#eafbec</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Green Tint</div>
-            <div class="ds-color-usage">Labels, highlights</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #2b3a42;"><span>#2b3a42</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Dark Navy</div>
-            <div class="ds-color-usage">Nav bar, footer, dark sections</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #1b4653;"><span>#1b4653</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Teal Dark</div>
-            <div class="ds-color-usage">College credit sections, gradients</div>
-          </div>
+      /* ====== FONTAWESOME PAGE ====== */
+      .ds-fa-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+      }
+      .ds-fa-card {
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 12px;
+        padding: 24px 16px 16px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .ds-fa-card:hover {
+        border-color: #69c773;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);
+      }
+      .ds-fa-icon {
+        font-size: 36px;
+        color: #47535b;
+        margin-bottom: 14px;
+      }
+      .ds-fa-label {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        color: #2d3436;
+        margin-bottom: 4px;
+      }
+      .ds-fa-class {
+        font-family: "Roboto", monospace;
+        font-size: 11px;
+        color: #888;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <aside class="ds-sidebar">
+      <div class="ds-sidebar-logo">
+        <svg viewBox="0 0 64 64" fill="#69c773">
+          <path
+            d="M58.758 14.128l-4.593-2.396c-2.197-1.198-5.59.8-7.788 4.193l-3.794 6.4c-1.398 2.796-1.198 5.79.6 8.387l.2.2c1.797 2.596 4.193 4.793 4.793 5.59.4.4.8 1.198.998 1.797.6 2.396-.6 4.593-2.995 5.192-2.197.6-4.593-.8-5.392-2.995-.2-.6-.2-1.198-.2-1.797.2-.998-.2-2.596-1.598-3.794-1.398-1.598-4.193 1.398-4.992 4.193v.2L32.8 44.88c0 .2.2.4.2.4 1.198 2.396.4 5.192-1.997 6.4s-5.392.4-6.6-1.997-.4-5.192 1.997-6.4c.2 0 .2-.2.4-.2s.6-1.398 1.198-2.796l.8-2.596c0-.2 0-.4.2-.4l2.396-8.387-2.396 4.992c-.4-.998-.8-.998-1.997-.2-.6.4-1.797 1.398-2.197 1.797-.998.8-1.797 2.197-2.197 2.995-.2.6-.6.998-.998 1.398-1.797 1.598-4.593 1.198-5.99-.6s-.998-4.193.8-5.59c.6-.4 1.198-.8 1.797-.8.998-.2 4.793-2.596 6.99-3.994.4-.2.8-.6.998-.8L32 23.913l-5.192 2.796H25.6c-1.598.2-3.594.4-3.994.998-.2.2-.4.6-.8.8-1.598.8-3.994.4-5.392-1.198-1.198-1.797-.8-3.994.8-5.192.998-.6 1.797-.8 2.596-.8 1.398 0 4.992.8 7.988.2l.8-.2c2.995-.6 6.6-2.995 7.988-5.79l3.195-5.392c1.797-2.995 1.598-6.2-.2-7.388L35.195.75c-1.797-.998-4.593-.998-6.4 0L5.242 13.73c-1.797.998-3.195 3.594-3.195 5.59v25.56c0 1.997 1.398 4.193 3.195 5.192l23.763 13.18c1.797.998 4.593.998 6.4 0l23.363-13.38c1.797-.998 3.195-3.195 3.195-5.192V19.32c0-1.997-1.398-4.193-3.195-5.192z"
+          />
+        </svg>
+        <div>
+          <span>Treehouse</span>
+          <small>Design System</small>
         </div>
       </div>
 
-      <p class="ds-badge-group-label">Neutrals</p>
-      <div class="ds-color-grid" style="margin-bottom: 24px;">
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #2d3436;"><span>#2d3436</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Near Black</div>
-            <div class="ds-color-usage">Headings, advanced badge</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #47535b;"><span>#47535b</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Charcoal</div>
-            <div class="ds-color-usage">Body text</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #636e72;"><span>#636e72</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Gray</div>
-            <div class="ds-color-usage">Outline tags, dev tools badge</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #888888;"><span>#888888</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Mid Gray</div>
-            <div class="ds-color-usage">Descriptions, meta text</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #b0bec5;"><span>#b0bec5</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Silver</div>
-            <div class="ds-color-usage">Nav links, footer text, borders</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #e0e0e0; border-bottom: 1px solid #e8e8e8;"><span style="background: rgba(0,0,0,0.4);">#e0e0e0</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Light Gray</div>
-            <div class="ds-color-usage">Pill borders</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #e8e8e8; border-bottom: 1px solid #e0e0e0;"><span style="background: rgba(0,0,0,0.4);">#e8e8e8</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Border</div>
-            <div class="ds-color-usage">Card borders</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #f4f5f7; border-bottom: 1px solid #e8e8e8;"><span style="background: rgba(0,0,0,0.4);">#f4f5f7</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Page Background</div>
-            <div class="ds-color-usage">Body background</div>
-          </div>
-        </div>
+      <div class="ds-nav-section">
+        <div class="ds-nav-section-title">Foundations</div>
+        <a href="#colors">Colors</a>
+        <a href="#typography">Typography</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#radius">Border Radius</a>
+        <a href="#shadows">Shadows</a>
       </div>
-
-      <p class="ds-badge-group-label">Topic Colors</p>
-      <div class="ds-color-grid" style="margin-bottom: 24px;">
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #804197;"><span>#804197</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Purple</div>
-            <div class="ds-color-usage">AI, Machine Learning</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #0e8397;"><span>#0e8397</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Teal</div>
-            <div class="ds-color-usage">APIs, Go Language, Java, PHP, Python, Ruby, Swift</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #3887c8;"><span>#3887c8</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Blue</div>
-            <div class="ds-color-usage">College Credit</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #be4e95;"><span>#be4e95</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Pink</div>
-            <div class="ds-color-usage">Data Analysis, Databases</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #4A4290;"><span>#4A4290</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Indigo</div>
-            <div class="ds-color-usage">Design</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #004e61;"><span>#004e61</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Dark Teal</div>
-            <div class="ds-color-usage">Computer Science, Developmental Tools, Quality Assurance</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #3659A2;"><span>#3659A2</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Royal Blue</div>
-            <div class="ds-color-usage">CSS, HTML, JavaScript, React</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #d44c66;"><span>#d44c66</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Rose</div>
-            <div class="ds-color-usage">Digital Literacy, Professional Skills</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #856fc4;"><span>#856fc4</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Lavender</div>
-            <div class="ds-color-usage">Game Development</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #30826c;"><span>#30826c</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Forest</div>
-            <div class="ds-color-usage">Android</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #31AF7F;"><span>#31AF7F</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Mint</div>
-            <div class="ds-color-usage">No Code</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #409be9;"><span>#409be9</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Sky Blue</div>
-            <div class="ds-color-usage">Security</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #5fcf80;"><span>#5fcf80</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Green</div>
-            <div class="ds-color-usage">Learning Resources</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #55616c;"><span>#55616c</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Slate</div>
-            <div class="ds-color-usage">Internal</div>
-          </div>
-        </div>
+      <div class="ds-nav-section">
+        <div class="ds-nav-section-title">Components</div>
+        <a href="#buttons">Buttons</a>
+        <a href="#badges">Badges &amp; Tags</a>
+        <a href="#topic-pills">Topic Pills</a>
+        <a href="#cards">Course Cards</a>
+        <a href="#search-bar">Search Bar</a>
+        <a href="#nav-bar">Navigation Bar</a>
+        <a href="#footer">Footer</a>
       </div>
-
-      <p class="ds-badge-group-label">Gradient Colors</p>
-      <div class="ds-color-grid" style="margin-bottom: 24px;">
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #4a4190;"><span>#4a4190</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Indigo</div>
-            <div class="ds-color-usage">AI, Design, Machine Learning</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #3759a1;"><span>#3759a1</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Blue</div>
-            <div class="ds-color-usage">JavaScript, HTML, CSS, APIs</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #238296;"><span>#238296</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Teal</div>
-            <div class="ds-color-usage">Python, Java, Go</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #733a87;"><span>#733a87</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Purple</div>
-            <div class="ds-color-usage">Computer Science</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #6c5ce7;"><span>#6c5ce7</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Violet</div>
-            <div class="ds-color-usage">Databases, No-Code, PHP</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #e84393;"><span>#e84393</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Pink</div>
-            <div class="ds-color-usage">Vibe Coding, Professional Growth</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #e17055;"><span>#e17055</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Coral</div>
-            <div class="ds-color-usage">Swift, Game Dev</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #d63031;"><span>#d63031</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Red</div>
-            <div class="ds-color-usage">Ruby, College Credit</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #00b894;"><span>#00b894</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Mint</div>
-            <div class="ds-color-usage">Design, Data Analysis, Security</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #4290c2;"><span>#4290c2</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Sky Blue</div>
-            <div class="ds-color-usage">College Credit tag, Learning Resources</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #3498db;"><span>#3498db</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Bright Blue</div>
-            <div class="ds-color-usage">React</div>
-          </div>
-        </div>
-        <div class="ds-color-card">
-          <div class="ds-color-swatch" style="background: #fdcb6e;"><span>#fdcb6e</span></div>
-          <div class="ds-color-info">
-            <div class="ds-color-name">Gold</div>
-            <div class="ds-color-usage">Digital Literacy</div>
-          </div>
-        </div>
+      <div class="ds-nav-section">
+        <div class="ds-nav-section-title">Patterns</div>
+        <a href="#dark-sections">Dark Sections</a>
+        <a href="#grid-layouts">Grid Layouts</a>
       </div>
-    </section>
+      <div class="ds-nav-section">
+        <div class="ds-nav-section-title">Motion Graphics</div>
+        <a href="#fontawesome">FontAwesome</a>
+      </div>
+    </aside>
 
-    <hr class="ds-divider">
-
-    <!-- ==================== TYPOGRAPHY ==================== -->
-    <section class="ds-section" id="typography">
-      <h2 class="ds-section-title">Typography</h2>
-      <p class="ds-section-desc">
-        Two typefaces form the Treehouse type system: <strong>Quicksand</strong> for headings and display text,
-        and <strong>Roboto</strong> for body copy and UI elements.
+    <!-- MAIN -->
+    <main class="ds-main">
+      <h1 class="ds-page-title">Treehouse Design System</h1>
+      <p class="ds-page-subtitle">
+        A living reference of the colors, typography, spacing, and components
+        used across Treehouse motion videos and web properties.
       </p>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Page Title</div>
-          <div class="ds-type-spec">Quicksand 700 / 36px</div>
-          <div class="ds-type-spec">Color: #2d3436</div>
-        </div>
-        <div style="font-family: 'Quicksand', sans-serif; font-size: 36px; font-weight: 700; color: #2d3436;">
-          Learn to Code
-        </div>
-      </div>
+      <!-- ==================== COLORS ==================== -->
+      <section class="ds-section" id="colors">
+        <h2 class="ds-section-title">Colors</h2>
+        <p class="ds-section-desc">
+          The Treehouse palette is organized into brand, UI, topic, and neutral
+          categories.
+        </p>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Section Heading</div>
-          <div class="ds-type-spec">Quicksand 700 / 24px</div>
-          <div class="ds-type-spec">Color: #2d3436</div>
+        <p class="ds-badge-group-label">Brand</p>
+        <div class="ds-color-grid" style="margin-bottom: 24px">
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #69c773">
+              <span>#69c773</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Green (Primary)</div>
+              <div class="ds-color-usage">Active states, links, accents</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #5fcf80">
+              <span>#5fcf80</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Green Light</div>
+              <div class="ds-color-usage">Search bar, primary buttons</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #eafbec">
+              <span>#eafbec</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Green Tint</div>
+              <div class="ds-color-usage">Labels, highlights</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #2b3a42">
+              <span>#2b3a42</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Dark Navy</div>
+              <div class="ds-color-usage">Nav bar, footer, dark sections</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #1b4653">
+              <span>#1b4653</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Teal Dark</div>
+              <div class="ds-color-usage">
+                College credit sections, gradients
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="font-family: 'Quicksand', sans-serif; font-size: 24px; font-weight: 700; color: #2d3436;">
-          Courses
-        </div>
-      </div>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Card Title</div>
-          <div class="ds-type-spec">Quicksand 700 / 16px</div>
-          <div class="ds-type-spec">Color: #2d3436</div>
+        <p class="ds-badge-group-label">Neutrals</p>
+        <div class="ds-color-grid" style="margin-bottom: 24px">
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #2d3436">
+              <span>#2d3436</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Near Black</div>
+              <div class="ds-color-usage">Headings, advanced badge</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #47535b">
+              <span>#47535b</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Charcoal</div>
+              <div class="ds-color-usage">Body text</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #636e72">
+              <span>#636e72</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Gray</div>
+              <div class="ds-color-usage">Outline tags, dev tools badge</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #888888">
+              <span>#888888</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Mid Gray</div>
+              <div class="ds-color-usage">Descriptions, meta text</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #b0bec5">
+              <span>#b0bec5</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Silver</div>
+              <div class="ds-color-usage">Nav links, footer text, borders</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div
+              class="ds-color-swatch"
+              style="background: #e0e0e0; border-bottom: 1px solid #e8e8e8"
+            >
+              <span style="background: rgba(0, 0, 0, 0.4)">#e0e0e0</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Light Gray</div>
+              <div class="ds-color-usage">Pill borders</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div
+              class="ds-color-swatch"
+              style="background: #e8e8e8; border-bottom: 1px solid #e0e0e0"
+            >
+              <span style="background: rgba(0, 0, 0, 0.4)">#e8e8e8</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Border</div>
+              <div class="ds-color-usage">Card borders</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div
+              class="ds-color-swatch"
+              style="background: #f4f5f7; border-bottom: 1px solid #e8e8e8"
+            >
+              <span style="background: rgba(0, 0, 0, 0.4)">#f4f5f7</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Page Background</div>
+              <div class="ds-color-usage">Body background</div>
+            </div>
+          </div>
         </div>
-        <div style="font-family: 'Quicksand', sans-serif; font-size: 16px; font-weight: 700; color: #2d3436;">
-          JavaScript Basics
-        </div>
-      </div>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Footer Heading</div>
-          <div class="ds-type-spec">Quicksand 700 / 14px</div>
-          <div class="ds-type-spec">Color: #ffffff</div>
+        <p class="ds-badge-group-label">Topic Colors</p>
+        <div class="ds-color-grid" style="margin-bottom: 24px">
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #804197">
+              <span>#804197</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Purple</div>
+              <div class="ds-color-usage">AI, Machine Learning</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #0e8397">
+              <span>#0e8397</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Teal</div>
+              <div class="ds-color-usage">
+                APIs, Go Language, Java, PHP, Python, Ruby, Swift
+              </div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #3887c8">
+              <span>#3887c8</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Blue</div>
+              <div class="ds-color-usage">College Credit</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #be4e95">
+              <span>#be4e95</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Pink</div>
+              <div class="ds-color-usage">Data Analysis, Databases</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #4a4290">
+              <span>#4A4290</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Indigo</div>
+              <div class="ds-color-usage">Design</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #004e61">
+              <span>#004e61</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Dark Teal</div>
+              <div class="ds-color-usage">
+                Computer Science, Developmental Tools, Quality Assurance
+              </div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #3659a2">
+              <span>#3659A2</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Royal Blue</div>
+              <div class="ds-color-usage">CSS, HTML, JavaScript, React</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #d44c66">
+              <span>#d44c66</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Rose</div>
+              <div class="ds-color-usage">
+                Digital Literacy, Professional Skills
+              </div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #856fc4">
+              <span>#856fc4</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Lavender</div>
+              <div class="ds-color-usage">Game Development</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #30826c">
+              <span>#30826c</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Forest</div>
+              <div class="ds-color-usage">Android</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #31af7f">
+              <span>#31AF7F</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Mint</div>
+              <div class="ds-color-usage">No Code</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #409be9">
+              <span>#409be9</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Sky Blue</div>
+              <div class="ds-color-usage">Security</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #5fcf80">
+              <span>#5fcf80</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Green</div>
+              <div class="ds-color-usage">Learning Resources</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #55616c">
+              <span>#55616c</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Slate</div>
+              <div class="ds-color-usage">Internal</div>
+            </div>
+          </div>
         </div>
-        <div style="font-family: 'Quicksand', sans-serif; font-size: 14px; font-weight: 700; color: #2d3436;">
-          Treehouse
-        </div>
-      </div>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Component Label</div>
-          <div class="ds-type-spec">Quicksand 700 / 11px / uppercase</div>
-          <div class="ds-type-spec">Letter-spacing: 0.1em</div>
-          <div class="ds-type-spec">Color: #69c773 on #eafbec</div>
+        <p class="ds-badge-group-label">Gradient Colors</p>
+        <div class="ds-color-grid" style="margin-bottom: 24px">
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #4a4190">
+              <span>#4a4190</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Indigo</div>
+              <div class="ds-color-usage">AI, Design, Machine Learning</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #3759a1">
+              <span>#3759a1</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Blue</div>
+              <div class="ds-color-usage">JavaScript, HTML, CSS, APIs</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #238296">
+              <span>#238296</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Teal</div>
+              <div class="ds-color-usage">Python, Java, Go</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #733a87">
+              <span>#733a87</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Purple</div>
+              <div class="ds-color-usage">Computer Science</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #6c5ce7">
+              <span>#6c5ce7</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Violet</div>
+              <div class="ds-color-usage">Databases, No-Code, PHP</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #e84393">
+              <span>#e84393</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Pink</div>
+              <div class="ds-color-usage">Vibe Coding, Professional Growth</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #e17055">
+              <span>#e17055</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Coral</div>
+              <div class="ds-color-usage">Swift, Game Dev</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #d63031">
+              <span>#d63031</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Red</div>
+              <div class="ds-color-usage">Ruby, College Credit</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #00b894">
+              <span>#00b894</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Mint</div>
+              <div class="ds-color-usage">Design, Data Analysis, Security</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #4290c2">
+              <span>#4290c2</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Sky Blue</div>
+              <div class="ds-color-usage">
+                College Credit tag, Learning Resources
+              </div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #3498db">
+              <span>#3498db</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Bright Blue</div>
+              <div class="ds-color-usage">React</div>
+            </div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #fdcb6e">
+              <span>#fdcb6e</span>
+            </div>
+            <div class="ds-color-info">
+              <div class="ds-color-name">Gold</div>
+              <div class="ds-color-usage">Digital Literacy</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <span style="font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #69c773; background: #eafbec; padding: 4px 12px; border-radius: 4px;">
-            Component Label
-          </span>
-        </div>
-      </div>
+      </section>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Body Text</div>
-          <div class="ds-type-spec">Roboto 400 / 14px</div>
-          <div class="ds-type-spec">Color: #47535b</div>
-        </div>
-        <div style="font-family: 'Roboto', sans-serif; font-size: 14px; color: #47535b; max-width: 400px; line-height: 1.6;">
-          JavaScript is a programming language that drives the web: from front-end design to server-side development.
-        </div>
-      </div>
+      <hr class="ds-divider" />
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Description / Meta</div>
-          <div class="ds-type-spec">Roboto 400 / 13-14px</div>
-          <div class="ds-type-spec">Color: #888888</div>
-        </div>
-        <div style="font-family: 'Roboto', sans-serif; font-size: 14px; color: #888;">
-          Browse content by the topics that interest you most.
-        </div>
-      </div>
+      <!-- ==================== TYPOGRAPHY ==================== -->
+      <section class="ds-section" id="typography">
+        <h2 class="ds-section-title">Typography</h2>
+        <p class="ds-section-desc">
+          Two typefaces form the Treehouse type system:
+          <strong>Quicksand</strong> for headings and display text, and
+          <strong>Roboto</strong> for body copy and UI elements.
+        </p>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Nav Link</div>
-          <div class="ds-type-spec">Roboto 500 / 14px</div>
-          <div class="ds-type-spec">Color: #b0bec5 / #fff active</div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Page Title</div>
+            <div class="ds-type-spec">Quicksand 700 / 36px</div>
+            <div class="ds-type-spec">Color: #2d3436</div>
+          </div>
+          <div
+            style="
+              font-family: &quot;Quicksand&quot;, sans-serif;
+              font-size: 36px;
+              font-weight: 700;
+              color: #2d3436;
+            "
+          >
+            Learn to Code
+          </div>
         </div>
-        <div style="display: flex; gap: 20px;">
-          <span style="font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 500; color: #b0bec5;">Inactive</span>
-          <span style="font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 500; color: #2d3436; border-bottom: 2px solid #69c773; padding-bottom: 2px;">Active</span>
-        </div>
-      </div>
 
-      <div class="ds-type-row">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Action Link</div>
-          <div class="ds-type-spec">Weight: 600 / 14px</div>
-          <div class="ds-type-spec">Color: #69c773</div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Section Heading</div>
+            <div class="ds-type-spec">Quicksand 700 / 24px</div>
+            <div class="ds-type-spec">Color: #2d3436</div>
+          </div>
+          <div
+            style="
+              font-family: &quot;Quicksand&quot;, sans-serif;
+              font-size: 24px;
+              font-weight: 700;
+              color: #2d3436;
+            "
+          >
+            Courses
+          </div>
         </div>
-        <a href="#" style="color: #69c773; text-decoration: none; font-weight: 600; font-size: 14px;">View all 336</a>
-      </div>
 
-      <div class="ds-type-row" style="border-bottom: none;">
-        <div class="ds-type-meta">
-          <div class="ds-type-label">Tag / Badge</div>
-          <div class="ds-type-spec">Roboto 600 / 12px</div>
-          <div class="ds-type-spec">Color: #fff</div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Card Title</div>
+            <div class="ds-type-spec">Quicksand 700 / 16px</div>
+            <div class="ds-type-spec">Color: #2d3436</div>
+          </div>
+          <div
+            style="
+              font-family: &quot;Quicksand&quot;, sans-serif;
+              font-size: 16px;
+              font-weight: 700;
+              color: #2d3436;
+            "
+          >
+            JavaScript Basics
+          </div>
         </div>
-        <div style="display: flex; gap: 8px; align-items: center;">
-          <span class="tag" style="background: #3759a1;">JavaScript</span>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Footer Heading</div>
+            <div class="ds-type-spec">Quicksand 700 / 14px</div>
+            <div class="ds-type-spec">Color: #ffffff</div>
+          </div>
+          <div
+            style="
+              font-family: &quot;Quicksand&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 700;
+              color: #2d3436;
+            "
+          >
+            Treehouse
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Component Label</div>
+            <div class="ds-type-spec">Quicksand 700 / 11px / uppercase</div>
+            <div class="ds-type-spec">Letter-spacing: 0.1em</div>
+            <div class="ds-type-spec">Color: #69c773 on #eafbec</div>
+          </div>
+          <div>
+            <span
+              style="
+                font-family: &quot;Quicksand&quot;, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #69c773;
+                background: #eafbec;
+                padding: 4px 12px;
+                border-radius: 4px;
+              "
+            >
+              Component Label
+            </span>
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Body Text</div>
+            <div class="ds-type-spec">Roboto 400 / 14px</div>
+            <div class="ds-type-spec">Color: #47535b</div>
+          </div>
+          <div
+            style="
+              font-family: &quot;Roboto&quot;, sans-serif;
+              font-size: 14px;
+              color: #47535b;
+              max-width: 400px;
+              line-height: 1.6;
+            "
+          >
+            JavaScript is a programming language that drives the web: from
+            front-end design to server-side development.
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Description / Meta</div>
+            <div class="ds-type-spec">Roboto 400 / 13-14px</div>
+            <div class="ds-type-spec">Color: #888888</div>
+          </div>
+          <div
+            style="
+              font-family: &quot;Roboto&quot;, sans-serif;
+              font-size: 14px;
+              color: #888;
+            "
+          >
+            Browse content by the topics that interest you most.
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Nav Link</div>
+            <div class="ds-type-spec">Roboto 500 / 14px</div>
+            <div class="ds-type-spec">Color: #b0bec5 / #fff active</div>
+          </div>
+          <div style="display: flex; gap: 20px">
+            <span
+              style="
+                font-family: &quot;Roboto&quot;, sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                color: #b0bec5;
+              "
+              >Inactive</span
+            >
+            <span
+              style="
+                font-family: &quot;Roboto&quot;, sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                color: #2d3436;
+                border-bottom: 2px solid #69c773;
+                padding-bottom: 2px;
+              "
+              >Active</span
+            >
+          </div>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Action Link</div>
+            <div class="ds-type-spec">Weight: 600 / 14px</div>
+            <div class="ds-type-spec">Color: #69c773</div>
+          </div>
+          <a
+            href="#"
+            style="
+              color: #69c773;
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 14px;
+            "
+            >View all 336</a
+          >
+        </div>
+
+        <div class="ds-type-row" style="border-bottom: none">
+          <div class="ds-type-meta">
+            <div class="ds-type-label">Tag / Badge</div>
+            <div class="ds-type-spec">Roboto 600 / 12px</div>
+            <div class="ds-type-spec">Color: #fff</div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center">
+            <span class="tag" style="background: #3759a1">JavaScript</span>
+            <span class="tag tag-outline">Beginner</span>
+            <span class="tag tag-duration">234 min</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== SPACING ==================== -->
+      <section class="ds-section" id="spacing">
+        <h2 class="ds-section-title">Spacing Scale</h2>
+        <p class="ds-section-desc">
+          Consistent spacing used throughout the system. Based on a 4px grid
+          with common increments.
+        </p>
+
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">4px</div>
+          <div class="ds-spacing-bar" style="width: 4px"></div>
+          <div class="ds-spacing-value">Inline micro gaps</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">6px</div>
+          <div class="ds-spacing-bar" style="width: 6px"></div>
+          <div class="ds-spacing-value">Tag gaps, card body margins</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">8px</div>
+          <div class="ds-spacing-bar" style="width: 8px"></div>
+          <div class="ds-spacing-value">Logo gaps, pill icon gaps</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">10px</div>
+          <div class="ds-spacing-bar" style="width: 10px"></div>
+          <div class="ds-spacing-value">Topic pill gaps</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">12px</div>
+          <div class="ds-spacing-bar" style="width: 12px"></div>
+          <div class="ds-spacing-value">Section header gaps, search gaps</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">16px</div>
+          <div class="ds-spacing-bar" style="width: 16px"></div>
+          <div class="ds-spacing-value">
+            Card body padding, section desc bottom
+          </div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">20px</div>
+          <div class="ds-spacing-bar" style="width: 20px"></div>
+          <div class="ds-spacing-value">Nav link gaps</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">24px</div>
+          <div class="ds-spacing-bar" style="width: 24px"></div>
+          <div class="ds-spacing-value">
+            Container padding, card grid gap, nav padding
+          </div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">32px</div>
+          <div class="ds-spacing-bar" style="width: 32px"></div>
+          <div class="ds-spacing-value">
+            Nav gaps, footer grid gap, section padding
+          </div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">40px</div>
+          <div class="ds-spacing-bar" style="width: 40px"></div>
+          <div class="ds-spacing-value">
+            Section top margin, footer top padding
+          </div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">48px</div>
+          <div class="ds-spacing-bar" style="width: 48px"></div>
+          <div class="ds-spacing-value">Component label top margin</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">60px</div>
+          <div class="ds-spacing-bar" style="width: 60px"></div>
+          <div class="ds-spacing-value">Footer top margin</div>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== BORDER RADIUS ==================== -->
+      <section class="ds-section" id="radius">
+        <h2 class="ds-section-title">Border Radius</h2>
+        <p class="ds-section-desc">Radius values used across components.</p>
+
+        <div class="ds-radius-grid">
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius: 4px"></div>
+            <div class="ds-radius-label">4px</div>
+            <div class="ds-spacing-value" style="font-size: 11px">
+              Tags, labels
+            </div>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius: 8px"></div>
+            <div class="ds-radius-label">8px</div>
+            <div class="ds-spacing-value" style="font-size: 11px">
+              Inputs, buttons
+            </div>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius: 12px"></div>
+            <div class="ds-radius-label">12px</div>
+            <div class="ds-spacing-value" style="font-size: 11px">
+              Cards, search bar
+            </div>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius: 16px"></div>
+            <div class="ds-radius-label">16px</div>
+            <div class="ds-spacing-value" style="font-size: 11px">
+              College section
+            </div>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius: 999px"></div>
+            <div class="ds-radius-label">999px</div>
+            <div class="ds-spacing-value" style="font-size: 11px">
+              Pills (full round)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== SHADOWS ==================== -->
+      <section class="ds-section" id="shadows">
+        <h2 class="ds-section-title">Shadows</h2>
+        <p class="ds-section-desc">
+          Elevation levels used for interactive and hover states.
+        </p>
+
+        <div class="ds-shadow-grid">
+          <div class="ds-shadow-item">
+            <div
+              class="ds-shadow-box"
+              style="box-shadow: none; border: 1px solid #e8e8e8"
+            ></div>
+            <div class="ds-shadow-label">Resting</div>
+            <div class="ds-shadow-spec">border only</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div
+              class="ds-shadow-box"
+              style="box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15)"
+            ></div>
+            <div class="ds-shadow-label">Pill Hover</div>
+            <div class="ds-shadow-spec">0 2px 8px green/15%</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div
+              class="ds-shadow-box"
+              style="box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1)"
+            ></div>
+            <div class="ds-shadow-label">Card Hover</div>
+            <div class="ds-shadow-spec">0 8px 24px black/10%</div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== BUTTONS ==================== -->
+      <section class="ds-section" id="buttons">
+        <h2 class="ds-section-title">Buttons</h2>
+        <p class="ds-section-desc">
+          Button styles derived from the existing component patterns.
+        </p>
+
+        <div
+          class="ds-preview"
+          style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center"
+        >
+          <button class="ds-btn ds-btn-primary">Primary</button>
+          <button class="ds-btn ds-btn-secondary">Secondary</button>
+          <button class="ds-btn ds-btn-outline">Outline</button>
+          <button class="ds-btn ds-btn-ghost">Ghost Link</button>
+        </div>
+
+        <p class="ds-badge-group-label" style="margin-top: 16px">Sizes</p>
+        <div
+          class="ds-preview"
+          style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center"
+        >
+          <button class="ds-btn ds-btn-primary ds-btn-sm">Small</button>
+          <button class="ds-btn ds-btn-primary">Default</button>
+          <button class="ds-btn ds-btn-primary ds-btn-lg">Large</button>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== BADGES ==================== -->
+      <section class="ds-section" id="badges">
+        <h2 class="ds-section-title">Badges &amp; Tags</h2>
+        <p class="ds-section-desc">
+          Color-coded topic badges, difficulty levels, and duration indicators.
+        </p>
+
+        <p class="ds-badge-group-label">Topic Tags</p>
+        <div class="ds-badge-group">
+          <span class="tag" style="background: #804197">AI</span>
+          <span class="tag" style="background: #804197">Machine Learning</span>
+          <span class="tag" style="background: #0e8397">APIs</span>
+          <span class="tag" style="background: #0e8397">Go Language</span>
+          <span class="tag" style="background: #0e8397">Java</span>
+          <span class="tag" style="background: #0e8397">PHP</span>
+          <span class="tag" style="background: #0e8397">Python</span>
+          <span class="tag" style="background: #0e8397">Ruby</span>
+          <span class="tag" style="background: #0e8397">Swift</span>
+          <span class="tag" style="background: #3887c8">College Credit</span>
+          <span class="tag" style="background: #be4e95">Data Analysis</span>
+          <span class="tag" style="background: #be4e95">Databases</span>
+          <span class="tag" style="background: #4a4290">Design</span>
+          <span class="tag" style="background: #004e61">Computer Science</span>
+          <span class="tag" style="background: #004e61"
+            >Developmental Tools</span
+          >
+          <span class="tag" style="background: #004e61">Quality Assurance</span>
+          <span class="tag" style="background: #3659a2">CSS</span>
+          <span class="tag" style="background: #3659a2">HTML</span>
+          <span class="tag" style="background: #3659a2">JavaScript</span>
+          <span class="tag" style="background: #3659a2">React</span>
+          <span class="tag" style="background: #d44c66">Digital Literacy</span>
+          <span class="tag" style="background: #d44c66"
+            >Professional Skills</span
+          >
+          <span class="tag" style="background: #856fc4">Game Development</span>
+          <span class="tag" style="background: #30826c">Android</span>
+          <span class="tag" style="background: #31af7f">No Code</span>
+          <span class="tag" style="background: #409be9">Security</span>
+          <span class="tag" style="background: #5fcf80"
+            >Learning Resources</span
+          >
+          <span class="tag" style="background: #55616c">Internal</span>
+        </div>
+
+        <p class="ds-badge-group-label">Difficulty Levels</p>
+        <div class="ds-badge-group">
+          <span class="tag tag-outline">Beginner</span>
+          <span class="tag" style="background: #636e72">Intermediate</span>
+          <span class="tag" style="background: #2d3436">Advanced</span>
+        </div>
+
+        <p class="ds-badge-group-label">Duration</p>
+        <div class="ds-badge-group">
+          <span class="tag tag-duration">9 min</span>
+          <span class="tag tag-duration">234 min</span>
+          <span class="tag tag-duration">14 hours</span>
+        </div>
+
+        <p class="ds-badge-group-label">Combined (as used on cards)</p>
+        <div class="ds-badge-group">
+          <span class="tag" style="background: #3759a1">JavaScript</span>
           <span class="tag tag-outline">Beginner</span>
           <span class="tag tag-duration">234 min</span>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <hr class="ds-divider">
+      <hr class="ds-divider" />
 
-    <!-- ==================== SPACING ==================== -->
-    <section class="ds-section" id="spacing">
-      <h2 class="ds-section-title">Spacing Scale</h2>
-      <p class="ds-section-desc">Consistent spacing used throughout the system. Based on a 4px grid with common increments.</p>
+      <!-- ==================== TOPIC PILLS ==================== -->
+      <section class="ds-section" id="topic-pills">
+        <h2 class="ds-section-title">Topic Pills</h2>
+        <p class="ds-section-desc">
+          Capsule-style topic selectors with icon and label. Full-round border
+          radius with hover lift.
+        </p>
 
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">4px</div>
-        <div class="ds-spacing-bar" style="width: 4px;"></div>
-        <div class="ds-spacing-value">Inline micro gaps</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">6px</div>
-        <div class="ds-spacing-bar" style="width: 6px;"></div>
-        <div class="ds-spacing-value">Tag gaps, card body margins</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">8px</div>
-        <div class="ds-spacing-bar" style="width: 8px;"></div>
-        <div class="ds-spacing-value">Logo gaps, pill icon gaps</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">10px</div>
-        <div class="ds-spacing-bar" style="width: 10px;"></div>
-        <div class="ds-spacing-value">Topic pill gaps</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">12px</div>
-        <div class="ds-spacing-bar" style="width: 12px;"></div>
-        <div class="ds-spacing-value">Section header gaps, search gaps</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">16px</div>
-        <div class="ds-spacing-bar" style="width: 16px;"></div>
-        <div class="ds-spacing-value">Card body padding, section desc bottom</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">20px</div>
-        <div class="ds-spacing-bar" style="width: 20px;"></div>
-        <div class="ds-spacing-value">Nav link gaps</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">24px</div>
-        <div class="ds-spacing-bar" style="width: 24px;"></div>
-        <div class="ds-spacing-value">Container padding, card grid gap, nav padding</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">32px</div>
-        <div class="ds-spacing-bar" style="width: 32px;"></div>
-        <div class="ds-spacing-value">Nav gaps, footer grid gap, section padding</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">40px</div>
-        <div class="ds-spacing-bar" style="width: 40px;"></div>
-        <div class="ds-spacing-value">Section top margin, footer top padding</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">48px</div>
-        <div class="ds-spacing-bar" style="width: 48px;"></div>
-        <div class="ds-spacing-value">Component label top margin</div>
-      </div>
-      <div class="ds-spacing-row">
-        <div class="ds-spacing-label">60px</div>
-        <div class="ds-spacing-bar" style="width: 60px;"></div>
-        <div class="ds-spacing-value">Footer top margin</div>
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== BORDER RADIUS ==================== -->
-    <section class="ds-section" id="radius">
-      <h2 class="ds-section-title">Border Radius</h2>
-      <p class="ds-section-desc">Radius values used across components.</p>
-
-      <div class="ds-radius-grid">
-        <div class="ds-radius-item">
-          <div class="ds-radius-box" style="border-radius: 4px;"></div>
-          <div class="ds-radius-label">4px</div>
-          <div class="ds-spacing-value" style="font-size: 11px;">Tags, labels</div>
+        <div
+          class="ds-preview"
+          style="display: flex; flex-wrap: wrap; gap: 10px"
+        >
+          <a class="topic-pill" href="#">
+            <img
+              src="https://topic-images.teamtreehouse.com/topics/ai-brain-logo.png"
+              alt="AI"
+            />
+            <span>AI</span>
+          </a>
+          <a class="topic-pill" href="#">
+            <img
+              src="https://topic-images.teamtreehouse.com/topics/VibeCoding2.png"
+              alt="Vibe Coding"
+            />
+            <span>Vibe Coding</span>
+          </a>
+          <a class="topic-pill" href="#">
+            <img
+              src="https://topic-images.teamtreehouse.com/topics/topics-icons_javascript.png"
+              alt="JavaScript"
+            />
+            <span>JavaScript</span>
+          </a>
+          <a class="topic-pill" href="#">
+            <img
+              src="https://topic-images.teamtreehouse.com/topics/topics-icons_python.png"
+              alt="Python"
+            />
+            <span>Python</span>
+          </a>
+          <a class="topic-pill" href="#">
+            <img
+              src="https://topic-images.teamtreehouse.com/topics/icon4-react.png"
+              alt="React"
+            />
+            <span>React</span>
+          </a>
+          <a class="topic-pill" href="#">
+            <img
+              src="https://topic-images.teamtreehouse.com/topics/topics-icons_html.png"
+              alt="HTML"
+            />
+            <span>HTML</span>
+          </a>
         </div>
-        <div class="ds-radius-item">
-          <div class="ds-radius-box" style="border-radius: 8px;"></div>
-          <div class="ds-radius-label">8px</div>
-          <div class="ds-spacing-value" style="font-size: 11px;">Inputs, buttons</div>
+
+        <div class="ds-code">
+          <span class="hl-comment">/* Pill structure */</span><br />
+          <span class="hl-prop">border-radius</span>:
+          <span class="hl-val">999px</span>;<br />
+          <span class="hl-prop">padding</span>:
+          <span class="hl-val">6px 14px 6px 6px</span>;<br />
+          <span class="hl-prop">border</span>:
+          <span class="hl-val">1px solid #e0e0e0</span>;<br />
+          <span class="hl-prop">background</span>:
+          <span class="hl-val">#fff</span>;<br /><br />
+          <span class="hl-comment">/* Hover */</span><br />
+          <span class="hl-prop">border-color</span>:
+          <span class="hl-val">#69c773</span>;<br />
+          <span class="hl-prop">box-shadow</span>:
+          <span class="hl-val">0 2px 8px rgba(105, 199, 115, 0.15)</span>;<br />
+          <span class="hl-prop">transform</span>:
+          <span class="hl-val">translateY(-1px)</span>;
         </div>
-        <div class="ds-radius-item">
-          <div class="ds-radius-box" style="border-radius: 12px;"></div>
-          <div class="ds-radius-label">12px</div>
-          <div class="ds-spacing-value" style="font-size: 11px;">Cards, search bar</div>
-        </div>
-        <div class="ds-radius-item">
-          <div class="ds-radius-box" style="border-radius: 16px;"></div>
-          <div class="ds-radius-label">16px</div>
-          <div class="ds-spacing-value" style="font-size: 11px;">College section</div>
-        </div>
-        <div class="ds-radius-item">
-          <div class="ds-radius-box" style="border-radius: 999px;"></div>
-          <div class="ds-radius-label">999px</div>
-          <div class="ds-spacing-value" style="font-size: 11px;">Pills (full round)</div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <hr class="ds-divider">
+      <hr class="ds-divider" />
 
-    <!-- ==================== SHADOWS ==================== -->
-    <section class="ds-section" id="shadows">
-      <h2 class="ds-section-title">Shadows</h2>
-      <p class="ds-section-desc">Elevation levels used for interactive and hover states.</p>
+      <!-- ==================== COURSE CARDS ==================== -->
+      <section class="ds-section" id="cards">
+        <h2 class="ds-section-title">Course Cards</h2>
+        <p class="ds-section-desc">
+          Standard card component with thumbnail, title, description, and tags.
+          Hover lifts with shadow.
+        </p>
 
-      <div class="ds-shadow-grid">
-        <div class="ds-shadow-item">
-          <div class="ds-shadow-box" style="box-shadow: none; border: 1px solid #e8e8e8;"></div>
-          <div class="ds-shadow-label">Resting</div>
-          <div class="ds-shadow-spec">border only</div>
-        </div>
-        <div class="ds-shadow-item">
-          <div class="ds-shadow-box" style="box-shadow: 0 2px 8px rgba(105, 199, 115, 0.15);"></div>
-          <div class="ds-shadow-label">Pill Hover</div>
-          <div class="ds-shadow-spec">0 2px 8px green/15%</div>
-        </div>
-        <div class="ds-shadow-item">
-          <div class="ds-shadow-box" style="box-shadow: 0 8px 24px rgba(0,0,0,0.1);"></div>
-          <div class="ds-shadow-label">Card Hover</div>
-          <div class="ds-shadow-spec">0 8px 24px black/10%</div>
-        </div>
-      </div>
-    </section>
+        <div class="ds-cards-row">
+          <div class="course-card">
+            <img
+              class="course-card-thumb"
+              src="https://videos.teamtreehouse.com/stills/JS-Basics-S1V1_2019-stills-1.jpg?token=6b804386_7caf4285a260ac8e3c5e4e05388a6ea33447cc74"
+              alt="JavaScript Basics"
+            />
+            <div class="course-card-body">
+              <h3>JavaScript Basics</h3>
+              <p>
+                JavaScript is a programming language that drives the web: from
+                front-end user interface design to server-side development.
+              </p>
+              <div class="course-card-tags">
+                <span class="tag" style="background: #3759a1">JavaScript</span>
+                <span class="tag tag-outline">Beginner</span>
+                <span class="tag tag-duration">234 min</span>
+              </div>
+            </div>
+          </div>
 
-    <hr class="ds-divider">
-
-    <!-- ==================== BUTTONS ==================== -->
-    <section class="ds-section" id="buttons">
-      <h2 class="ds-section-title">Buttons</h2>
-      <p class="ds-section-desc">Button styles derived from the existing component patterns.</p>
-
-      <div class="ds-preview" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-        <button class="ds-btn ds-btn-primary">Primary</button>
-        <button class="ds-btn ds-btn-secondary">Secondary</button>
-        <button class="ds-btn ds-btn-outline">Outline</button>
-        <button class="ds-btn ds-btn-ghost">Ghost Link</button>
-      </div>
-
-      <p class="ds-badge-group-label" style="margin-top: 16px;">Sizes</p>
-      <div class="ds-preview" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-        <button class="ds-btn ds-btn-primary ds-btn-sm">Small</button>
-        <button class="ds-btn ds-btn-primary">Default</button>
-        <button class="ds-btn ds-btn-primary ds-btn-lg">Large</button>
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== BADGES ==================== -->
-    <section class="ds-section" id="badges">
-      <h2 class="ds-section-title">Badges &amp; Tags</h2>
-      <p class="ds-section-desc">Color-coded topic badges, difficulty levels, and duration indicators.</p>
-
-      <p class="ds-badge-group-label">Topic Tags</p>
-      <div class="ds-badge-group">
-        <span class="tag" style="background: #804197;">AI</span>
-        <span class="tag" style="background: #804197;">Machine Learning</span>
-        <span class="tag" style="background: #0e8397;">APIs</span>
-        <span class="tag" style="background: #0e8397;">Go Language</span>
-        <span class="tag" style="background: #0e8397;">Java</span>
-        <span class="tag" style="background: #0e8397;">PHP</span>
-        <span class="tag" style="background: #0e8397;">Python</span>
-        <span class="tag" style="background: #0e8397;">Ruby</span>
-        <span class="tag" style="background: #0e8397;">Swift</span>
-        <span class="tag" style="background: #3887c8;">College Credit</span>
-        <span class="tag" style="background: #be4e95;">Data Analysis</span>
-        <span class="tag" style="background: #be4e95;">Databases</span>
-        <span class="tag" style="background: #4A4290;">Design</span>
-        <span class="tag" style="background: #004e61;">Computer Science</span>
-        <span class="tag" style="background: #004e61;">Developmental Tools</span>
-        <span class="tag" style="background: #004e61;">Quality Assurance</span>
-        <span class="tag" style="background: #3659A2;">CSS</span>
-        <span class="tag" style="background: #3659A2;">HTML</span>
-        <span class="tag" style="background: #3659A2;">JavaScript</span>
-        <span class="tag" style="background: #3659A2;">React</span>
-        <span class="tag" style="background: #d44c66;">Digital Literacy</span>
-        <span class="tag" style="background: #d44c66;">Professional Skills</span>
-        <span class="tag" style="background: #856fc4;">Game Development</span>
-        <span class="tag" style="background: #30826c;">Android</span>
-        <span class="tag" style="background: #31AF7F;">No Code</span>
-        <span class="tag" style="background: #409be9;">Security</span>
-        <span class="tag" style="background: #5fcf80;">Learning Resources</span>
-        <span class="tag" style="background: #55616c;">Internal</span>
-      </div>
-
-      <p class="ds-badge-group-label">Difficulty Levels</p>
-      <div class="ds-badge-group">
-        <span class="tag tag-outline">Beginner</span>
-        <span class="tag" style="background: #636e72;">Intermediate</span>
-        <span class="tag" style="background: #2d3436;">Advanced</span>
-      </div>
-
-      <p class="ds-badge-group-label">Duration</p>
-      <div class="ds-badge-group">
-        <span class="tag tag-duration">9 min</span>
-        <span class="tag tag-duration">234 min</span>
-        <span class="tag tag-duration">14 hours</span>
-      </div>
-
-      <p class="ds-badge-group-label">Combined (as used on cards)</p>
-      <div class="ds-badge-group">
-        <span class="tag" style="background: #3759a1;">JavaScript</span>
-        <span class="tag tag-outline">Beginner</span>
-        <span class="tag tag-duration">234 min</span>
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== TOPIC PILLS ==================== -->
-    <section class="ds-section" id="topic-pills">
-      <h2 class="ds-section-title">Topic Pills</h2>
-      <p class="ds-section-desc">Capsule-style topic selectors with icon and label. Full-round border radius with hover lift.</p>
-
-      <div class="ds-preview" style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <a class="topic-pill" href="#">
-          <img src="https://topic-images.teamtreehouse.com/topics/ai-brain-logo.png" alt="AI">
-          <span>AI</span>
-        </a>
-        <a class="topic-pill" href="#">
-          <img src="https://topic-images.teamtreehouse.com/topics/VibeCoding2.png" alt="Vibe Coding">
-          <span>Vibe Coding</span>
-        </a>
-        <a class="topic-pill" href="#">
-          <img src="https://topic-images.teamtreehouse.com/topics/topics-icons_javascript.png" alt="JavaScript">
-          <span>JavaScript</span>
-        </a>
-        <a class="topic-pill" href="#">
-          <img src="https://topic-images.teamtreehouse.com/topics/topics-icons_python.png" alt="Python">
-          <span>Python</span>
-        </a>
-        <a class="topic-pill" href="#">
-          <img src="https://topic-images.teamtreehouse.com/topics/icon4-react.png" alt="React">
-          <span>React</span>
-        </a>
-        <a class="topic-pill" href="#">
-          <img src="https://topic-images.teamtreehouse.com/topics/topics-icons_html.png" alt="HTML">
-          <span>HTML</span>
-        </a>
-      </div>
-
-      <div class="ds-code">
-        <span class="hl-comment">/* Pill structure */</span><br>
-        <span class="hl-prop">border-radius</span>: <span class="hl-val">999px</span>;<br>
-        <span class="hl-prop">padding</span>: <span class="hl-val">6px 14px 6px 6px</span>;<br>
-        <span class="hl-prop">border</span>: <span class="hl-val">1px solid #e0e0e0</span>;<br>
-        <span class="hl-prop">background</span>: <span class="hl-val">#fff</span>;<br><br>
-        <span class="hl-comment">/* Hover */</span><br>
-        <span class="hl-prop">border-color</span>: <span class="hl-val">#69c773</span>;<br>
-        <span class="hl-prop">box-shadow</span>: <span class="hl-val">0 2px 8px rgba(105, 199, 115, 0.15)</span>;<br>
-        <span class="hl-prop">transform</span>: <span class="hl-val">translateY(-1px)</span>;
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== COURSE CARDS ==================== -->
-    <section class="ds-section" id="cards">
-      <h2 class="ds-section-title">Course Cards</h2>
-      <p class="ds-section-desc">Standard card component with thumbnail, title, description, and tags. Hover lifts with shadow.</p>
-
-      <div class="ds-cards-row">
-        <div class="course-card">
-          <img class="course-card-thumb" src="https://videos.teamtreehouse.com/stills/JS-Basics-S1V1_2019-stills-1.jpg?token=6b804386_7caf4285a260ac8e3c5e4e05388a6ea33447cc74" alt="JavaScript Basics">
-          <div class="course-card-body">
-            <h3>JavaScript Basics</h3>
-            <p>JavaScript is a programming language that drives the web: from front-end user interface design to server-side development.</p>
-            <div class="course-card-tags">
-              <span class="tag" style="background: #3759a1;">JavaScript</span>
-              <span class="tag tag-outline">Beginner</span>
-              <span class="tag tag-duration">234 min</span>
+          <div class="course-card">
+            <div
+              class="course-card-thumb"
+              style="
+                background: #3498db;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 48px;
+                color: rgba(255, 255, 255, 0.3);
+              "
+            >
+              JS
+            </div>
+            <div class="course-card-body">
+              <h3>Workshop Variant</h3>
+              <p>
+                Workshop cards use a solid color thumbnail with a text
+                abbreviation instead of an image.
+              </p>
+              <div class="course-card-tags">
+                <span class="tag" style="background: #3759a1">JavaScript</span>
+                <span class="tag tag-outline">Beginner</span>
+                <span class="tag tag-duration">9 min</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="course-card">
-          <div class="course-card-thumb" style="background: #3498db; display: flex; align-items: center; justify-content: center; font-size: 48px; color: rgba(255,255,255,0.3);">JS</div>
-          <div class="course-card-body">
-            <h3>Workshop Variant</h3>
-            <p>Workshop cards use a solid color thumbnail with a text abbreviation instead of an image.</p>
-            <div class="course-card-tags">
-              <span class="tag" style="background: #3759a1;">JavaScript</span>
-              <span class="tag tag-outline">Beginner</span>
-              <span class="tag tag-duration">9 min</span>
-            </div>
+        <div class="ds-code">
+          <span class="hl-comment">/* Card structure */</span><br />
+          <span class="hl-prop">border-radius</span>:
+          <span class="hl-val">12px</span>;<br />
+          <span class="hl-prop">border</span>:
+          <span class="hl-val">1px solid #e8e8e8</span>;<br />
+          <span class="hl-prop">background</span>:
+          <span class="hl-val">#fff</span>;<br /><br />
+          <span class="hl-comment">/* Hover */</span><br />
+          <span class="hl-prop">box-shadow</span>:
+          <span class="hl-val">0 8px 24px rgba(0,0,0,0.1)</span>;<br />
+          <span class="hl-prop">transform</span>:
+          <span class="hl-val">translateY(-2px)</span>;
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== SEARCH BAR ==================== -->
+      <section class="ds-section" id="search-bar">
+        <h2 class="ds-section-title">Search Bar</h2>
+        <p class="ds-section-desc">
+          Full-width green search component with input and filter dropdowns.
+        </p>
+
+        <div class="th-search-bar">
+          <input
+            type="text"
+            class="th-search-input"
+            placeholder="Search Courses, Conferences and Teachers..."
+          />
+          <select class="th-search-dropdown">
+            <option>Most Relevant</option>
+          </select>
+          <select class="th-search-dropdown">
+            <option>All Types</option>
+          </select>
+          <select class="th-search-dropdown">
+            <option>All Topics</option>
+          </select>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== NAV BAR ==================== -->
+      <section class="ds-section" id="nav-bar">
+        <h2 class="ds-section-title">Navigation Bar</h2>
+        <p class="ds-section-desc">
+          Top navigation with logo, links, and green active indicator.
+        </p>
+
+        <nav class="th-nav">
+          <div class="th-nav-logo">
+            <svg viewBox="0 0 64 64" fill="#69c773">
+              <path
+                d="M58.758 14.128l-4.593-2.396c-2.197-1.198-5.59.8-7.788 4.193l-3.794 6.4c-1.398 2.796-1.198 5.79.6 8.387l.2.2c1.797 2.596 4.193 4.793 4.793 5.59.4.4.8 1.198.998 1.797.6 2.396-.6 4.593-2.995 5.192-2.197.6-4.593-.8-5.392-2.995-.2-.6-.2-1.198-.2-1.797.2-.998-.2-2.596-1.598-3.794-1.398-1.598-4.193 1.398-4.992 4.193v.2L32.8 44.88c0 .2.2.4.2.4 1.198 2.396.4 5.192-1.997 6.4s-5.392.4-6.6-1.997-.4-5.192 1.997-6.4c.2 0 .2-.2.4-.2s.6-1.398 1.198-2.796l.8-2.596c0-.2 0-.4.2-.4l2.396-8.387-2.396 4.992c-.4-.998-.8-.998-1.997-.2-.6.4-1.797 1.398-2.197 1.797-.998.8-1.797 2.197-2.197 2.995-.2.6-.6.998-.998 1.398-1.797 1.598-4.593 1.198-5.99-.6s-.998-4.193.8-5.59c.6-.4 1.198-.8 1.797-.8.998-.2 4.793-2.596 6.99-3.994.4-.2.8-.6.998-.8L32 23.913l-5.192 2.796H25.6c-1.598.2-3.594.4-3.994.998-.2.2-.4.6-.8.8-1.598.8-3.994.4-5.392-1.198-1.198-1.797-.8-3.994.8-5.192.998-.6 1.797-.8 2.596-.8 1.398 0 4.992.8 7.988.2l.8-.2c2.995-.6 6.6-2.995 7.988-5.79l3.195-5.392c1.797-2.995 1.598-6.2-.2-7.388L35.195.75c-1.797-.998-4.593-.998-6.4 0L5.242 13.73c-1.797.998-3.195 3.594-3.195 5.59v25.56c0 1.997 1.398 4.193 3.195 5.192l23.763 13.18c1.797.998 4.593.998 6.4 0l23.363-13.38c1.797-.998 3.195-3.195 3.195-5.192V19.32c0-1.997-1.398-4.193-3.195-5.192z"
+              />
+            </svg>
           </div>
-        </div>
-      </div>
-
-      <div class="ds-code">
-        <span class="hl-comment">/* Card structure */</span><br>
-        <span class="hl-prop">border-radius</span>: <span class="hl-val">12px</span>;<br>
-        <span class="hl-prop">border</span>: <span class="hl-val">1px solid #e8e8e8</span>;<br>
-        <span class="hl-prop">background</span>: <span class="hl-val">#fff</span>;<br><br>
-        <span class="hl-comment">/* Hover */</span><br>
-        <span class="hl-prop">box-shadow</span>: <span class="hl-val">0 8px 24px rgba(0,0,0,0.1)</span>;<br>
-        <span class="hl-prop">transform</span>: <span class="hl-val">translateY(-2px)</span>;
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== SEARCH BAR ==================== -->
-    <section class="ds-section" id="search-bar">
-      <h2 class="ds-section-title">Search Bar</h2>
-      <p class="ds-section-desc">Full-width green search component with input and filter dropdowns.</p>
-
-      <div class="th-search-bar">
-        <input type="text" class="th-search-input" placeholder="Search Courses, Conferences and Teachers...">
-        <select class="th-search-dropdown"><option>Most Relevant</option></select>
-        <select class="th-search-dropdown"><option>All Types</option></select>
-        <select class="th-search-dropdown"><option>All Topics</option></select>
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== NAV BAR ==================== -->
-    <section class="ds-section" id="nav-bar">
-      <h2 class="ds-section-title">Navigation Bar</h2>
-      <p class="ds-section-desc">Top navigation with logo, links, and green active indicator.</p>
-
-      <nav class="th-nav">
-        <div class="th-nav-logo">
-          <svg viewBox="0 0 64 64" fill="#69c773"><path d="M58.758 14.128l-4.593-2.396c-2.197-1.198-5.59.8-7.788 4.193l-3.794 6.4c-1.398 2.796-1.198 5.79.6 8.387l.2.2c1.797 2.596 4.193 4.793 4.793 5.59.4.4.8 1.198.998 1.797.6 2.396-.6 4.593-2.995 5.192-2.197.6-4.593-.8-5.392-2.995-.2-.6-.2-1.198-.2-1.797.2-.998-.2-2.596-1.598-3.794-1.398-1.598-4.193 1.398-4.992 4.193v.2L32.8 44.88c0 .2.2.4.2.4 1.198 2.396.4 5.192-1.997 6.4s-5.392.4-6.6-1.997-.4-5.192 1.997-6.4c.2 0 .2-.2.4-.2s.6-1.398 1.198-2.796l.8-2.596c0-.2 0-.4.2-.4l2.396-8.387-2.396 4.992c-.4-.998-.8-.998-1.997-.2-.6.4-1.797 1.398-2.197 1.797-.998.8-1.797 2.197-2.197 2.995-.2.6-.6.998-.998 1.398-1.797 1.598-4.593 1.198-5.99-.6s-.998-4.193.8-5.59c.6-.4 1.198-.8 1.797-.8.998-.2 4.793-2.596 6.99-3.994.4-.2.8-.6.998-.8L32 23.913l-5.192 2.796H25.6c-1.598.2-3.594.4-3.994.998-.2.2-.4.6-.8.8-1.598.8-3.994.4-5.392-1.198-1.198-1.797-.8-3.994.8-5.192.998-.6 1.797-.8 2.596-.8 1.398 0 4.992.8 7.988.2l.8-.2c2.995-.6 6.6-2.995 7.988-5.79l3.195-5.392c1.797-2.995 1.598-6.2-.2-7.388L35.195.75c-1.797-.998-4.593-.998-6.4 0L5.242 13.73c-1.797.998-3.195 3.594-3.195 5.59v25.56c0 1.997 1.398 4.193 3.195 5.192l23.763 13.18c1.797.998 4.593.998 6.4 0l23.363-13.38c1.797-.998 3.195-3.195 3.195-5.192V19.32c0-1.997-1.398-4.193-3.195-5.192z"/></svg>
-        </div>
-        <div class="th-nav-links">
-          <a href="#">Home</a>
-          <a href="#" class="active">Library</a>
-          <a href="#">Community</a>
-          <a href="#">Resources</a>
-        </div>
-      </nav>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== FOOTER ==================== -->
-    <section class="ds-section" id="footer">
-      <h2 class="ds-section-title">Footer</h2>
-      <p class="ds-section-desc">Dark footer with multi-column link layout on the nav dark background.</p>
-
-      <div class="th-footer-preview">
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
-          <div>
-            <h4>Treehouse</h4>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Careers</a>
+          <div class="th-nav-links">
+            <a href="#">Home</a>
+            <a href="#" class="active">Library</a>
             <a href="#">Community</a>
+            <a href="#">Resources</a>
           </div>
-          <div>
-            <h4>Courses</h4>
-            <a href="#">JavaScript Basics</a>
-            <a href="#">Intro to HTML & CSS</a>
-            <a href="#">Python Basics</a>
+        </nav>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== FOOTER ==================== -->
+      <section class="ds-section" id="footer">
+        <h2 class="ds-section-title">Footer</h2>
+        <p class="ds-section-desc">
+          Dark footer with multi-column link layout on the nav dark background.
+        </p>
+
+        <div class="th-footer-preview">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 32px;
+            "
+          >
+            <div>
+              <h4>Treehouse</h4>
+              <a href="#">About</a>
+              <a href="#">Blog</a>
+              <a href="#">Careers</a>
+              <a href="#">Community</a>
+            </div>
+            <div>
+              <h4>Courses</h4>
+              <a href="#">JavaScript Basics</a>
+              <a href="#">Intro to HTML & CSS</a>
+              <a href="#">Python Basics</a>
+            </div>
+            <div>
+              <h4>Explore</h4>
+              <a href="#">Plans</a>
+              <a href="#">Affiliates</a>
+              <a href="#">Perks</a>
+            </div>
           </div>
-          <div>
-            <h4>Explore</h4>
-            <a href="#">Plans</a>
-            <a href="#">Affiliates</a>
-            <a href="#">Perks</a>
+        </div>
+      </section>
+
+      <hr class="ds-divider" />
+
+      <!-- ==================== DARK SECTIONS ==================== -->
+      <section class="ds-section" id="dark-sections">
+        <h2 class="ds-section-title">Dark Sections</h2>
+        <p class="ds-section-desc">
+          Featured content areas use a teal dark background with adjusted text
+          and card colors.
+        </p>
+
+        <div class="ds-preview-teal" style="border-radius: 16px; padding: 32px">
+          <h2
+            style="
+              font-family: &quot;Quicksand&quot;, sans-serif;
+              font-size: 24px;
+              font-weight: 700;
+              color: #fff;
+              margin-bottom: 6px;
+            "
+          >
+            College Credit Tracks
+          </h2>
+          <p
+            style="
+              font-size: 14px;
+              color: rgba(255, 255, 255, 0.6);
+              margin-bottom: 20px;
+            "
+          >
+            Earn accredited college credits while learning in-demand tech
+            skills.
+          </p>
+          <div
+            style="
+              display: inline-block;
+              background: rgba(255, 255, 255, 0.08);
+              border-radius: 12px;
+              padding: 16px;
+              max-width: 280px;
+            "
+          >
+            <h3
+              style="
+                font-family: &quot;Quicksand&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 6px;
+              "
+            >
+              Introduction to HTML & CSS
+            </h3>
+            <p
+              style="
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.6);
+                line-height: 1.5;
+                margin-bottom: 12px;
+              "
+            >
+              Treehouse and UH have teamed up to bring you CS 160.
+            </p>
+            <span class="tag" style="background: #4290c2">College Credit</span>
+            <span
+              class="tag tag-duration"
+              style="color: rgba(255, 255, 255, 0.5)"
+              >14 hours</span
+            >
           </div>
         </div>
-      </div>
-    </section>
 
-    <hr class="ds-divider">
-
-    <!-- ==================== DARK SECTIONS ==================== -->
-    <section class="ds-section" id="dark-sections">
-      <h2 class="ds-section-title">Dark Sections</h2>
-      <p class="ds-section-desc">Featured content areas use a teal dark background with adjusted text and card colors.</p>
-
-      <div class="ds-preview-teal" style="border-radius: 16px; padding: 32px;">
-        <h2 style="font-family: 'Quicksand', sans-serif; font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 6px;">College Credit Tracks</h2>
-        <p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">Earn accredited college credits while learning in-demand tech skills.</p>
-        <div style="display: inline-block; background: rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; max-width: 280px;">
-          <h3 style="font-family: 'Quicksand', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px;">Introduction to HTML & CSS</h3>
-          <p style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; margin-bottom: 12px;">Treehouse and UH have teamed up to bring you CS 160.</p>
-          <span class="tag" style="background: #4290c2;">College Credit</span>
-          <span class="tag tag-duration" style="color: rgba(255,255,255,0.5);">14 hours</span>
+        <div class="ds-code">
+          <span class="hl-comment">/* Dark section */</span><br />
+          <span class="hl-prop">background</span>:
+          <span class="hl-val">#1b4653</span>;<br />
+          <span class="hl-prop">border-radius</span>:
+          <span class="hl-val">16px</span>;<br /><br />
+          <span class="hl-comment">/* Cards inside dark section */</span><br />
+          <span class="hl-prop">background</span>:
+          <span class="hl-val">rgba(255,255,255,0.08)</span>;<br />
+          <span class="hl-prop">border</span>:
+          <span class="hl-val">none</span>;<br /><br />
+          <span class="hl-comment">/* Text on dark */</span><br />
+          <span class="hl-prop">heading color</span>:
+          <span class="hl-val">#ffffff</span>;<br />
+          <span class="hl-prop">body color</span>:
+          <span class="hl-val">rgba(255,255,255,0.6)</span>;
         </div>
-      </div>
+      </section>
 
-      <div class="ds-code">
-        <span class="hl-comment">/* Dark section */</span><br>
-        <span class="hl-prop">background</span>: <span class="hl-val">#1b4653</span>;<br>
-        <span class="hl-prop">border-radius</span>: <span class="hl-val">16px</span>;<br><br>
-        <span class="hl-comment">/* Cards inside dark section */</span><br>
-        <span class="hl-prop">background</span>: <span class="hl-val">rgba(255,255,255,0.08)</span>;<br>
-        <span class="hl-prop">border</span>: <span class="hl-val">none</span>;<br><br>
-        <span class="hl-comment">/* Text on dark */</span><br>
-        <span class="hl-prop">heading color</span>: <span class="hl-val">#ffffff</span>;<br>
-        <span class="hl-prop">body color</span>: <span class="hl-val">rgba(255,255,255,0.6)</span>;
-      </div>
-    </section>
+      <hr class="ds-divider" />
 
-    <hr class="ds-divider">
+      <!-- ==================== GRID LAYOUTS ==================== -->
+      <section class="ds-section" id="grid-layouts">
+        <h2 class="ds-section-title">Grid Layouts</h2>
+        <p class="ds-section-desc">
+          Standard layout patterns used across the site.
+        </p>
 
-    <!-- ==================== GRID LAYOUTS ==================== -->
-    <section class="ds-section" id="grid-layouts">
-      <h2 class="ds-section-title">Grid Layouts</h2>
-      <p class="ds-section-desc">Standard layout patterns used across the site.</p>
-
-      <p class="ds-badge-group-label">Card Grid (3-column)</p>
-      <div class="ds-preview">
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-          <div style="background: #eafbec; border-radius: 12px; height: 120px; display: flex; align-items: center; justify-content: center; color: #69c773; font-weight: 600; font-size: 13px;">1fr</div>
-          <div style="background: #eafbec; border-radius: 12px; height: 120px; display: flex; align-items: center; justify-content: center; color: #69c773; font-weight: 600; font-size: 13px;">1fr</div>
-          <div style="background: #eafbec; border-radius: 12px; height: 120px; display: flex; align-items: center; justify-content: center; color: #69c773; font-weight: 600; font-size: 13px;">1fr</div>
+        <p class="ds-badge-group-label">Card Grid (3-column)</p>
+        <div class="ds-preview">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 24px;
+            "
+          >
+            <div
+              style="
+                background: #eafbec;
+                border-radius: 12px;
+                height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #69c773;
+                font-weight: 600;
+                font-size: 13px;
+              "
+            >
+              1fr
+            </div>
+            <div
+              style="
+                background: #eafbec;
+                border-radius: 12px;
+                height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #69c773;
+                font-weight: 600;
+                font-size: 13px;
+              "
+            >
+              1fr
+            </div>
+            <div
+              style="
+                background: #eafbec;
+                border-radius: 12px;
+                height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #69c773;
+                font-weight: 600;
+                font-size: 13px;
+              "
+            >
+              1fr
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="ds-code">
-        <span class="hl-comment">/* Cards grid */</span><br>
-        <span class="hl-prop">display</span>: <span class="hl-val">grid</span>;<br>
-        <span class="hl-prop">grid-template-columns</span>: <span class="hl-val">repeat(3, 1fr)</span>;<br>
-        <span class="hl-prop">gap</span>: <span class="hl-val">24px</span>;<br><br>
-        <span class="hl-comment">/* Topic pills (flex wrap) */</span><br>
-        <span class="hl-prop">display</span>: <span class="hl-val">flex</span>;<br>
-        <span class="hl-prop">flex-wrap</span>: <span class="hl-val">wrap</span>;<br>
-        <span class="hl-prop">gap</span>: <span class="hl-val">10px</span>;<br><br>
-        <span class="hl-comment">/* Footer grid (5-column) */</span><br>
-        <span class="hl-prop">display</span>: <span class="hl-val">grid</span>;<br>
-        <span class="hl-prop">grid-template-columns</span>: <span class="hl-val">repeat(5, 1fr)</span>;<br>
-        <span class="hl-prop">gap</span>: <span class="hl-val">32px</span>;<br><br>
-        <span class="hl-comment">/* Max width container */</span><br>
-        <span class="hl-prop">max-width</span>: <span class="hl-val">1100px</span>;<br>
-        <span class="hl-prop">margin</span>: <span class="hl-val">0 auto</span>;<br>
-        <span class="hl-prop">padding</span>: <span class="hl-val">0 24px</span>;
-      </div>
-    </section>
-
-    <hr class="ds-divider">
-
-    <!-- ==================== FONTAWESOME ==================== -->
-    <section class="ds-section" id="fontawesome">
-      <h2 class="ds-section-title">FontAwesome</h2>
-      <p class="ds-section-desc">
-        Shared FontAwesome icons used across Treehouse motion graphics. To add one, copy a card
-        below, paste the <code class="ds-token">&lt;i&gt;</code> tag from the FontAwesome site,
-        and update the name. Commit and push — everyone gets it on next pull. Click any tile to
-        copy its HTML.
-      </p>
-
-      <div class="ds-fa-grid">
-        <div class="ds-fa-card">
-          <i class="fa-solid fa-user-shield ds-fa-icon"></i>
-          <div class="ds-fa-label">user-shield</div>
-          <div class="ds-fa-class">fa-solid fa-user-shield</div>
+        <div class="ds-code">
+          <span class="hl-comment">/* Cards grid */</span><br />
+          <span class="hl-prop">display</span>:
+          <span class="hl-val">grid</span>;<br />
+          <span class="hl-prop">grid-template-columns</span>:
+          <span class="hl-val">repeat(3, 1fr)</span>;<br />
+          <span class="hl-prop">gap</span>:
+          <span class="hl-val">24px</span>;<br /><br />
+          <span class="hl-comment">/* Topic pills (flex wrap) */</span><br />
+          <span class="hl-prop">display</span>:
+          <span class="hl-val">flex</span>;<br />
+          <span class="hl-prop">flex-wrap</span>:
+          <span class="hl-val">wrap</span>;<br />
+          <span class="hl-prop">gap</span>:
+          <span class="hl-val">10px</span>;<br /><br />
+          <span class="hl-comment">/* Footer grid (5-column) */</span><br />
+          <span class="hl-prop">display</span>:
+          <span class="hl-val">grid</span>;<br />
+          <span class="hl-prop">grid-template-columns</span>:
+          <span class="hl-val">repeat(5, 1fr)</span>;<br />
+          <span class="hl-prop">gap</span>:
+          <span class="hl-val">32px</span>;<br /><br />
+          <span class="hl-comment">/* Max width container */</span><br />
+          <span class="hl-prop">max-width</span>:
+          <span class="hl-val">1100px</span>;<br />
+          <span class="hl-prop">margin</span>:
+          <span class="hl-val">0 auto</span>;<br />
+          <span class="hl-prop">padding</span>:
+          <span class="hl-val">0 24px</span>;
         </div>
-      </div>
-    </section>
+      </section>
 
-  </main>
+      <hr class="ds-divider" />
 
-  <div class="ds-copy-toast" id="copy-toast">
-    <span class="toast-swatch" id="toast-swatch"></span>
-    <span id="toast-text"></span>
-  </div>
+      <!-- ==================== FONTAWESOME ==================== -->
+      <section class="ds-section" id="fontawesome">
+        <h2 class="ds-section-title">FontAwesome</h2>
+        <p class="ds-section-desc">
+          Shared FontAwesome icons used across Treehouse motion graphics. To add
+          one, copy a card below, paste the
+          <code class="ds-token">&lt;i&gt;</code> tag from the FontAwesome site,
+          and update the name. Commit and push — everyone gets it on next pull.
+          Click any tile to copy its HTML.
+        </p>
 
-  <script>
-    let toastTimeout;
-    const toast = document.getElementById('copy-toast');
-    const toastSwatch = document.getElementById('toast-swatch');
-    const toastText = document.getElementById('toast-text');
+        <div class="ds-fa-grid">
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-align-left ds-fa-icon"></i>
+            <div class="ds-fa-label">align-left</div>
+            <div class="ds-fa-class">fa-solid fa-align-left</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-anchor ds-fa-icon"></i>
+            <div class="ds-fa-label">anchor</div>
+            <div class="ds-fa-class">fa-solid fa-anchor</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-arrow-down ds-fa-icon"></i>
+            <div class="ds-fa-label">arrow-down</div>
+            <div class="ds-fa-class">fa-solid fa-arrow-down</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-arrow-left ds-fa-icon"></i>
+            <div class="ds-fa-label">arrow-left</div>
+            <div class="ds-fa-class">fa-solid fa-arrow-left</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-arrow-right ds-fa-icon"></i>
+            <div class="ds-fa-label">arrow-right</div>
+            <div class="ds-fa-class">fa-solid fa-arrow-right</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-arrow-right-arrow-left ds-fa-icon"></i>
+            <div class="ds-fa-label">arrow-right-arrow-left</div>
+            <div class="ds-fa-class">fa-solid fa-arrow-right-arrow-left</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-ban ds-fa-icon"></i>
+            <div class="ds-fa-label">ban</div>
+            <div class="ds-fa-class">fa-solid fa-ban</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-bell ds-fa-icon"></i>
+            <div class="ds-fa-label">bell</div>
+            <div class="ds-fa-class">fa-solid fa-bell</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-bolt ds-fa-icon"></i>
+            <div class="ds-fa-label">bolt</div>
+            <div class="ds-fa-class">fa-solid fa-bolt</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-book-open ds-fa-icon"></i>
+            <div class="ds-fa-label">book-open</div>
+            <div class="ds-fa-class">fa-solid fa-book-open</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-bookmark ds-fa-icon"></i>
+            <div class="ds-fa-label">bookmark</div>
+            <div class="ds-fa-class">fa-solid fa-bookmark</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-box-archive ds-fa-icon"></i>
+            <div class="ds-fa-label">box-archive</div>
+            <div class="ds-fa-class">fa-solid fa-box-archive</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-brain ds-fa-icon"></i>
+            <div class="ds-fa-label">brain</div>
+            <div class="ds-fa-class">fa-solid fa-brain</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-briefcase ds-fa-icon"></i>
+            <div class="ds-fa-label">briefcase</div>
+            <div class="ds-fa-class">fa-solid fa-briefcase</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-bug ds-fa-icon"></i>
+            <div class="ds-fa-label">bug</div>
+            <div class="ds-fa-class">fa-solid fa-bug</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-bullseye ds-fa-icon"></i>
+            <div class="ds-fa-label">bullseye</div>
+            <div class="ds-fa-class">fa-solid fa-bullseye</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-calendar-days ds-fa-icon"></i>
+            <div class="ds-fa-label">calendar-days</div>
+            <div class="ds-fa-class">fa-solid fa-calendar-days</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-calendar-plus ds-fa-icon"></i>
+            <div class="ds-fa-label">calendar-plus</div>
+            <div class="ds-fa-class">fa-solid fa-calendar-plus</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-car ds-fa-icon"></i>
+            <div class="ds-fa-label">car</div>
+            <div class="ds-fa-class">fa-solid fa-car</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-chalkboard-user ds-fa-icon"></i>
+            <div class="ds-fa-label">chalkboard-user</div>
+            <div class="ds-fa-class">fa-solid fa-chalkboard-user</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-chart-line ds-fa-icon"></i>
+            <div class="ds-fa-label">chart-line</div>
+            <div class="ds-fa-class">fa-solid fa-chart-line</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-check ds-fa-icon"></i>
+            <div class="ds-fa-label">check</div>
+            <div class="ds-fa-class">fa-solid fa-check</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-circle-check ds-fa-icon"></i>
+            <div class="ds-fa-label">circle-check</div>
+            <div class="ds-fa-class">fa-solid fa-circle-check</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-circle-info ds-fa-icon"></i>
+            <div class="ds-fa-label">circle-info</div>
+            <div class="ds-fa-class">fa-solid fa-circle-info</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-circle-nodes ds-fa-icon"></i>
+            <div class="ds-fa-label">circle-nodes</div>
+            <div class="ds-fa-class">fa-solid fa-circle-nodes</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-circle-plus ds-fa-icon"></i>
+            <div class="ds-fa-label">circle-plus</div>
+            <div class="ds-fa-class">fa-solid fa-circle-plus</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-circle-xmark ds-fa-icon"></i>
+            <div class="ds-fa-label">circle-xmark</div>
+            <div class="ds-fa-class">fa-solid fa-circle-xmark</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-brands fa-claude ds-fa-icon"></i>
+            <div class="ds-fa-label">claude</div>
+            <div class="ds-fa-class">fa-brands fa-claude</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-clock ds-fa-icon"></i>
+            <div class="ds-fa-label">clock</div>
+            <div class="ds-fa-class">fa-solid fa-clock</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-clock-rotate-left ds-fa-icon"></i>
+            <div class="ds-fa-label">clock-rotate-left</div>
+            <div class="ds-fa-class">fa-solid fa-clock-rotate-left</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-code ds-fa-icon"></i>
+            <div class="ds-fa-label">code</div>
+            <div class="ds-fa-class">fa-solid fa-code</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-comments ds-fa-icon"></i>
+            <div class="ds-fa-label">comments</div>
+            <div class="ds-fa-class">fa-solid fa-comments</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-compass ds-fa-icon"></i>
+            <div class="ds-fa-label">compass</div>
+            <div class="ds-fa-class">fa-solid fa-compass</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-copy ds-fa-icon"></i>
+            <div class="ds-fa-label">copy</div>
+            <div class="ds-fa-class">fa-solid fa-copy</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-diagram-project ds-fa-icon"></i>
+            <div class="ds-fa-label">diagram-project</div>
+            <div class="ds-fa-class">fa-solid fa-diagram-project</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-download ds-fa-icon"></i>
+            <div class="ds-fa-label">download</div>
+            <div class="ds-fa-class">fa-solid fa-download</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-envelope ds-fa-icon"></i>
+            <div class="ds-fa-label">envelope</div>
+            <div class="ds-fa-class">fa-solid fa-envelope</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-eraser ds-fa-icon"></i>
+            <div class="ds-fa-label">eraser</div>
+            <div class="ds-fa-class">fa-solid fa-eraser</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-eye ds-fa-icon"></i>
+            <div class="ds-fa-label">eye</div>
+            <div class="ds-fa-class">fa-solid fa-eye</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-face-frown ds-fa-icon"></i>
+            <div class="ds-fa-label">face-frown</div>
+            <div class="ds-fa-class">fa-solid fa-face-frown</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-face-tired ds-fa-icon"></i>
+            <div class="ds-fa-label">face-tired</div>
+            <div class="ds-fa-class">fa-solid fa-face-tired</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-file-import ds-fa-icon"></i>
+            <div class="ds-fa-label">file-import</div>
+            <div class="ds-fa-class">fa-solid fa-file-import</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-file-lines ds-fa-icon"></i>
+            <div class="ds-fa-label">file-lines</div>
+            <div class="ds-fa-class">fa-solid fa-file-lines</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-flag-checkered ds-fa-icon"></i>
+            <div class="ds-fa-label">flag-checkered</div>
+            <div class="ds-fa-class">fa-solid fa-flag-checkered</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-flask ds-fa-icon"></i>
+            <div class="ds-fa-label">flask</div>
+            <div class="ds-fa-class">fa-solid fa-flask</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-floppy-disk ds-fa-icon"></i>
+            <div class="ds-fa-label">floppy-disk</div>
+            <div class="ds-fa-class">fa-solid fa-floppy-disk</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-folder-open ds-fa-icon"></i>
+            <div class="ds-fa-label">folder-open</div>
+            <div class="ds-fa-class">fa-solid fa-folder-open</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-folder-tree ds-fa-icon"></i>
+            <div class="ds-fa-label">folder-tree</div>
+            <div class="ds-fa-class">fa-solid fa-folder-tree</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-gavel ds-fa-icon"></i>
+            <div class="ds-fa-label">gavel</div>
+            <div class="ds-fa-class">fa-solid fa-gavel</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-gears ds-fa-icon"></i>
+            <div class="ds-fa-label">gears</div>
+            <div class="ds-fa-class">fa-solid fa-gears</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-gem ds-fa-icon"></i>
+            <div class="ds-fa-label">gem</div>
+            <div class="ds-fa-class">fa-solid fa-gem</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-ghost ds-fa-icon"></i>
+            <div class="ds-fa-label">ghost</div>
+            <div class="ds-fa-class">fa-solid fa-ghost</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-globe ds-fa-icon"></i>
+            <div class="ds-fa-label">globe</div>
+            <div class="ds-fa-class">fa-solid fa-globe</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-brands fa-google ds-fa-icon"></i>
+            <div class="ds-fa-label">google</div>
+            <div class="ds-fa-class">fa-brands fa-google</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-greater-than ds-fa-icon"></i>
+            <div class="ds-fa-label">greater-than</div>
+            <div class="ds-fa-class">fa-solid fa-greater-than</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-hand-pointer ds-fa-icon"></i>
+            <div class="ds-fa-label">hand-pointer</div>
+            <div class="ds-fa-class">fa-solid fa-hand-pointer</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-handshake-angle ds-fa-icon"></i>
+            <div class="ds-fa-label">handshake-angle</div>
+            <div class="ds-fa-class">fa-solid fa-handshake-angle</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-hashtag ds-fa-icon"></i>
+            <div class="ds-fa-label">hashtag</div>
+            <div class="ds-fa-class">fa-solid fa-hashtag</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-heading ds-fa-icon"></i>
+            <div class="ds-fa-label">heading</div>
+            <div class="ds-fa-class">fa-solid fa-heading</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-hourglass-half ds-fa-icon"></i>
+            <div class="ds-fa-label">hourglass-half</div>
+            <div class="ds-fa-class">fa-solid fa-hourglass-half</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-id-card ds-fa-icon"></i>
+            <div class="ds-fa-label">id-card</div>
+            <div class="ds-fa-class">fa-solid fa-id-card</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-image ds-fa-icon"></i>
+            <div class="ds-fa-label">image</div>
+            <div class="ds-fa-class">fa-solid fa-image</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-key ds-fa-icon"></i>
+            <div class="ds-fa-label">key</div>
+            <div class="ds-fa-class">fa-solid fa-key</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-keyboard ds-fa-icon"></i>
+            <div class="ds-fa-label">keyboard</div>
+            <div class="ds-fa-class">fa-solid fa-keyboard</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-layer-group ds-fa-icon"></i>
+            <div class="ds-fa-label">layer-group</div>
+            <div class="ds-fa-class">fa-solid fa-layer-group</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-lightbulb ds-fa-icon"></i>
+            <div class="ds-fa-label">lightbulb</div>
+            <div class="ds-fa-class">fa-solid fa-lightbulb</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-link ds-fa-icon"></i>
+            <div class="ds-fa-label">link</div>
+            <div class="ds-fa-class">fa-solid fa-link</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-list-check ds-fa-icon"></i>
+            <div class="ds-fa-label">list-check</div>
+            <div class="ds-fa-class">fa-solid fa-list-check</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-location-arrow ds-fa-icon"></i>
+            <div class="ds-fa-label">location-arrow</div>
+            <div class="ds-fa-class">fa-solid fa-location-arrow</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-lock ds-fa-icon"></i>
+            <div class="ds-fa-label">lock</div>
+            <div class="ds-fa-class">fa-solid fa-lock</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-magnifying-glass ds-fa-icon"></i>
+            <div class="ds-fa-label">magnifying-glass</div>
+            <div class="ds-fa-class">fa-solid fa-magnifying-glass</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-brands fa-markdown ds-fa-icon"></i>
+            <div class="ds-fa-label">markdown</div>
+            <div class="ds-fa-class">fa-brands fa-markdown</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-masks-theater ds-fa-icon"></i>
+            <div class="ds-fa-label">masks-theater</div>
+            <div class="ds-fa-class">fa-solid fa-masks-theater</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-meh ds-fa-icon"></i>
+            <div class="ds-fa-label">meh</div>
+            <div class="ds-fa-class">fa-solid fa-meh</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-message ds-fa-icon"></i>
+            <div class="ds-fa-label">message</div>
+            <div class="ds-fa-class">fa-solid fa-message</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-minus ds-fa-icon"></i>
+            <div class="ds-fa-label">minus</div>
+            <div class="ds-fa-class">fa-solid fa-minus</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-mobile-screen ds-fa-icon"></i>
+            <div class="ds-fa-label">mobile-screen</div>
+            <div class="ds-fa-class">fa-solid fa-mobile-screen</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-mug-hot ds-fa-icon"></i>
+            <div class="ds-fa-label">mug-hot</div>
+            <div class="ds-fa-class">fa-solid fa-mug-hot</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-newspaper ds-fa-icon"></i>
+            <div class="ds-fa-label">newspaper</div>
+            <div class="ds-fa-class">fa-solid fa-newspaper</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-object-group ds-fa-icon"></i>
+            <div class="ds-fa-label">object-group</div>
+            <div class="ds-fa-class">fa-solid fa-object-group</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-brands fa-openai ds-fa-icon"></i>
+            <div class="ds-fa-label">openai</div>
+            <div class="ds-fa-class">fa-brands fa-openai</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-palette ds-fa-icon"></i>
+            <div class="ds-fa-label">palette</div>
+            <div class="ds-fa-class">fa-solid fa-palette</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-paperclip ds-fa-icon"></i>
+            <div class="ds-fa-label">paperclip</div>
+            <div class="ds-fa-class">fa-solid fa-paperclip</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-paste ds-fa-icon"></i>
+            <div class="ds-fa-label">paste</div>
+            <div class="ds-fa-class">fa-solid fa-paste</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-pause ds-fa-icon"></i>
+            <div class="ds-fa-label">pause</div>
+            <div class="ds-fa-class">fa-solid fa-pause</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-pen-nib ds-fa-icon"></i>
+            <div class="ds-fa-label">pen-nib</div>
+            <div class="ds-fa-class">fa-solid fa-pen-nib</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-people-group ds-fa-icon"></i>
+            <div class="ds-fa-label">people-group</div>
+            <div class="ds-fa-class">fa-solid fa-people-group</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-plug ds-fa-icon"></i>
+            <div class="ds-fa-label">plug</div>
+            <div class="ds-fa-class">fa-solid fa-plug</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-puzzle-piece ds-fa-icon"></i>
+            <div class="ds-fa-label">puzzle-piece</div>
+            <div class="ds-fa-class">fa-solid fa-puzzle-piece</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-question ds-fa-icon"></i>
+            <div class="ds-fa-label">question</div>
+            <div class="ds-fa-class">fa-solid fa-question</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-quote-left ds-fa-icon"></i>
+            <div class="ds-fa-label">quote-left</div>
+            <div class="ds-fa-class">fa-solid fa-quote-left</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-robot ds-fa-icon"></i>
+            <div class="ds-fa-label">robot</div>
+            <div class="ds-fa-class">fa-solid fa-robot</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-rocket ds-fa-icon"></i>
+            <div class="ds-fa-label">rocket</div>
+            <div class="ds-fa-class">fa-solid fa-rocket</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-rotate ds-fa-icon"></i>
+            <div class="ds-fa-label">rotate</div>
+            <div class="ds-fa-class">fa-solid fa-rotate</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-ruler-combined ds-fa-icon"></i>
+            <div class="ds-fa-label">ruler-combined</div>
+            <div class="ds-fa-class">fa-solid fa-ruler-combined</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-scale-balanced ds-fa-icon"></i>
+            <div class="ds-fa-label">scale-balanced</div>
+            <div class="ds-fa-class">fa-solid fa-scale-balanced</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-seedling ds-fa-icon"></i>
+            <div class="ds-fa-label">seedling</div>
+            <div class="ds-fa-class">fa-solid fa-seedling</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-shapes ds-fa-icon"></i>
+            <div class="ds-fa-label">shapes</div>
+            <div class="ds-fa-class">fa-solid fa-shapes</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-share-nodes ds-fa-icon"></i>
+            <div class="ds-fa-label">share-nodes</div>
+            <div class="ds-fa-class">fa-solid fa-share-nodes</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-shield-halved ds-fa-icon"></i>
+            <div class="ds-fa-label">shield-halved</div>
+            <div class="ds-fa-class">fa-solid fa-shield-halved</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-shoe-prints ds-fa-icon"></i>
+            <div class="ds-fa-label">shoe-prints</div>
+            <div class="ds-fa-class">fa-solid fa-shoe-prints</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-sliders ds-fa-icon"></i>
+            <div class="ds-fa-label">sliders</div>
+            <div class="ds-fa-class">fa-solid fa-sliders</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-star ds-fa-icon"></i>
+            <div class="ds-fa-label">star</div>
+            <div class="ds-fa-class">fa-solid fa-star</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-stethoscope ds-fa-icon"></i>
+            <div class="ds-fa-label">stethoscope</div>
+            <div class="ds-fa-class">fa-solid fa-stethoscope</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-sun-plant-wilt ds-fa-icon"></i>
+            <div class="ds-fa-label">sun-plant-wilt</div>
+            <div class="ds-fa-class">fa-solid fa-sun-plant-wilt</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-table-cells ds-fa-icon"></i>
+            <div class="ds-fa-label">table-cells</div>
+            <div class="ds-fa-class">fa-solid fa-table-cells</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-table-list ds-fa-icon"></i>
+            <div class="ds-fa-label">table-list</div>
+            <div class="ds-fa-class">fa-solid fa-table-list</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-tags ds-fa-icon"></i>
+            <div class="ds-fa-label">tags</div>
+            <div class="ds-fa-class">fa-solid fa-tags</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-toolbox ds-fa-icon"></i>
+            <div class="ds-fa-label">toolbox</div>
+            <div class="ds-fa-class">fa-solid fa-toolbox</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-trash-can ds-fa-icon"></i>
+            <div class="ds-fa-label">trash-can</div>
+            <div class="ds-fa-class">fa-solid fa-trash-can</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-triangle-exclamation ds-fa-icon"></i>
+            <div class="ds-fa-label">triangle-exclamation</div>
+            <div class="ds-fa-class">fa-solid fa-triangle-exclamation</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-user ds-fa-icon"></i>
+            <div class="ds-fa-label">user</div>
+            <div class="ds-fa-class">fa-solid fa-user</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-user-shield ds-fa-icon"></i>
+            <div class="ds-fa-label">user-shield</div>
+            <div class="ds-fa-class">fa-solid fa-user-shield</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-users ds-fa-icon"></i>
+            <div class="ds-fa-label">users</div>
+            <div class="ds-fa-class">fa-solid fa-users</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-users-gear ds-fa-icon"></i>
+            <div class="ds-fa-label">users-gear</div>
+            <div class="ds-fa-class">fa-solid fa-users-gear</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-volume-high ds-fa-icon"></i>
+            <div class="ds-fa-label">volume-high</div>
+            <div class="ds-fa-class">fa-solid fa-volume-high</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-wand-magic-sparkles ds-fa-icon"></i>
+            <div class="ds-fa-label">wand-magic-sparkles</div>
+            <div class="ds-fa-class">fa-solid fa-wand-magic-sparkles</div>
+          </div>
+          <div class="ds-fa-card">
+            <i class="fa-solid fa-xmark ds-fa-icon"></i>
+            <div class="ds-fa-label">xmark</div>
+            <div class="ds-fa-class">fa-solid fa-xmark</div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-    document.querySelectorAll('.ds-color-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const swatch = card.querySelector('.ds-color-swatch');
-        const hex = swatch.querySelector('span').textContent.trim();
-        navigator.clipboard.writeText(hex).then(() => {
-          toastSwatch.style.background = swatch.style.background || hex;
-          toastText.textContent = `Copied ${hex}`;
-          toast.classList.add('visible');
-          clearTimeout(toastTimeout);
-          toastTimeout = setTimeout(() => toast.classList.remove('visible'), 1500);
+    <div class="ds-copy-toast" id="copy-toast">
+      <span class="toast-swatch" id="toast-swatch"></span>
+      <span id="toast-text"></span>
+    </div>
+
+    <script>
+      let toastTimeout;
+      const toast = document.getElementById("copy-toast");
+      const toastSwatch = document.getElementById("toast-swatch");
+      const toastText = document.getElementById("toast-text");
+
+      document.querySelectorAll(".ds-color-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const swatch = card.querySelector(".ds-color-swatch");
+          const hex = swatch.querySelector("span").textContent.trim();
+          navigator.clipboard.writeText(hex).then(() => {
+            toastSwatch.style.background = swatch.style.background || hex;
+            toastText.textContent = `Copied ${hex}`;
+            toast.classList.add("visible");
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(
+              () => toast.classList.remove("visible"),
+              1500,
+            );
+          });
         });
       });
-    });
 
-    function showToast(message) {
-      toastSwatch.style.background = '#69c773';
-      toastText.textContent = message;
-      toast.classList.add('visible');
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => toast.classList.remove('visible'), 1500);
-    }
+      function showToast(message) {
+        toastSwatch.style.background = "#69c773";
+        toastText.textContent = message;
+        toast.classList.add("visible");
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(
+          () => toast.classList.remove("visible"),
+          1500,
+        );
+      }
 
-    document.querySelectorAll('.ds-fa-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const icon = card.querySelector('.ds-fa-icon');
-        if (!icon) return;
-        const classes = Array.from(icon.classList).filter(c => c !== 'ds-fa-icon').join(' ');
-        const html = `<i class="${classes}"></i>`;
-        navigator.clipboard.writeText(html).then(() => showToast(`Copied ${html}`));
+      document.querySelectorAll(".ds-fa-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const icon = card.querySelector(".ds-fa-icon");
+          if (!icon) return;
+          const classes = Array.from(icon.classList)
+            .filter((c) => c !== "ds-fa-icon")
+            .join(" ");
+          const html = `<i class="${classes}"></i>`;
+          navigator.clipboard
+            .writeText(html)
+            .then(() => showToast(`Copied ${html}`));
+        });
       });
-    });
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
